@@ -1,1 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finals Jumbled Interactive Quiz</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --success: #10B981;
+            --danger: #EF4444;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+        }
 
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: var(--bg);
+            border: 2px solid transparent;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: #E5E7EB;
+            border-color: #D1D5DB;
+        }
+
+        .option-btn.correct {
+            background: #D1FAE5;
+            border-color: var(--success);
+            color: #065F46;
+        }
+
+        .option-btn.wrong {
+            background: #FEE2E2;
+            border-color: var(--danger);
+            color: #991B1B;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .controls {
+            margin-top: 25px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .primary-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: none;
+        }
+
+        .primary-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+            min-height: 24px;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 8px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 20px auto;
+            color: var(--primary);
+        }
+        
+        .result-message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <!-- Quiz Screen -->
+        <div id="quiz-screen">
+            <div class="header">
+                <h1>Microbiology Finals Prep</h1>
+                <div class="progress-text" id="progress-text">Question 1 of X</div>
+            </div>
+            
+            <div class="question-text" id="question-text">Loading question...</div>
+            
+            <div class="options-container" id="options-container">
+                <!-- Options will be injected here -->
+            </div>
+
+            <div class="feedback" id="feedback-text"></div>
+
+            <div class="controls">
+                <button class="primary-btn" id="next-btn" onclick="nextQuestion()">Next Question</button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen" id="result-screen">
+            <h1>Quiz Completed!</h1>
+            <div class="score-circle" id="score-display">0/0</div>
+            <div class="result-message" id="result-message">Great job reviewing your materials!</div>
+            <button class="primary-btn" style="display: inline-block;" onclick="startQuiz()">Restart Jumbled Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const sourceQuestions = [
+            {
+                question: "Which of the following is not a normal portal of exit for an infectious disease?[cite: 15]",
+                options: ["Removal of blood", "Skin", "Urogenital tract", "All of these are normal exit portals"],
+                answer: "All of these are normal exit portals"
+            },
+            {
+                question: "Which of the following is not an antiphagocytic factor?[cite: 15]",
+                options: ["Adhering to the host", "Producing leukocidins", "Capsules", "Slime layers"],
+                answer: "Adhering to the host"
+            },
+            {
+                question: "Microbial hyaluronidase, coagulase, and streptokinase are examples of:[cite: 15]",
+                options: ["Exoenzymes", "Endotoxins", "Antiphagocytic factors", "Toxins"],
+                answer: "Exoenzymes"
+            },
+            {
+                question: "Virulence factors include all the following except:[cite: 15]",
+                options: ["Ribosomes", "Exoenzymes", "Capsules", "Slime layers"],
+                answer: "Ribosomes"
+            },
+            {
+                question: "Hyaluronidase is a virulence factor in:[cite: 15]",
+                options: ["Clostridia", "Mycobacterium", "Escherichia", "Salmonella"],
+                answer: "Clostridia"
+            },
+            {
+                question: "Select characteristics exhibited by exotoxins, but not exhibited by endotoxin:[cite: 15]",
+                options: ["Require very small doses to cause toxic effects, have very specific targets, and are secreted from a living cell", "Composed of lipopolysaccharides and stable at high heat", "Found exclusively in gram-negative outer membranes", "Induce systemic shock and high fever across all hosts"],
+                answer: "Require very small doses to cause toxic effects, have very specific targets, and are secreted from a living cell"
+            },
+            {
+                question: "Exotoxins are secreted by pathogenic organisms.[cite: 15]",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "Toxins that are the lipopolysaccharide of the outer membrane of gram-negative cell walls are:[cite: 15]",
+                options: ["Endotoxins", "Exotoxins", "Enterotoxins", "Exoenzymes"],
+                answer: "Endotoxins"
+            },
+            {
+                question: "An endotoxin is:[cite: 15]",
+                options: ["Indicative of gram-negative organisms", "Secreted by living gram-positive cells", "Targeted at specific nerve cells", "An enzyme that breaks down host tissues"],
+                answer: "Indicative of gram-negative organisms"
+            },
+            {
+                question: "The term infection refers to:[cite: 15]",
+                options: ["Pathogens penetrating host defenses", "Microbes colonizing the skin surface without causing harm", "The presence of normal biota in the gut", "Toxins entering the bloodstream"],
+                answer: "Pathogens penetrating host defenses"
+            },
+            {
+                question: "The minimum amount of microbes in the inoculating dose is the:[cite: 15]",
+                options: ["Infectious dose", "Lethal dose", "Pathogenic threshold", "Virulence factor"],
+                answer: "Infectious dose"
+            },
+            {
+                question: "The cytokine storm seen in patients with severe COVID-19 is an example of a microbe causing disease in which way?[cite: 15]",
+                options: ["Causing an overreaction of the host immune system", "Producing potent neurotoxins", "Directly dissolving host cell membranes", "Starving the host of essential nutrients"],
+                answer: "Causing an overreaction of the host immune system"
+            },
+            {
+                question: "The suffix -emia means:[cite: 15]",
+                options: ["Blood", "Inflammation", "Disease", "Swelling"],
+                answer: "Blood"
+            },
+            {
+                question: "Resident biota are found in/on the:[cite: 15]",
+                options: ["Nasal passages, skin, mouth, and large intestine", "Brain and cerebrospinal fluid", "Blood and lymphatic system", "Lungs and alveoli strictly"],
+                answer: "Nasal passages, skin, mouth, and large intestine"
+            },
+            {
+                question: "Under certain circumstances, members of a person's resident biota can become opportunistic pathogens.[cite: 15]",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "Select the body sites that serve as portals of entry for microbes:[cite: 15]",
+                options: ["Urethra, mouth, vagina, nose, and skin", "Brain, spinal cord, and meninges", "Heart, blood vessels, and spleen", "Liver, gallbladder, and pancreas"],
+                answer: "Urethra, mouth, vagina, nose, and skin"
+            },
+            {
+                question: "Leukopenia refers to:[cite: 16]",
+                options: ["A decrease in white blood cells (WBCS)", "An increase in white blood cells", "The presence of bacteria in the blood", "A decrease in red blood cells"],
+                answer: "A decrease in white blood cells (WBCS)"
+            },
+            {
+                question: "The degree of pathogenicity is determined by:[cite: 16]",
+                options: ["Virulence", "Infectious dose", "Portal of entry", "Host defenses"],
+                answer: "Virulence"
+            },
+            {
+                question: "The greatest number of pathogens enter the body through the:[cite: 16]",
+                options: ["Respiratory system", "Gastrointestinal tract", "Skin", "Urogenital tract"],
+                answer: "Respiratory system"
+            },
+            {
+                question: "Septicemia means a pathogen is present and multiplying in the blood.[cite: 16]",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "Virulence factors are:[cite: 16]",
+                options: ["Characteristics that enable a microorganism to establish infection and cause disease", "The host defenses against an infection", "The antibiotics used to treat an infection", "Environmental conditions required for growth"],
+                answer: "Characteristics that enable a microorganism to establish infection and cause disease"
+            },
+            {
+                question: "Infection occurs when:[cite: 16]",
+                options: ["Pathogens enter and multiply in body tissues", "Normal biota colonize the skin", "Exotoxins are released into the environment", "Phagocytosis destroys a microbe"],
+                answer: "Pathogens enter and multiply in body tissues"
+            },
+            {
+                question: "Which is NOT used to describe resident biota?[cite: 16]",
+                options: ["Pathogenic biota", "Normal flora", "Indigenous biota", "Commensals"],
+                answer: "Pathogenic biota"
+            },
+            {
+                question: "All infectious diseases are caused by microorganisms or their products.[cite: 16]",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "Which of the following pairs is mismatched?[cite: 16]",
+                options: ["Coagulase — dissolve fibrin clots", "Kinase — dissolve fibrin clots", "Hyaluronidase — digest connective tissue", "Mucinase — digest mucous membranes"],
+                answer: "Coagulase — dissolve fibrin clots"
+            },
+            {
+                question: "Opportunistic pathogens cause disease in:[cite: 16]",
+                options: ["Compromised individuals", "Healthy individuals", "Only the elderly", "Only infants"],
+                answer: "Compromised individuals"
+            },
+            {
+                question: "Bacterial enzymes that dissolve fibrin clots are called:[cite: 16]",
+                options: ["Kinases", "Coagulases", "Hyaluronidases", "Mucinases"],
+                answer: "Kinases"
+            },
+            {
+                question: "Candida and Pseudomonas are examples of:[cite: 16]",
+                options: ["Opportunistic pathogens", "True pathogens", "Normal flora strictly", "Viruses"],
+                answer: "Opportunistic pathogens"
+            },
+            {
+                question: "Pathogenic microbes that cause disease in healthy people are called:[cite: 16]",
+                options: ["True pathogens", "Opportunistic pathogens", "Resident flora", "Endogenous agents"],
+                answer: "True pathogens"
+            },
+            {
+                question: "Enterotoxins are:[cite: 16]",
+                options: ["Proteins, virulence factors, exotoxins, and toxins targeting the intestines", "Endotoxins that specifically target the liver", "Enzymes that break down connective tissue", "Lipopolysaccharides targeting the nervous system"],
+                answer: "Proteins, virulence factors, exotoxins, and toxins targeting the intestines"
+            },
+            {
+                question: "Microbial antagonism benefits the host when:[cite: 16]",
+                options: ["Normal microbiota prevent pathogens from colonizing or establishing infection", "Pathogens destroy resident flora", "Viruses integrate into the host's DNA", "White blood cells perform phagocytosis"],
+                answer: "Normal microbiota prevent pathogens from colonizing or establishing infection"
+            },
+            {
+                question: "Which is NOT a normal portal of exit?[cite: 16]",
+                options: ["Skin", "Respiratory tract", "Feces", "Urogenital tract"],
+                answer: "Skin"
+            },
+            {
+                question: "Which is NOT a factor that weakens host defenses?[cite: 16]",
+                options: ["A strong, healthy body", "Old age", "Extreme youth", "Immunosuppressive drugs"],
+                answer: "A strong, healthy body"
+            },
+            {
+                question: "The white blood cell process that attempts to destroy microbes is:[cite: 16]",
+                options: ["Phagocytosis", "Exocytosis", "Pinocytosis", "Apoptosis"],
+                answer: "Phagocytosis"
+            },
+            {
+                question: "In a comparison of two pathogens, organism A has an infectious dose of 200,000 organisms, whereas organism B has an infectious dose of 15 organisms. This means that organism A is much more pathogenic than organism B.[cite: 16]",
+                options: ["False", "True"],
+                answer: "False"
+            },
+            {
+                question: "The human body typically begins to be colonized by its normal biota:[cite: 17]",
+                options: ["During and immediately after birth", "In utero during the first trimester", "When the infant starts eating solid foods", "After the first month of life"],
+                answer: "During and immediately after birth"
+            },
+            {
+                question: "An infectious agent that originates from outside the body is called:[cite: 17]",
+                options: ["Exogenous", "Endogenous", "Resident biota", "Opportunistic"],
+                answer: "Exogenous"
+            },
+            {
+                question: "Exotoxins are:[cite: 17]",
+                options: ["Proteins", "Lipids", "Carbohydrates", "Nucleic acids"],
+                answer: "Proteins"
+            },
+            {
+                question: "Most of the skin's resident biota are found in the uppermost, superficial layers of the epidermis.[cite: 17]",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "The skin's normal biota commonly include bacteria, fungi, and some viruses, except:[cite: 17]",
+                options: ["Protozoans", "Staphylococci", "Corynebacteria", "Yeasts"],
+                answer: "Protozoans"
+            },
+            {
+                question: "Which of the following is NOT a method of adhesion?[cite: 17]",
+                options: ["Cilia", "Fimbriae", "Capsules", "Viral spikes"],
+                answer: "Cilia"
+            },
+            {
+                question: "Mucinase has the greatest effect on the:[cite: 17]",
+                options: ["Respiratory system", "Skeletal system", "Nervous system", "Circulatory system"],
+                answer: "Respiratory system"
+            },
+            {
+                question: "What is the main purpose of treating latent tuberculosis infection?[cite: 17]",
+                options: ["To reduce the risk of progression to active TB disease", "To cure active pulmonary TB", "To prevent transmission to others immediately", "To alleviate current respiratory symptoms"],
+                answer: "To reduce the risk of progression to active TB disease"
+            },
+            {
+                question: "Which presentation should raise suspicion for active pulmonary tuberculosis?[cite: 17]",
+                options: ["A prolonged cough with weight loss and night sweats", "Sudden onset of high fever and vomiting", "A fine red rash covering the entire body", "Painful urination and flank pain"],
+                answer: "A prolonged cough with weight loss and night sweats"
+            },
+            {
+                question: "Which medication is an antiviral used to treat influenza?[cite: 17]",
+                options: ["Oseltamivir", "Amoxicillin", "Azithromycin", "Isoniazid"],
+                answer: "Oseltamivir"
+            },
+            {
+                question: "Which organism causes tuberculosis?[cite: 18]",
+                options: ["Mycobacterium tuberculosis", "Streptococcus pneumoniae", "Staphylococcus aureus", "Haemophilus influenzae"],
+                answer: "Mycobacterium tuberculosis"
+            },
+            {
+                question: "An adult with influenza develops difficulty breathing and persistent chest pressure. What is the most appropriate action?[cite: 18]",
+                options: ["Seek urgent medical evaluation.", "Increase fluids and rest at home.", "Double the dose of over-the-counter pain relievers.", "Wait 24 hours to see if symptoms improve."],
+                answer: "Seek urgent medical evaluation."
+            },
+            {
+                question: "Which statement correctly describes latent tuberculosis infection?[cite: 18]",
+                options: ["TB bacteria are present, but the person has no TB symptoms and cannot spread the infection.", "TB bacteria are actively dividing and spreading to others.", "The person has no TB bacteria in their body but tests positive.", "The bacteria are confined strictly to the liver."],
+                answer: "TB bacteria are present, but the person has no TB symptoms and cannot spread the infection."
+            },
+            {
+                question: "A patient has a positive TB blood test, no symptoms, and a normal chest radiograph. Evaluation finds no evidence of active TB disease. Which condition best fits these findings?[cite: 18]",
+                options: ["Latent tuberculosis infection", "Active pulmonary tuberculosis", "Extrapulmonary tuberculosis", "False positive due to recent cold"],
+                answer: "Latent tuberculosis infection"
+            },
+            {
+                question: "A child receiving appropriate antibiotics for strep throat has been fever-free and has completed 24 hours of treatment. Which advice is most appropriate?[cite: 18]",
+                options: ["The child may generally return to school if well enough and school requirements are met.", "The child must stay home for a full 7 days.", "The child is still highly contagious and must isolate.", "Stop the antibiotics since the fever is gone."],
+                answer: "The child may generally return to school if well enough and school requirements are met."
+            },
+            {
+                question: "Which statement about fever in influenza is correct?[cite: 18]",
+                options: ["Some people with influenza do not develop fever.", "Every patient with influenza will experience a high fever.", "Fever only occurs in children with influenza.", "Fever usually lasts for exactly 24 hours."],
+                answer: "Some people with influenza do not develop fever."
+            },
+            {
+                question: "A patient has confirmed strep throat and no penicillin allergy. Which medication is a recommended first-line treatment?[cite: 18]",
+                options: ["Amoxicillin", "Oseltamivir", "Ciprofloxacin", "Doxycycline"],
+                answer: "Amoxicillin"
+            },
+            {
+                question: "Which finding is most consistent with strep throat?[cite: 18]",
+                options: ["Sudden sore throat, painful swallowing, and tender anterior cervical lymph nodes", "Gradual onset sore throat with persistent severe cough", "Sore throat with a runny nose and red eyes", "Sore throat with generalized body aches and dry cough"],
+                answer: "Sudden sore throat, painful swallowing, and tender anterior cervical lymph nodes"
+            },
+            {
+                question: "Which organism most commonly causes group A streptococcal pharyngitis?[cite: 18]",
+                options: ["Streptococcus pyogenes", "Staphylococcus aureus", "Streptococcus pneumoniae", "Streptococcus agalactiae"],
+                answer: "Streptococcus pyogenes"
+            },
+            {
+                question: "In which age group is strep throat most common?[cite: 18]",
+                options: ["Children aged 5-15 years", "Infants under 1 year", "Adults aged 25-40 years", "Elderly adults over 65"],
+                answer: "Children aged 5-15 years"
+            },
+            {
+                question: "A patient receiving treatment for active TB feels better and asks whether treatment can be stopped. Which response is most appropriate?[cite: 18]",
+                options: ["Complete the prescribed treatment; stopping early can contribute to treatment failure and drug resistance.", "You may stop treatment once your cough disappears.", "You can lower the dose to avoid side effects.", "Switch to over-the-counter cough medicine."],
+                answer: "Complete the prescribed treatment; stopping early can contribute to treatment failure and drug resistance."
+            },
+            {
+                question: "Which symptom more strongly suggests viral pharyngitis than classic strep throat?[cite: 18]",
+                options: ["Cough", "Fever", "Painful swallowing", "Swollen tonsils"],
+                answer: "Cough"
+            },
+            {
+                question: "A hospitalized patient is suspected of having infectious pulmonary tuberculosis. Which transmission-based precautions are indicated?[cite: 18]",
+                options: ["Airborne precautions", "Contact precautions", "Droplet precautions", "Standard precautions only"],
+                answer: "Airborne precautions"
+            },
+            {
+                question: "Appropriate antibiotic treatment of confirmed strep throat reduces the risk of which complication?[cite: 18]",
+                options: ["Acute rheumatic fever", "Pneumonia", "Hepatitis", "Tuberculosis"],
+                answer: "Acute rheumatic fever"
+            },
+            {
+                question: "Which respiratory protection should a healthcare worker use when entering the room of a patient with suspected infectious pulmonary TB?[cite: 18]",
+                options: ["A fit-tested N95 respirator or an appropriate higher-level respirator", "A standard surgical mask", "A cloth face covering", "No mask is necessary if vaccinated"],
+                answer: "A fit-tested N95 respirator or an appropriate higher-level respirator"
+            },
+            {
+                question: "How is infectious pulmonary tuberculosis primarily transmitted?[cite: 18]",
+                options: ["Through inhalation of airborne particles containing TB bacteria", "Through ingestion of contaminated food and water", "Through direct skin-to-skin contact", "Through mosquito vectors"],
+                answer: "Through inhalation of airborne particles containing TB bacteria"
+            },
+            {
+                question: "A hospitalized patient has severe influenza, but symptoms began four days ago. Which statement is most appropriate?[cite: 18]",
+                options: ["Antiviral treatment may still be beneficial despite the delayed presentation.", "Antivirals are completely useless after 48 hours.", "The patient should only receive antibiotics.", "Treatment is no longer necessary as the virus is gone."],
+                answer: "Antiviral treatment may still be beneficial despite the delayed presentation."
+            },
+            {
+                question: "A child with group A strep pharyngitis develops a fine rash that feels like sandpaper. Which associated condition is most likely?[cite: 18]",
+                options: ["Scarlet fever", "Measles", "Chickenpox", "Rubella"],
+                answer: "Scarlet fever"
+            },
+            {
+                question: "Which organism causes influenza?[cite: 18]",
+                options: ["Influenza virus", "Haemophilus influenzae", "Rhinovirus", "Respiratory syncytial virus (RSV)"],
+                answer: "Influenza virus"
+            },
+            {
+                question: "A student suddenly develops fever, chills, headache, muscle aches, and a dry cough. Which illness best fits this presentation?[cite: 18]",
+                options: ["Influenza", "Strep throat", "Common cold", "Tuberculosis"],
+                answer: "Influenza"
+            },
+            {
+                question: "Which patient has an increased risk of serious influenza complications?[cite: 18]",
+                options: ["A 70-year-old with chronic heart disease", "A healthy 20-year-old athlete", "A 10-year-old with no underlying conditions", "A 35-year-old with a minor ankle sprain"],
+                answer: "A 70-year-old with chronic heart disease"
+            },
+            {
+                question: "Which measure provides the best specific protection against seasonal influenza?[cite: 19]",
+                options: ["Receiving the recommended influenza vaccine each year", "Taking daily antiviral medications", "Avoiding cold weather", "Taking large doses of Vitamin C"],
+                answer: "Receiving the recommended influenza vaccine each year"
+            },
+            {
+                question: "Which patient with latent TB infection has an increased risk of developing active TB disease?[cite: 19]",
+                options: ["A person with HIV infection", "A healthy 30-year-old adult", "A person who recently recovered from influenza", "A pregnant woman in her first trimester"],
+                answer: "A person with HIV infection"
+            },
+            {
+                question: "Which condition is a serious complication of influenza?[cite: 19]",
+                options: ["Pneumonia", "Rheumatic fever", "Hepatocellular carcinoma", "Cirrhosis"],
+                answer: "Pneumonia"
+            },
+            {
+                question: "An 8-year-old has symptoms suggestive of strep throat, but the rapid antigen detection test is negative. What is the recommended next step?[cite: 19]",
+                options: ["Obtain a confirmatory throat culture.", "Prescribe antibiotics anyway.", "Assume it is viral and do no further testing.", "Perform a chest X-ray."],
+                answer: "Obtain a confirmatory throat culture."
+            },
+            {
+                question: "When does antiviral treatment generally provide the greatest benefit for uncomplicated influenza?[cite: 19]",
+                options: ["When started within the first two days of symptoms", "When started after symptoms have resolved", "When started exactly one week after exposure", "Only when given prophylactically before exposure"],
+                answer: "When started within the first two days of symptoms"
+            },
+            {
+                question: "Which practice helps reduce the spread of strep throat within a household?[cite: 19]",
+                options: ["Practicing hand hygiene and covering coughs and sneezes", "Boiling all drinking water", "Wearing an N95 respirator at all times", "Avoiding meat consumption"],
+                answer: "Practicing hand hygiene and covering coughs and sneezes"
+            },
+            {
+                question: "What occurs during the fusion stage of HIV replication?[cite: 19]",
+                options: ["The viral envelope merges with the host cell membrane", "The virus buds out from the host cell", "Viral DNA is integrated into the host genome", "RNA is converted into DNA"],
+                answer: "The viral envelope merges with the host cell membrane"
+            },
+            {
+                question: "What is a major goal of antiretroviral therapy in a person with HIV?[cite: 19]",
+                options: ["Suppress viral replication and preserve immune function", "Cure the infection completely", "Increase viral load to trigger an immune response", "Eliminate latent reservoirs within days"],
+                answer: "Suppress viral replication and preserve immune function"
+            },
+            {
+                question: "Which laboratory marker generally indicates current hepatitis B infection?[cite: 19]",
+                options: ["Hepatitis B surface antigen (HBsAg)", "Hepatitis B surface antibody (anti-HBs)", "Total anti-HBc", "Hepatitis A IgM"],
+                answer: "Hepatitis B surface antigen (HBsAg)"
+            },
+            {
+                question: "A drug prevents HIV DNA from becoming incorporated into the host cell's DNA. Which viral enzyme does it inhibit?[cite: 19]",
+                options: ["Integrase", "Reverse transcriptase", "Protease", "Polymerase"],
+                answer: "Integrase"
+            },
+            {
+                question: "A nurse must clean vomit from a patient with suspected Ebola. Which action best reduces exposure risk?[cite: 19]",
+                options: ["Use appropriate protective equipment and follow trained infection-control procedures", "Clean it quickly with bare hands and wash thoroughly", "Use standard contact precautions only", "Allow the vomit to dry completely before cleaning"],
+                answer: "Use appropriate protective equipment and follow trained infection-control procedures"
+            },
+            {
+                question: "Why can traditional burial practices contribute to Ebola transmission?[cite: 19]",
+                options: ["Direct contact with an infected deceased person's body can expose mourners to the virus", "The virus aerosolizes after death", "The soil becomes permanently contaminated", "Insects transfer the virus from the deceased to mourners"],
+                answer: "Direct contact with an infected deceased person's body can expose mourners to the virus"
+            },
+            {
+                question: "What occurs during the assembly stage of HIV replication?[cite: 19]",
+                options: ["Viral RNA and proteins come together to form immature virus particles", "The viral envelope merges with the host cell membrane", "The virus buds from the host cell", "Viral DNA is integrated into the host genome"],
+                answer: "Viral RNA and proteins come together to form immature virus particles"
+            },
+            {
+                question: "Which statement about bleeding in Ebola disease is correct?[cite: 19]",
+                options: ["Bleeding may occur, but it is not present in every patient", "Every patient will experience severe hemorrhage", "Bleeding is typically the very first symptom", "Bleeding only occurs internally"],
+                answer: "Bleeding may occur, but it is not present in every patient"
+            },
+            {
+                question: "A student who completed hepatitis B vaccination has positive anti-HBs, negative HBsAg, and negative total anti-HBc results. What is the best interpretation?[cite: 19]",
+                options: ["Immunity resulting from vaccination", "Recovery from a past natural infection", "Current acute infection", "Chronic active infection"],
+                answer: "Immunity resulting from vaccination"
+            },
+            {
+                question: "Which person has the greatest likelihood of developing chronic hepatitis B after acquiring the infection?[cite: 19]",
+                options: ["A newborn infected during childbirth", "A healthy 30-year-old adult", "An elderly patient infected via a needle stick", "A teenager infected via sexual contact"],
+                answer: "A newborn infected during childbirth"
+            },
+            {
+                question: "Which statement best describes the relationship between HIV infection and AIDS?[cite: 19]",
+                options: ["AIDS is the most advanced stage of HIV infection", "HIV and AIDS are two distinct, unrelated diseases", "HIV is a symptom of AIDS", "AIDS always develops within months of contracting HIV"],
+                answer: "AIDS is the most advanced stage of HIV infection"
+            },
+            {
+                question: "A person with HIV has a CD4 count of 320 cells/mm^3 and develops an AIDS-defining opportunistic illness. Which statement is correct?[cite: 20]",
+                options: ["The AIDS-defining illness can establish an AIDS diagnosis despite the CD4 count", "The CD4 count must fall below 200 to establish an AIDS diagnosis regardless of illness", "The illness is likely unrelated to HIV", "The diagnosis of AIDS is withdrawn once the illness is treated"],
+                answer: "The AIDS-defining illness can establish an AIDS diagnosis despite the CD4 count"
+            },
+            {
+                question: "Which event contributes to the fever episodes associated with the blood stage of malaria?[cite: 20]",
+                options: ["Rupture of infected red blood cells and the resulting inflammatory response", "The parasite multiplying rapidly inside the liver", "The immune system attacking the brain", "Toxins released directly by the mosquito vector"],
+                answer: "Rupture of infected red blood cells and the resulting inflammatory response"
+            },
+            {
+                question: "Malaria is caused by parasites belonging to which genus?[cite: 20]",
+                options: ["Plasmodium", "Anopheles", "Toxoplasma", "Trypanosoma"],
+                answer: "Plasmodium"
+            },
+            {
+                question: "In an adult with confirmed HIV infection, which CD4 count meets the count-based criterion for AIDS?[cite: 20]",
+                options: ["180 cells/mm^3", "400 cells/mm^3", "600 cells/mm^3", "800 cells/mm^3"],
+                answer: "180 cells/mm^3"
+            },
+            {
+                question: "Which mosquito transmits malaria parasites to humans?[cite: 20]",
+                options: ["An infected female Anopheles mosquito", "A male Aedes aegypti mosquito", "An infected Culex mosquito", "A female Ixodes tick"],
+                answer: "An infected female Anopheles mosquito"
+            },
+            {
+                question: "Which parasite stage invades red blood cells after being released from the liver?[cite: 20]",
+                options: ["Merozoite", "Sporozoite", "Gametocyte", "Hypnozoite"],
+                answer: "Merozoite"
+            },
+            {
+                question: "Ebola disease is caused by which type of infectious agent?[cite: 20]",
+                options: ["A virus", "A bacterium", "A protozoan", "A fungus"],
+                answer: "A virus"
+            },
+            {
+                question: "A researcher observes newly formed HIV particles pushing outward through the host cell membrane. Which stage is being observed?[cite: 20]",
+                options: ["Budding", "Assembly", "Fusion", "Integration"],
+                answer: "Budding"
+            },
+            {
+                question: "A patient has negative HBsAg, positive anti-HBs, and positive total anti-HBc results. Which interpretation is most appropriate?[cite: 20]",
+                options: ["Recovery from previous natural hepatitis B infection", "Immunity resulting strictly from vaccination", "Current acute infection", "Susceptible to infection"],
+                answer: "Recovery from previous natural hepatitis B infection"
+            },
+            {
+                question: "A patient has recurrent Plasmodium vivax malaria months after the initial illness, without a new mosquito exposure. Which stage can explain this relapse?[cite: 20]",
+                options: ["A dormant hypnozoite remaining in the liver", "A sporozoite hiding in the bloodstream", "A merozoite remaining in a red blood cell", "A gametocyte dividing in the stomach"],
+                answer: "A dormant hypnozoite remaining in the liver"
+            },
+            {
+                question: "Why are people with AIDS more susceptible to opportunistic infections?[cite: 20]",
+                options: ["Damage to the immune system reduces their ability to control pathogens", "The virus directly mutates normal biota into pathogens", "The medications used to treat AIDS cause the infections", "They lose the physical barrier of their skin"],
+                answer: "Damage to the immune system reduces their ability to control pathogens"
+            },
+            {
+                question: "A patient with Ebola develops severe diarrhea and vomiting. Which supportive intervention is especially important?[cite: 20]",
+                options: ["Careful replacement of fluids and electrolytes", "Immediate administration of antibiotics", "Performing an emergency blood transfusion", "Administering high doses of corticosteroids"],
+                answer: "Careful replacement of fluids and electrolytes"
+            },
+            {
+                question: "Which statement best defines an opportunistic infection?[cite: 20]",
+                options: ["An infection that occurs more frequently or severely in people with weakened immunity", "An infection that only affects extremely healthy individuals", "An infection caused entirely by a host's own genetics", "An infection that is always fatal regardless of treatment"],
+                answer: "An infection that occurs more frequently or severely in people with weakened immunity"
+            },
+            {
+                question: "Which parasite stage is injected into a human during the bite of an infected mosquito?[cite: 20]",
+                options: ["Sporozoite", "Merozoite", "Gametocyte", "Hypnozoite"],
+                answer: "Sporozoite"
+            },
+            {
+                question: "Which enzyme converts HIV RNA into DNA?[cite: 20]",
+                options: ["Reverse transcriptase", "Integrase", "Protease", "Ligase"],
+                answer: "Reverse transcriptase"
+            },
+            {
+                question: "A person with HIV feels well while taking antiretroviral therapy and asks whether treatment is still necessary. Which explanation is most appropriate?[cite: 20]",
+                options: ["Continuing treatment as prescribed helps maintain viral suppression and protect immunity", "You can stop treatment as long as you feel healthy", "Treatment is only needed when symptoms are present", "You can take breaks from the medication on weekends"],
+                answer: "Continuing treatment as prescribed helps maintain viral suppression and protect immunity"
+            },
+            {
+                question: "Which organ is primarily affected by hepatitis B virus infection?[cite: 20]",
+                options: ["Liver", "Kidneys", "Lungs", "Brain"],
+                answer: "Liver"
+            },
+            {
+                question: "Which malaria parasite stage is ingested by a mosquito feeding on an infected human?[cite: 20]",
+                options: ["Gametocyte", "Sporozoite", "Merozoite", "Hypnozoite"],
+                answer: "Gametocyte"
+            },
+            {
+                question: "After entering the human body through a mosquito bite, malaria sporozoites first establish infection in which cells?[cite: 21]",
+                options: ["Liver cells", "Red blood cells", "White blood cells", "Spleen cells"],
+                answer: "Liver cells"
+            },
+            {
+                question: "Which immune cells are major targets of HIV infection?[cite: 21]",
+                options: ["CD4 T lymphocytes", "Red blood cells", "B lymphocytes", "Neutrophils"],
+                answer: "CD4 T lymphocytes"
+            },
+            {
+                question: "Which enzyme cleaves HIV protein chains to help produce mature, infectious virus particles?[cite: 21]",
+                options: ["Protease", "Integrase", "Reverse transcriptase", "Helicase"],
+                answer: "Protease"
+            },
+            {
+                question: "Which exposure can transmit hepatitis B virus?[cite: 21]",
+                options: ["Sharing needles contaminated with infected blood", "Drinking from the same water fountain", "Hugging an infected person", "Being bitten by a mosquito"],
+                answer: "Sharing needles contaminated with infected blood"
+            },
+            {
+                question: "Which exposure is a recognized route of human-to-human Ebola transmission?[cite: 21]",
+                options: ["Infected blood entering another person through broken skin", "Inhaling airborne particles from across the room", "Being bitten by mosquitoes that previously bit the patient", "Drinking contaminated tap water"],
+                answer: "Infected blood entering another person through broken skin"
+            },
+            {
+                question: "Which intervention provides active immunity against hepatitis B?[cite: 21]",
+                options: ["Administration of hepatitis B vaccine", "Taking antiviral drugs", "Receiving hepatitis B immune globulin (HBIG)", "Eating a specialized diet"],
+                answer: "Administration of hepatitis B vaccine"
+            },
+            {
+                question: "Which serious complication may develop from chronic hepatitis B infection?[cite: 21]",
+                options: ["Hepatocellular carcinoma", "Pneumonia", "Rheumatic fever", "Tuberculosis"],
+                answer: "Hepatocellular carcinoma"
+            },
+            {
+                question: "What does AIDS stand for?[cite: 21]",
+                options: ["Acquired Immunodeficiency Syndrome", "Autoimmune Deficiency Syndrome", "Acquired Immune Disease Syndrome", "Active Immunodeficiency Syndrome"],
+                answer: "Acquired Immunodeficiency Syndrome"
+            },
+            {
+                question: "What is the main purpose of contact tracing during an Ebola outbreak?[cite: 21]",
+                options: ["To identify exposed people and monitor them for symptoms", "To assign blame to the original host", "To test new antiviral medications", "To determine which hospitals are the most crowded"],
+                answer: "To identify exposed people and monitor them for symptoms"
+            },
+            {
+                question: "Which group of symptoms may occur early in Ebola disease?[cite: 21]",
+                options: ["Fever, fatigue, muscle pain, and headache", "Profuse bleeding and coma", "Severe respiratory distress and productive cough", "Jaundice and right upper quadrant pain"],
+                answer: "Fever, fatigue, muscle pain, and headache"
+            }
+        ];
+
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        // Utility function to shuffle an array
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function startQuiz() {
+            // Jumble questions and options
+            currentQuiz = shuffleArray(sourceQuestions).map(q => {
+                return {
+                    question: q.question,
+                    options: shuffleArray(q.options),
+                    answer: q.answer
+                };
+            });
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            document.getElementById('result-screen').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'block';
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = currentQuiz[currentQuestionIndex];
+            
+            // Update UI
+            document.getElementById('progress-text').innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+            document.getElementById('question-text').innerText = q.question;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            // Create option buttons
+            q.options.forEach(optionText => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = optionText;
+                btn.onclick = () => selectAnswer(btn, optionText, q.answer);
+                optionsContainer.appendChild(btn);
+            });
+            
+            // Reset feedback and button
+            document.getElementById('feedback-text').innerText = '';
+            document.getElementById('feedback-text').style.color = 'inherit';
+            document.getElementById('next-btn').style.display = 'none';
+        }
+
+        function selectAnswer(selectedBtn, selectedText, correctText) {
+            // Disable all buttons after selection
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => btn.disabled = true);
+            
+            const feedbackText = document.getElementById('feedback-text');
+            
+            if (selectedText === correctText) {
+                selectedBtn.classList.add('correct');
+                feedbackText.innerText = 'Correct! Well done.';
+                feedbackText.style.color = 'var(--success)';
+                score++;
+            } else {
+                selectedBtn.classList.add('wrong');
+                feedbackText.innerText = 'Incorrect.';
+                feedbackText.style.color = 'var(--danger)';
+                
+                // Highlight correct answer
+                allBtns.forEach(btn => {
+                    if (btn.innerText === correctText) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+            
+            document.getElementById('next-btn').style.display = 'inline-block';
+            
+            // Change button text if it's the last question
+            if (currentQuestionIndex === currentQuiz.length - 1) {
+                document.getElementById('next-btn').innerText = 'Finish Quiz';
+            } else {
+                document.getElementById('next-btn').innerText = 'Next Question';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < currentQuiz.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            
+            document.getElementById('score-display').innerText = `${score}/${currentQuiz.length}`;
+            
+            const percentage = (score / currentQuiz.length) * 100;
+            let msg = '';
+            if (percentage >= 90) msg = "Outstanding! You are ready for your finals.";
+            else if (percentage >= 70) msg = "Good job! A little more review and you'll be perfect.";
+            else msg = "Keep studying! Review your materials and try again.";
+            
+            document.getElementById('result-message').innerText = msg;
+        }
+
+        // Initialize quiz on load
+        window.onload = startQuiz;
+    </script>
+</body>
+</html>
