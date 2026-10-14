@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TranslaNurse — 5-Pillar Clinical Sourcing Methodology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006874;
+      --primary-light: #d7f4f7;
+      --bg: #f6f4ef;
+      --card-bg: #ffffff;
+      --text: #111822;
+      --text-muted: #526071;
+      --fail: #b91c1c;
+      --fail-bg: #fee2e2;
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-hard: 5px 5px 0px #111822;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    .top-bar {
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--text);
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+    }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+    }
+    .header-box {
+      border: 2px solid var(--text);
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: var(--shadow-hard);
+      margin-bottom: 28px;
+    }
+    .pillar-card {
+      background: var(--card-bg);
+      border: 2px solid var(--text);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 18px;
+      box-shadow: 3px 3px 0px var(--text);
+    }
+    .pillar-num {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    h1 { font-family: var(--font-serif); font-size: 2.2rem; margin: 0 0 10px; }
+    h2 { font-family: var(--font-serif); font-size: 1.3rem; margin: 0 0 10px; color: var(--primary); }
+    .exclusion-banner {
+      background: var(--fail-bg);
+      border: 2px solid var(--fail);
+      color: var(--fail);
+      padding: 18px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-top: 24px;
+    }
+    .btn-back {
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="index.html" class="brand-title">translanurse</a>
+    <a href="index.html" class="btn-back">← Back to Workspace</a>
+  </header>
+
+  <main class="container">
+    <div class="header-box">
+      <h1>📚 5-Pillar Clinical Sourcing Methodology</h1>
+      <p style="margin:0; color:var(--text-muted);">Every reference range, symptom explanation, and first-aid boundary in TranslaNurse is cross-verified against five tiers of peer-reviewed clinical and public health institutions.</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">PILLAR 01</span>
+      <h2>Global &amp; Government Health Authorities</h2>
+      <p style="margin:0;">World Health Organization (WHO), Republic of the Philippines Department of Health (DOH) Clinical Practice Guidelines, U.S. Centers for Disease Control and Prevention (CDC), and the National Institutes of Health (NIH).</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">PILLAR 02</span>
+      <h2>Elite Academic Medical Centers</h2>
+      <p style="margin:0;">Mayo Clinic Patient Care &amp; Health Information, Cleveland Clinic Health Library, Johns Hopkins Medicine Health Library, and Harvard Health Publishing (Harvard Medical School).</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">PILLAR 03</span>
+      <h2>Specialized Professional Associations &amp; Manuals</h2>
+      <p style="margin:0;">MSD Manuals (Consumer &amp; Professional Editions), American Heart Association (AHA), American Diabetes Association (ADA), and American Academy of Orthopaedic Surgeons (AAOS OrthoInfo).</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">PILLAR 04</span>
+      <h2>Consumer Portals &amp; Lab Testing Directories</h2>
+      <p style="margin:0;">MedlinePlus (U.S. National Library of Medicine) and Testing.com (formerly Lab Tests Online, peer-reviewed by the Association for Diagnostics &amp; Laboratory Medicine / ADLM).</p>
+    </div>
+
+    <div class="pillar-card">
+      <span class="pillar-num">PILLAR 05</span>
+      <h2>Point-of-Care &amp; Professional Portals (Open-Access Sections)</h2>
+      <p style="margin:0;">NCBI Bookshelf StatPearls (Open-Access Clinical Reviews), UpToDate Patient Education (Beyond the Basics Open Access), and BMJ Best Practice Patient Leaflets.</p>
+    </div>
+
+    <div class="exclusion-banner">
+      🚫 STRICT SOURCE EXCLUSION POLICY: TranslaNurse never cites or extracts medical guidance from Wikipedia, Scribd, unverified blogs, crowd-edited wikis, or commercial supplement portals.
+    </div>
+  </main>
+
+</body>
+</html>
