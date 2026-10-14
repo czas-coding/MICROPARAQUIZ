@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TranslaNurse — Frequently Asked Questions & Literacy Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006874;
+      --primary-light: #d7f4f7;
+      --accent-teal: #2ab7c1;
+      --accent-mint: #52a986;
+      --accent-coral: #f28482;
+      --bg: #f6f4ef;
+      --card-bg: #ffffff;
+      --card-elevated: #fcfbf9;
+      --text: #111822;
+      --text-muted: #526071;
+      --border: #d5d9df;
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-hard: 5px 5px 0px #111822;
+    }
+    [data-theme="dark"] {
+      --primary: #4fd1db;
+      --primary-light: #12313b;
+      --bg: #0b1116;
+      --card-bg: #121c24;
+      --card-elevated: #182530;
+      --text: #f3f6f9;
+      --text-muted: #94a3b8;
+      --border: #253645;
+      --shadow-hard: 5px 5px 0px #253645;
+    }
+    * { box-sizing: border-box; transition: 0.2s ease; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    .top-bar {
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--text);
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .container {
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    .header-box {
+      border: 2px solid var(--text);
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: var(--shadow-hard);
+      margin-bottom: 32px;
+    }
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 2px solid var(--text);
+      border-radius: 12px;
+      margin-bottom: 18px;
+      padding: 22px 26px;
+      box-shadow: 3px 3px 0px var(--text);
+    }
+    .faq-q {
+      font-family: var(--font-serif);
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-a {
+      font-size: 0.98rem;
+      color: var(--text);
+      margin: 0;
+    }
+    .faq-a strong { color: var(--primary); }
+    .btn-back {
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="index.html" class="brand-title">translanurse</a>
+    <a href="index.html" class="btn-back">← Back to Workspace</a>
+  </header>
+
+  <main class="container">
+    <div class="header-box">
+      <span class="kicker">✦ Frequently Asked Questions</span>
+      <h1>Everything You Need to Know About TranslaNurse</h1>
+      <p style="color:var(--text-muted); margin:0;">TranslaNurse is a non-commercial, open-access clinical literacy translator designed to bridge health communication gaps for patients and caregivers across the Philippines and Asia.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2 class="faq-q"><span>01.</span> What is TranslaNurse and who built it?</h2>
+      <p class="faq-a">TranslaNurse is a student-led, non-commercial health advocacy initiative created by nursing students at <strong>Mapúa University</strong>. Its mission is to convert complex laboratory results, clinical notes, and symptom fears into plain-language, culturally empathetic summaries tailored to everyday reading levels.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2 class="faq-q"><span>02.</span> Why does TranslaNurse refuse to suggest medicines?</h2>
+      <p class="faq-a"><strong>Zero-Medication Protocol:</strong> Patient safety is our highest ethical priority. Taking the wrong drug, improper dosage, or self-medicating can mask serious illnesses, induce drug-drug interactions, or trigger organ injury. TranslaNurse provides strictly non-pharmacological comfort measures, symptom explanations, and red-flag limits, while prompting patients to seek verified medical consultation for all prescriptions.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2 class="faq-q"><span>03.</span> How does the lab sheet scanner (OCR) work?</h2>
+      <p class="faq-a">You can drop, upload, or paste (Ctrl+V) photos or PDFs of standard laboratory forms (e.g., CBC, Fasting Blood Sugar, Serum Creatinine, Urinalysis, Lipid Panels). The tool extracts individual analyte lines and correlates them against validated clinical reference ranges, flagging results as <strong>Normal</strong>, <strong>High</strong>, or <strong>Low</strong>.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2 class="faq-q"><span>04.</span> Which Philippine languages are supported?</h2>
+      <p class="faq-a">We believe medical understanding should never depend on English fluency. TranslaNurse supports 10 major Philippine languages: <strong>Tagalog, Cebuano (Bisaya), Ilocano, Pangasinan / Pangasinense, Hiligaynon (Ilonggo), Chavacano, Kapampangan, Waray, Bicolano, and Maguindanaon</strong>.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2 class="faq-q"><span>05.</span> Can TranslaNurse diagnose my condition?</h2>
+      <p class="faq-a"><strong>No.</strong> TranslaNurse cannot perform in-person physical inspections, auscultation (listening to lungs/heart), palpation, or official radiological interpretations. It is strictly a health literacy companion that explains terminology and prepares you for productive consultations with licensed physicians.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2 class="faq-q"><span>06.</span> Where are my lab results and text queries stored?</h2>
+      <p class="faq-a">Your data is stored <strong>locally on your own device</strong> via browser memory (`localStorage`). TranslaNurse operates without user profiling, tracking cookies, or commercial databases. Your clinical data is never sold or retained on external servers.</p>
+    </div>
+  </main>
+
+</body>
+</html>
