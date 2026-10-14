@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TranslaNurse — Metro Manila (NCR) Emergency Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006874;
+      --primary-light: #d7f4f7;
+      --bg: #f6f4ef;
+      --card-bg: #ffffff;
+      --text: #111822;
+      --text-muted: #526071;
+      --fail: #b91c1c;
+      --fail-bg: #fee2e2;
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-hard: 5px 5px 0px #111822;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    .top-bar {
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--text);
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+    }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+    }
+    .hero-banner {
+      background: var(--fail-bg);
+      border: 2px solid var(--fail);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-hard);
+      margin-bottom: 28px;
+    }
+    h1 { font-family: var(--font-serif); font-size: 2.2rem; color: var(--fail); margin: 0 0 10px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+    .hotline-card {
+      background: var(--card-bg);
+      border: 2px solid var(--text);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 3px 3px 0px var(--text);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hotline-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: var(--primary);
+    }
+    .hotline-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .btn-call {
+      background: var(--fail);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-align: center;
+      display: block;
+    }
+    .btn-back {
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="index.html" class="brand-title">translanurse</a>
+    <a href="index.html" class="btn-back">← Back to Workspace</a>
+  </header>
+
+  <main class="container">
+    <div class="hero-banner">
+      <h1>🚨 National Capital Region (NCR) Emergency Directory</h1>
+      <p style="margin:0; font-size: 1.05rem; color: var(--text);">Direct contact lines for emergency response, patient referral, ambulance dispatch, and apex trauma hospitals across Metro Manila.</p>
+    </div>
+
+    <div class="grid">
+      <div class="hotline-card">
+        <div>
+          <div class="hotline-title">Emergency 911 (NCR / Nationwide)</div>
+          <div class="hotline-sub">General police, ambulance dispatch, fire, and disaster response.</div>
+        </div>
+        <a href="tel:911" class="btn-call">📞 Call 911</a>
+      </div>
+
+      <div class="hotline-card">
+        <div>
+          <div class="hotline-title">Philippine Red Cross EMS</div>
+          <div class="hotline-sub">Emergency medical dispatch, ambulance transport, and blood bank inquiries.</div>
+        </div>
+        <a href="tel:143" class="btn-call">📞 Dial 143 or (02) 8790-2300</a>
+      </div>
+
+      <div class="hotline-card">
+        <div>
+          <div class="hotline-title">DOH Hospital Referral (One Hospital Command)</div>
+          <div class="hotline-sub">National patient coordination, bed availability, and hospital transfer.</div>
+        </div>
+        <a href="tel:1555" class="btn-call">📞 Dial 1555 or (02) 8865-0500</a>
+      </div>
+
+      <div class="hotline-card">
+        <div>
+          <div class="hotline-title">UP-Philippine General Hospital (PGH)</div>
+          <div class="hotline-sub">Ermita, Manila • National University Hospital & Tertiary Emergency Care.</div>
+        </div>
+        <a href="tel:+63285548400" class="btn-call">📞 Call (02) 8554-8400</a>
+      </div>
+
+      <div class="hotline-card">
+        <div>
+          <div class="hotline-title">National Center for Mental Health (NCMH)</div>
+          <div class="hotline-sub">24/7 Crisis line for psychological support and suicide prevention.</div>
+        </div>
+        <a href="tel:1553" class="btn-call">📞 Dial 1553 or 0917-899-8727</a>
+      </div>
+
+      <div class="hotline-card">
+        <div>
+          <div class="hotline-title">MMDA Emergency Rescue</div>
+          <div class="hotline-sub">Metro Manila flood rescue, road crashes, and roadside medical emergencies.</div>
+        </div>
+        <a href="tel:136" class="btn-call">📞 Call 136</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
