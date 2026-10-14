@@ -4,31 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TranslaNurse — Clinical Consult & Lab Translator</title>
-  <!-- Preserved Editorial Fonts: Fraunces (Serif), Plus Jakarta Sans (Sans), JetBrains Mono (Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* =========================================
-       COBALT BIOMEDICAL WEB-MAGAZINE THEME
-       ========================================= */
+    /* =========================================================
+       TRANSLANURSE THEME: WHITE MAIN (DEFAULT) + COBALT DARK MODE
+       ========================================================= */
     :root {
+      /* Default Light Mode: Crisp Clinical White + TranslaNurse Palette */
+      --bg-deep: #f8fafc;
+      --bg-cobalt: #eef4f8;
+      --bg-panel: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-elevated: #f1f6f9;
+      --bg-contrast-card: #0c1b40;
+      --text: #0a142e;
+      --text-muted: #4b5e82;
+      --text-contrast: #ffffff;
+      
+      /* Official TranslaNurse Brand Accents (No Neon Green) */
+      --brand-mint: #52a986;
+      --brand-teal: #2b9aa6;
+      --brand-deep-teal: #005f6b;
+      --brand-coral: #e88382;
+      --accent: #0f3699;
+      --accent-badge-text: #ffffff;
+      --accent-soft: rgba(43, 154, 166, 0.12);
+      --cyan: #0284c7;
+      --cyan-glow: rgba(2, 132, 199, 0.15);
+
+      --border: rgba(15, 23, 42, 0.10);
+      --border-strong: rgba(15, 23, 42, 0.18);
+      --pass: #15803d;
+      --pass-bg: #dcfce7;
+      --warn: #b45309;
+      --warn-bg: #fef3c7;
+      --fail: #b91c1c;
+      --fail-bg: #fee2e2;
+      --analogy-bg: #fff7ed;
+      --analogy-border: #ea580c;
+      --analogy-text: #7c2d12;
+      --translation-bg: #f0fdf4;
+      --translation-border: #16a34a;
+      --translation-text: #14532d;
+      --shadow-soft: 0 20px 50px rgba(10, 20, 46, 0.07);
+      --radius: 18px;
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      /* Cobalt Dark Mode */
       --bg-deep: #081229;
       --bg-cobalt: #132860;
       --bg-panel: #0e1e47;
       --bg-card: #122452;
       --bg-card-elevated: #19306b;
-      --bg-white-card: #ffffff;
+      --bg-contrast-card: #152b63;
       --text: #f8fafc;
       --text-muted: #9eb1d4;
-      --text-dark: #0a142e;
-      --neon: #d9ff00;
-      --neon-TextOnBadge: #081229;
-      --neon-soft: rgba(217, 255, 0, 0.14);
+      --text-contrast: #f8fafc;
+      
+      --brand-mint: #68c39f;
+      --brand-teal: #4cc9d6;
+      --brand-deep-teal: #38bdf8;
+      --brand-coral: #f79d9c;
+      --accent: #38bdf8;
+      --accent-badge-text: #081229;
+      --accent-soft: rgba(56, 189, 248, 0.15);
       --cyan: #38bdf8;
       --cyan-glow: rgba(56, 189, 248, 0.25);
-      --border: rgba(255, 255, 255, 0.14);
-      --border-strong: rgba(255, 255, 255, 0.28);
+
+      --border: rgba(255, 255, 255, 0.13);
+      --border-strong: rgba(255, 255, 255, 0.26);
       --pass: #4ade80;
       --pass-bg: rgba(22, 101, 52, 0.35);
       --warn: #fbbf24;
@@ -42,41 +92,6 @@
       --translation-border: #4ade80;
       --translation-text: #dcfce7;
       --shadow-soft: 0 24px 60px rgba(3, 8, 22, 0.55);
-      --radius: 18px;
-      --font-serif: 'Fraunces', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-
-    [data-theme="light"] {
-      --bg-deep: #eef2fa;
-      --bg-cobalt: #dbe4f7;
-      --bg-panel: #ffffff;
-      --bg-card: #ffffff;
-      --bg-card-elevated: #f3f6fc;
-      --bg-white-card: #0e1e47;
-      --text: #0a142e;
-      --text-muted: #4b5e82;
-      --text-dark: #ffffff;
-      --neon: #0f3699;
-      --neon-TextOnBadge: #ffffff;
-      --neon-soft: rgba(15, 54, 153, 0.1);
-      --cyan: #0284c7;
-      --border: rgba(15, 23, 42, 0.12);
-      --border-strong: rgba(15, 23, 42, 0.25);
-      --pass: #15803d;
-      --pass-bg: #dcfce7;
-      --warn: #b45309;
-      --warn-bg: #fef3c7;
-      --fail: #b91c1c;
-      --fail-bg: #fee2e2;
-      --analogy-bg: #fff7ed;
-      --analogy-border: #ea580c;
-      --analogy-text: #7c2d12;
-      --translation-bg: #f0fdf4;
-      --translation-border: #16a34a;
-      --translation-text: #14532d;
-      --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -86,7 +101,7 @@
 
     body {
       font-family: var(--font-sans);
-      background: radial-gradient(circle at 28% 22%, var(--bg-cobalt) 0%, var(--bg-deep) 72%);
+      background: radial-gradient(circle at 28% 18%, var(--bg-cobalt) 0%, var(--bg-deep) 74%);
       color: var(--text);
       margin: 0;
       padding: 0;
@@ -95,7 +110,7 @@
       min-height: 100vh;
     }
 
-    /* Architectural Vertical Translucent Columns */
+    /* Subtle Architectural Vertical Grid Columns */
     .bg-vertical-stripes {
       position: fixed;
       inset: 0;
@@ -106,19 +121,19 @@
     }
 
     .bg-vertical-stripes div {
-      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid var(--border);
     }
 
     .bg-vertical-stripes div:nth-child(2) {
-      background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+      background: linear-gradient(180deg, rgba(82, 169, 134, 0.04) 0%, transparent 100%);
     }
 
     .bg-vertical-stripes div:nth-child(3) {
-      background: linear-gradient(180deg, rgba(56, 189, 248, 0.06) 0%, rgba(19, 40, 96, 0.15) 100%);
+      background: linear-gradient(180deg, rgba(43, 154, 166, 0.06) 0%, rgba(15, 54, 153, 0.04) 100%);
     }
 
     .container {
-      max-width: 1440px;
+      max-width: 1380px;
       margin: 0 auto;
       padding: 20px 32px 70px;
       position: relative;
@@ -134,8 +149,8 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
-      padding: 18px 36px;
-      background: rgba(8, 18, 41, 0.78);
+      padding: 16px 36px;
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -144,8 +159,8 @@
       z-index: 100;
     }
 
-    [data-theme="light"] header.top-navbar {
-      background: rgba(255, 255, 255, 0.88);
+    [data-theme="dark"] header.top-navbar {
+      background: rgba(8, 18, 41, 0.82);
     }
 
     .nav-left {
@@ -158,14 +173,14 @@
     .brand-geometric-mark {
       width: 44px;
       height: 44px;
-      border-radius: 11px;
+      border-radius: 12px;
       background: #ffffff;
       border: 1.5px solid var(--border-strong);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 4px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(10, 20, 46, 0.08);
     }
 
     .brand-geometric-mark img,
@@ -178,7 +193,7 @@
     .brand-title-group h1 {
       margin: 0;
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 800;
       letter-spacing: -0.01em;
       color: var(--text);
@@ -186,7 +201,7 @@
     }
 
     .brand-title-group h1 span.mint {
-      color: #52a986;
+      color: var(--brand-mint);
       font-style: italic;
     }
 
@@ -233,7 +248,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: var(--neon);
+      background: var(--brand-teal);
       transition: width 0.22s ease;
     }
 
@@ -250,19 +265,20 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: #ffffff;
-      color: #081229;
-      border: none;
+      background: var(--bg-card-elevated);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.95rem;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     }
 
     .btn-nav-circle:hover {
-      background: #d9ff00;
+      background: var(--brand-teal);
+      color: #ffffff;
+      border-color: var(--brand-teal);
       transform: translateY(-2px);
     }
 
@@ -281,20 +297,15 @@
     }
 
     .btn-nav-pill:hover {
-      border-color: var(--neon);
-      background: var(--neon-soft);
+      border-color: var(--brand-teal);
+      background: var(--accent-soft);
       transform: translateY(-1px);
     }
 
     .btn-nav-hotline {
-      border-color: rgba(248, 113, 113, 0.55);
-      background: rgba(185, 28, 28, 0.25);
-      color: #fecaca;
-    }
-
-    [data-theme="light"] .btn-nav-hotline {
-      color: #991b1b;
-      background: #fee2e2;
+      border-color: rgba(220, 38, 38, 0.35);
+      background: var(--fail-bg);
+      color: var(--fail);
     }
 
     .btn-nav-hotline:hover {
@@ -304,8 +315,8 @@
     }
 
     .followup-badge-count {
-      background: var(--neon);
-      color: var(--neon-TextOnBadge);
+      background: var(--brand-teal);
+      color: #ffffff;
       font-family: var(--font-mono);
       border-radius: 999px;
       padding: 1px 7px;
@@ -314,26 +325,26 @@
     }
 
     /* =========================================
-       VIEW 1: FRONT PAGE WITH TRANSLANURSE & LOGO
+       VIEW 1: SLEEK TRANSLANURSE HERO FRONT PAGE
        ========================================= */
     #home-view {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 28px 0 40px;
+      padding: 36px 0 44px;
       min-height: calc(100vh - 110px);
       position: relative;
     }
 
     .hero-showcase {
       position: relative;
-      padding: 24px 0 0;
+      padding: 16px 0 0;
     }
 
     .hero-main-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 36px;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 48px;
       align-items: center;
       min-height: 430px;
     }
@@ -347,120 +358,143 @@
       z-index: 2;
     }
 
-    .hero-kicker-pill {
+    .hero-welcome-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--cyan);
-      margin-bottom: 14px;
+      letter-spacing: 0.16em;
+      color: var(--brand-deep-teal);
+      background: var(--accent-soft);
+      border: 1px solid rgba(43, 154, 166, 0.28);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
     }
 
-    .hero-display-line1 {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
+    .hero-welcome-eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-mint);
     }
 
     .hero-giant-word {
       font-family: var(--font-serif);
-      font-size: clamp(2.9rem, 5.8vw, 5.1rem);
+      font-size: clamp(2.8rem, 5.2vw, 4.5rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 0.98;
+      line-height: 1.04;
       color: var(--text);
-      text-transform: uppercase;
-      margin: 0;
+      margin: 0 0 20px 0;
     }
 
     .hero-giant-word .mint-accent {
-      color: #52a986;
+      color: var(--brand-mint);
       font-style: italic;
     }
 
-    .neon-heart-orb {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: #d9ff00;
-      color: #081229;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.7rem;
-      box-shadow: 0 0 0 10px rgba(217, 255, 0, 0.16), 0 12px 30px rgba(217, 255, 0, 0.35);
-      animation: floatPulse 3.2s ease-in-out infinite;
-    }
-
-    @keyframes floatPulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-5px) scale(1.05); }
-    }
-
-    .hero-display-line2 {
-      display: flex;
-      align-items: baseline;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .hero-issue-number {
-      font-family: var(--font-mono);
-      font-size: clamp(1.8rem, 3.5vw, 2.9rem);
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.03em;
-    }
-
-    .hero-issue-number sup {
-      font-size: 0.45em;
-      vertical-align: super;
-      margin-right: 4px;
-      color: var(--neon);
+    .hero-giant-word .teal-accent {
+      color: var(--brand-teal);
     }
 
     .hero-subtitle {
-      font-size: 1.06rem;
+      font-size: 1.08rem;
       color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 0 32px 0;
-      line-height: 1.72;
+      max-width: 630px;
+      margin: 0 0 28px 0;
+      line-height: 1.76;
+    }
+
+    .hero-subtitle strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* Sleek 3-Feature Interactive Grid on Hero */
+    .hero-feature-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 680px) {
+      .hero-feature-trio { grid-template-columns: 1fr; }
+    }
+
+    .hero-feature-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text);
+      box-shadow: 0 8px 22px rgba(10, 20, 46, 0.04);
+      cursor: pointer;
+    }
+
+    .hero-feature-pill:hover {
+      border-color: var(--brand-teal);
+      background: var(--bg-card-elevated);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(43, 154, 166, 0.14);
+    }
+
+    .hero-feature-pill .f-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
     }
 
     .hero-cta-row {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
-    .btn-white-pill {
-      background: #ffffff;
-      color: #081229;
-      border: none;
-      padding: 16px 34px;
+    .btn-start-clinical {
+      background: linear-gradient(135deg, #0e2254 0%, #005f6b 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 17px 34px;
       border-radius: 999px;
       font-family: var(--font-sans);
-      font-size: 0.98rem;
+      font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+      box-shadow: 0 14px 34px rgba(14, 34, 84, 0.25);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .btn-white-pill:hover {
-      background: #d9ff00;
+    [data-theme="dark"] .btn-start-clinical {
+      background: #ffffff;
       color: #081229;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-start-clinical:hover {
+      background: linear-gradient(135deg, var(--brand-mint) 0%, var(--brand-teal) 100%);
+      color: #ffffff;
       transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(43, 154, 166, 0.32);
     }
 
     .btn-play-outline {
@@ -481,7 +515,9 @@
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      border: 1px solid var(--border-strong);
+      border: 1.5px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--brand-teal);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -490,8 +526,8 @@
     }
 
     .btn-play-outline:hover .play-circle-icon {
-      border-color: #d9ff00;
-      background: rgba(217, 255, 0, 0.15);
+      border-color: var(--brand-teal);
+      background: var(--accent-soft);
       transform: scale(1.08);
     }
 
@@ -504,12 +540,13 @@
     }
 
     .hero-logo-pedestal {
-      width: 320px;
-      height: 320px;
+      width: 330px;
+      height: 330px;
       background: #ffffff;
       border-radius: 34px;
-      padding: 24px;
-      box-shadow: 0 28px 65px rgba(3, 8, 22, 0.55), 0 0 0 10px rgba(255, 255, 255, 0.08);
+      padding: 26px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 28px 65px rgba(10, 20, 46, 0.12), 0 0 0 10px rgba(43, 154, 166, 0.08);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -519,9 +556,13 @@
       animation: slowFloat 6s ease-in-out infinite;
     }
 
+    [data-theme="dark"] .hero-logo-pedestal {
+      box-shadow: 0 28px 65px rgba(3, 8, 22, 0.55), 0 0 0 10px rgba(255, 255, 255, 0.07);
+    }
+
     @keyframes slowFloat {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
 
     .hero-logo-pedestal img,
@@ -567,7 +608,7 @@
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 28px;
-      margin-top: 38px;
+      margin-top: 42px;
       align-items: end;
     }
 
@@ -576,13 +617,13 @@
     }
 
     .dark-cellular-card {
-      background: #0b1736;
+      background: var(--bg-contrast-card);
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 20px;
-      padding: 28px 32px;
+      padding: 26px 30px;
       display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 24px;
+      grid-template-columns: 100px 1fr;
+      gap: 22px;
       align-items: center;
       box-shadow: var(--shadow-soft);
       color: #f8fafc;
@@ -594,7 +635,7 @@
 
     .dark-cellular-card h3 {
       font-family: var(--font-mono);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #ffffff;
@@ -613,7 +654,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 14px;
+      gap: 12px;
     }
 
     .since-pill-group {
@@ -622,9 +663,9 @@
       gap: 8px;
     }
 
-    .pill-neon {
-      background: #d9ff00;
-      color: #081229;
+    .pill-brand {
+      background: var(--brand-mint);
+      color: #ffffff;
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 800;
@@ -645,8 +686,9 @@
 
     .white-stat-card {
       width: 100%;
-      background: var(--bg-white-card);
-      color: var(--text-dark);
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
       border-radius: 20px;
       padding: 26px 30px;
       box-shadow: var(--shadow-soft);
@@ -657,7 +699,10 @@
       cursor: pointer;
     }
 
-    .white-stat-card:hover { transform: translateY(-3px); }
+    .white-stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--brand-teal);
+    }
 
     .stat-big-number {
       font-family: var(--font-serif);
@@ -667,12 +712,12 @@
       margin-bottom: 6px;
     }
 
-    .stat-big-number span { color: #84cc16; }
+    .stat-big-number span { color: var(--brand-mint); }
 
     .stat-caption {
       font-size: 0.85rem;
       font-weight: 600;
-      opacity: 0.85;
+      color: var(--text-muted);
     }
 
     .avatar-cluster { display: flex; align-items: center; }
@@ -681,8 +726,8 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 3px solid #ffffff;
-      background: linear-gradient(135deg, #0284c7, #1e3a8a);
+      border: 3px solid var(--bg-card);
+      background: linear-gradient(135deg, var(--brand-teal), #1e3a8a);
       color: #ffffff;
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -716,15 +761,13 @@
     }
 
     .card {
-      background: rgba(14, 30, 71, 0.78);
+      background: var(--bg-panel);
       backdrop-filter: blur(16px);
       border: 1px solid var(--border-strong);
       border-radius: var(--radius);
       padding: 28px;
       box-shadow: var(--shadow-soft);
     }
-
-    [data-theme="light"] .card { background: #ffffff; }
 
     .card-header {
       margin-top: 0;
@@ -764,8 +807,8 @@
     }
 
     .chip-preset:hover {
-      border-color: var(--neon);
-      background: var(--neon-soft);
+      border-color: var(--brand-teal);
+      background: var(--accent-soft);
       transform: translateY(-1px);
     }
 
@@ -796,15 +839,15 @@
     }
 
     textarea:focus, select:focus, input[type="text"]:focus {
-      border-color: var(--neon);
-      box-shadow: 0 0 0 3px var(--neon-soft);
+      border-color: var(--brand-teal);
+      box-shadow: 0 0 0 3px var(--accent-soft);
     }
 
     textarea { resize: vertical; min-height: 132px; }
 
     .scanner-panel {
-      background: var(--bg-card);
-      border: 1.5px dashed var(--cyan);
+      background: var(--bg-card-elevated);
+      border: 1.5px dashed var(--brand-teal);
       border-radius: 14px;
       padding: 16px;
       margin-top: 6px;
@@ -826,7 +869,7 @@
     }
 
     .btn-scan {
-      background: var(--bg-card-elevated);
+      background: var(--bg-card);
       border: 1px solid var(--border-strong);
       color: var(--text);
       padding: 11px 12px;
@@ -843,8 +886,8 @@
     }
 
     .btn-scan:hover {
-      border-color: var(--neon);
-      background: var(--neon-soft);
+      border-color: var(--brand-teal);
+      background: var(--accent-soft);
     }
 
     .scanner-hint {
@@ -858,8 +901,8 @@
       display: none;
       margin-top: 14px;
       padding: 12px 14px;
-      background: var(--bg-card-elevated);
-      border: 1.5px solid var(--neon);
+      background: var(--bg-card);
+      border: 1.5px solid var(--brand-teal);
       border-radius: 10px;
       flex-direction: column;
       gap: 10px;
@@ -892,7 +935,7 @@
       font-family: var(--font-mono);
       font-weight: 700;
       font-size: 0.74rem;
-      color: var(--neon);
+      color: var(--brand-teal);
       flex-shrink: 0;
     }
 
@@ -916,7 +959,7 @@
       background: #050b1a;
       border-radius: 12px;
       padding: 12px;
-      border: 1.5px solid var(--cyan);
+      border: 1.5px solid var(--brand-teal);
       text-align: center;
     }
 
@@ -937,8 +980,8 @@
 
     .btn-primary {
       margin-top: 24px;
-      background: #d9ff00;
-      color: #081229;
+      background: linear-gradient(135deg, #0e2254 0%, #005f6b 100%);
+      color: #ffffff;
       border: none;
       padding: 16px 24px;
       border-radius: 999px;
@@ -947,12 +990,16 @@
       width: 100%;
       font-size: 1rem;
       letter-spacing: 0.01em;
-      box-shadow: 0 12px 28px rgba(217, 255, 0, 0.25);
+      box-shadow: 0 12px 28px rgba(14, 34, 84, 0.22);
+    }
+
+    [data-theme="dark"] .btn-primary {
+      background: linear-gradient(135deg, var(--brand-mint) 0%, var(--brand-teal) 100%);
+      color: #081229;
     }
 
     .btn-primary:hover {
-      background: #ffffff;
-      color: #081229;
+      opacity: 0.94;
       transform: translateY(-2px);
     }
 
@@ -986,8 +1033,8 @@
     }
 
     .btn-secondary:hover {
-      border-color: var(--neon);
-      background: var(--neon-soft);
+      border-color: var(--brand-teal);
+      background: var(--accent-soft);
     }
 
     /* =========================================
@@ -1040,7 +1087,7 @@
     }
 
     .info-square {
-      background: var(--bg-card);
+      background: var(--bg-card-elevated);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px 11px 12px;
@@ -1068,27 +1115,26 @@
     }
 
     .info-square:hover {
-      border-color: var(--neon);
-      background: var(--bg-card-elevated);
+      border-color: var(--brand-teal);
       transform: translateY(-2px);
     }
 
     .info-square.active {
-      background: #ffffff;
-      border-color: #ffffff;
-      color: #081229;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
-      transform: translateY(-2px);
-    }
-
-    [data-theme="light"] .info-square.active {
       background: #0e1e47;
       border-color: #0e1e47;
       color: #ffffff;
+      box-shadow: 0 12px 26px rgba(14, 30, 71, 0.22);
+      transform: translateY(-2px);
     }
 
-    .info-square.active::after { color: #081229; opacity: 0.75; }
-    [data-theme="light"] .info-square.active::after { color: #d9ff00; }
+    [data-theme="dark"] .info-square.active {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #081229;
+    }
+
+    .info-square.active::after { color: var(--brand-mint); opacity: 0.95; }
+    [data-theme="dark"] .info-square.active::after { color: #081229; }
 
     .info-square .sq-icon { font-size: 1.45rem; line-height: 1; }
     .info-square .sq-title { font-size: 0.8rem; font-weight: 800; color: inherit; line-height: 1.22; }
@@ -1098,7 +1144,7 @@
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 999px;
-      background: rgba(8, 18, 41, 0.12);
+      background: rgba(43, 154, 166, 0.14);
       color: inherit;
       border: 1px solid currentColor;
       text-transform: uppercase;
@@ -1141,7 +1187,7 @@
       font-family: var(--font-serif);
       font-size: 1.28rem;
       font-weight: 800;
-      color: var(--neon);
+      color: var(--brand-deep-teal);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -1170,7 +1216,7 @@
     .spacious-item-card {
       background: var(--bg-card-elevated);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--cyan);
+      border-left: 4px solid var(--brand-teal);
       border-radius: 12px;
       padding: 18px 22px;
       font-size: 0.98rem;
@@ -1207,9 +1253,9 @@
     }
 
     .flag-filter-btn.active {
-      background: var(--neon);
-      color: var(--neon-TextOnBadge);
-      border-color: var(--neon);
+      background: var(--brand-teal);
+      color: #ffffff;
+      border-color: var(--brand-teal);
     }
 
     .lab-flag-grid {
@@ -1221,7 +1267,7 @@
     .lab-flag-card {
       background: var(--bg-card-elevated);
       border: 1px solid var(--border);
-      border-left: 5px solid var(--cyan);
+      border-left: 5px solid var(--brand-teal);
       border-radius: 10px;
       padding: 14px 18px;
       display: flex;
@@ -1262,8 +1308,8 @@
     }
 
     .action-step-num {
-      background: var(--neon);
-      color: var(--neon-TextOnBadge);
+      background: var(--brand-teal);
+      color: #ffffff;
       font-family: var(--font-mono);
       width: 30px;
       height: 30px;
@@ -1296,9 +1342,9 @@
 
     .lang-quick-pill.active,
     .lang-quick-pill:hover {
-      background: var(--neon);
-      color: var(--neon-TextOnBadge);
-      border-color: var(--neon);
+      background: var(--brand-teal);
+      color: #ffffff;
+      border-color: var(--brand-teal);
     }
 
     .translation-box {
@@ -1346,7 +1392,7 @@
     .jargon-term {
       font-family: var(--font-serif);
       font-weight: 800;
-      color: var(--neon);
+      color: var(--brand-deep-teal);
       display: block;
       margin-bottom: 4px;
       font-size: 1.06rem;
@@ -1383,7 +1429,7 @@
       font-size: 1.08rem;
       font-weight: 800;
       margin-top: 6px;
-      color: var(--neon);
+      color: var(--brand-deep-teal);
     }
 
     /* =========================================
@@ -1418,7 +1464,7 @@
     }
 
     .verified-references-dropdown summary:hover {
-      background: var(--neon-soft);
+      background: var(--accent-soft);
     }
 
     .ref-strict-badge {
@@ -1452,7 +1498,7 @@
     .ref-selected-card {
       margin-top: 14px;
       background: var(--bg-card);
-      border: 1.5px solid var(--cyan);
+      border: 1.5px solid var(--brand-teal);
       border-radius: 12px;
       padding: 18px 20px;
       display: flex;
@@ -1463,8 +1509,8 @@
     }
 
     .btn-open-ref {
-      background: var(--neon);
-      color: var(--neon-TextOnBadge);
+      background: var(--brand-teal);
+      color: #ffffff;
       text-decoration: none;
       padding: 11px 20px;
       border-radius: 999px;
@@ -1500,7 +1546,7 @@
       display: block;
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      color: var(--cyan);
+      color: var(--brand-teal);
       text-transform: uppercase;
       margin-bottom: 5px;
     }
@@ -1508,28 +1554,24 @@
     .ref-pillar-card a {
       color: var(--text);
       text-decoration: underline;
-      text-decoration-color: var(--cyan);
+      text-decoration-color: var(--brand-teal);
       font-weight: 600;
     }
 
     /* =========================================
-       CLEAN WEBSITE FOOTER (NO "BRANCH APP" BOXES)
+       CLEAN WEBSITE FOOTER
        ========================================= */
     footer.site-footer {
       margin-top: 60px;
-      background: rgba(5, 11, 26, 0.92);
+      background: var(--bg-panel);
       border-top: 1px solid var(--border-strong);
       padding: 48px 36px 32px;
       position: relative;
       z-index: 2;
     }
 
-    [data-theme="light"] footer.site-footer {
-      background: #e2e8f0;
-    }
-
     .footer-grid {
-      max-width: 1400px;
+      max-width: 1380px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
@@ -1554,7 +1596,7 @@
       margin-bottom: 10px;
     }
 
-    .footer-brand .mint { color: #52a986; font-style: italic; }
+    .footer-brand .mint { color: var(--brand-mint); font-style: italic; }
     .footer-mission { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; }
     .trust-badges { display: flex; flex-wrap: wrap; gap: 6px; }
     .trust-pill {
@@ -1562,7 +1604,7 @@
       font-size: 0.68rem;
       padding: 4px 10px;
       border-radius: 999px;
-      background: var(--bg-card);
+      background: var(--bg-card-elevated);
       border: 1px solid var(--border);
       color: var(--text);
     }
@@ -1593,12 +1635,12 @@
       gap: 8px;
     }
 
-    .footer-links a:hover { color: var(--neon); }
+    .footer-links a:hover { color: var(--brand-teal); }
 
     .btn-footer-hotline {
-      background: rgba(185, 28, 28, 0.25);
-      border: 1.5px solid #f87171;
-      color: #dc2626;
+      background: var(--fail-bg);
+      border: 1.5px solid var(--fail);
+      color: var(--fail);
       padding: 10px 16px;
       border-radius: 999px;
       font-weight: 700;
@@ -1608,17 +1650,13 @@
       display: inline-block;
     }
 
-    body:not([data-theme="light"]) .btn-footer-hotline {
-      color: #fecaca;
-    }
-
     .btn-footer-hotline:hover {
       background: #dc2626;
       color: #ffffff !important;
     }
 
     .footer-bottom {
-      max-width: 1400px;
+      max-width: 1380px;
       margin: 24px auto 0;
       display: flex;
       justify-content: space-between;
@@ -1633,7 +1671,8 @@
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.08em;
-      color: var(--neon);
+      color: var(--brand-deep-teal);
+      font-weight: 700;
     }
 
     /* =========================================
@@ -1643,7 +1682,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(4, 9, 22, 0.75);
+      background: rgba(4, 9, 22, 0.65);
       backdrop-filter: blur(6px);
       z-index: 200;
       justify-content: flex-end;
@@ -1653,7 +1692,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(4, 9, 22, 0.78);
+      background: rgba(4, 9, 22, 0.68);
       backdrop-filter: blur(6px);
       z-index: 210;
       align-items: center;
@@ -1681,7 +1720,7 @@
     }
 
     .hotline-dir-item {
-      background: var(--bg-card);
+      background: var(--bg-card-elevated);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
@@ -1724,10 +1763,10 @@
       padding-bottom: 14px;
     }
 
-    .drawer-header h3 { margin: 0; font-family: var(--font-serif); color: var(--neon); }
+    .drawer-header h3 { margin: 0; font-family: var(--font-serif); color: var(--brand-deep-teal); }
 
     .followup-chat-box {
-      background: var(--bg-card);
+      background: var(--bg-card-elevated);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
@@ -1743,15 +1782,15 @@
     }
 
     .msg-bubble { padding: 11px 14px; border-radius: 10px; font-size: 0.9rem; line-height: 1.55; }
-    .msg-user { background: var(--neon); color: var(--neon-TextOnBadge); align-self: flex-end; font-weight: 700; }
-    .msg-nurse { background: var(--bg-card-elevated); color: var(--text); border: 1px solid var(--border); align-self: flex-start; }
+    .msg-user { background: var(--brand-teal); color: #ffffff; align-self: flex-end; font-weight: 700; }
+    .msg-nurse { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); align-self: flex-start; }
 
     .history-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
     .history-table th, .history-table td { border: 1px solid var(--border); padding: 9px 10px; text-align: left; }
-    .history-table th { background: var(--bg-card); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); }
+    .history-table th { background: var(--bg-card-elevated); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); }
 
     .btn-small-action {
-      background: var(--cyan);
+      background: var(--brand-teal);
       color: #ffffff;
       border: none;
       padding: 6px 12px;
@@ -1767,9 +1806,9 @@
       display: inline-block;
       width: 18px;
       height: 18px;
-      border: 3px solid rgba(8,18,41,0.3);
+      border: 3px solid rgba(255,255,255,0.3);
       border-radius: 50%;
-      border-top-color: #081229;
+      border-top-color: #ffffff;
       animation: spin 1s ease-in-out infinite;
       vertical-align: middle;
       margin-right: 8px;
@@ -1845,7 +1884,7 @@
   </nav>
 
   <div class="nav-right">
-    <button class="btn-nav-circle" onclick="openClinicalInput()" title="Launch Clinical Scanner">
+    <button class="btn-nav-circle" onclick="openClinicalInput()" title="Start Clinical Input / Lab Scan">
       🩺
     </button>
     <button class="btn-nav-pill btn-nav-hotline" onclick="toggleHotlineModal(true)">
@@ -1855,7 +1894,7 @@
       💬 Follow-Up <span class="followup-badge-count" id="history-count-badge">0</span>
     </button>
     <button class="btn-nav-pill" onclick="toggleTheme()" id="theme-toggle">
-      ☀️ Light
+      🌙 Cobalt Dark
     </button>
   </div>
 </header>
@@ -1863,33 +1902,48 @@
 <div class="container">
 
   <!-- =========================================================
-       VIEW 1: FRONT PAGE WITH TRANSLANURSE, LOGO & DESCRIPTION
+       VIEW 1: SLEEK TRANSLANURSE HERO FRONT PAGE
        ========================================================= -->
   <section id="home-view">
     <div class="hero-showcase">
       <div class="hero-main-grid">
 
-        <!-- Left Column: TranslaNurse Title + Concise Description -->
+        <!-- Left Column: Sleek Arrangement -->
         <div class="hero-typography-stage">
-          <div class="hero-kicker-pill">
-            <span>✦</span> PATIENT-FRIENDLY CLINICAL LITERACY &amp; LAB TRANSLATOR
+          <div class="hero-welcome-eyebrow">
+            <span class="dot"></span>
+            <span>WELCOME TO TRANSLANURSE</span>
           </div>
-          <div class="hero-display-line1">
-            <h2 class="hero-giant-word"><span class="mint-accent">TRANSLA</span>NURSE</h2>
-            <span class="neon-heart-orb" title="Patient-First Empathy & Zero-Medication Guardrail">🖤</span>
-          </div>
-          <div class="hero-display-line2">
-            <span class="hero-issue-number"><sup>PH</sup>26</span>
-            <h2 class="hero-giant-word" style="font-size: clamp(2rem, 4.2vw, 3.6rem);">CLINICAL GUIDE</h2>
-          </div>
+
+          <h2 class="hero-giant-word">
+            Welcome to <span class="mint-accent">Transla</span><span class="teal-accent">Nurse</span>
+          </h2>
 
           <p class="hero-subtitle">
             <strong>TranslaNurse</strong> is an open-access, non-commercial clinical literacy companion that translates complex medical jargon, laboratory results, and symptom questions into plain, compassionate guidance across <strong>10 Philippine languages</strong> and <strong>7 Asian languages</strong>.
           </p>
 
+          <!-- 3 Sleek Feature Pills -->
+          <div class="hero-feature-trio">
+            <div class="hero-feature-pill" onclick="openClinicalInput()">
+              <span class="f-icon">🩺</span>
+              <span>Symptom &amp; Injury Consult</span>
+            </div>
+            <div class="hero-feature-pill" onclick="openClinicalInput()">
+              <span class="f-icon">📷</span>
+              <span>Instant Upload &amp; Lab Scan</span>
+            </div>
+            <div class="hero-feature-pill" onclick="openClinicalInput()">
+              <span class="f-icon">🗂️</span>
+              <span>Clickable Info Squares</span>
+            </div>
+          </div>
+
+          <!-- Primary CTA Button -->
           <div class="hero-cta-row">
-            <button class="btn-white-pill" onclick="openClinicalInput()">
-              Launch Clinical Scanner →
+            <button class="btn-start-clinical" onclick="openClinicalInput()">
+              <span>Start Clinical Input / Lab Scan</span>
+              <span>→</span>
             </button>
             <button class="btn-play-outline" onclick="openClinicalInput(); loadSampleScenario('labs');">
               <span class="play-circle-icon">▶</span>
@@ -1900,7 +1954,7 @@
 
         <!-- Right Column: Official TranslaNurse Logo Showcase -->
         <div class="hero-visual-stage">
-          <div class="hero-logo-pedestal" onclick="openClinicalInput()" title="Click to Open Clinical Workspace" style="cursor:pointer;">
+          <div class="hero-logo-pedestal" onclick="openClinicalInput()" title="Click to Start Clinical Input / Lab Scan" style="cursor:pointer;">
             <img src="logo.png" alt="TranslaNurse Official Logo" onerror="replaceWithSvgLogo(this)">
           </div>
 
@@ -1913,17 +1967,17 @@
 
       </div>
 
-      <!-- Bottom Deck: Dark Feature Card + Stat Card -->
+      <!-- Bottom Deck: Cobalt Feature Card + Language Stat Card -->
       <div class="hero-bottom-deck">
         <div class="dark-cellular-card">
-          <svg viewBox="0 0 120 120" width="95" height="95" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#38bdf8" stroke-width="8" stroke-linecap="round">
+          <svg viewBox="0 0 120 120" width="90" height="90" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#3cb6c3" stroke-width="8" stroke-linecap="round">
               <line x1="20" y1="95" x2="95" y2="25"/>
               <line x1="15" y1="60" x2="85" y2="15"/>
               <line x1="35" y1="105" x2="105" y2="55"/>
-              <line x1="30" y1="25" x2="90" y2="95" stroke="#818cf8"/>
+              <line x1="30" y1="25" x2="90" y2="95" stroke="#76b89a"/>
             </g>
-            <circle cx="60" cy="60" r="14" fill="#d9ff00"/>
+            <circle cx="60" cy="60" r="14" fill="#f79d9c"/>
           </svg>
           <div>
             <h3>MULTIMODAL LAB OCR &amp; RESEARCH ENGINE: HOW IT WORKS</h3>
@@ -1933,7 +1987,7 @@
 
         <div class="right-stats-stack">
           <div class="since-pill-group">
-            <span class="pill-neon">edition</span>
+            <span class="pill-brand">edition</span>
             <span class="pill-outline">2026</span>
           </div>
 
@@ -1970,7 +2024,7 @@
 
         <label class="field-label">
           <span>Try an Interactive Clinical Scenario:</span>
-          <span style="color:var(--neon);">1-Click Demo</span>
+          <span style="color:var(--brand-teal);">1-Click Demo</span>
         </label>
         <div class="quick-chips-bar">
           <button type="button" class="chip-preset" onclick="loadSampleScenario('dextroscoliosis')">脊椎 Dextroscoliosis</button>
@@ -2148,7 +2202,7 @@
               </div>
 
               <div class="lab-ranges-subbox" id="lab-ranges-wrapper" style="display:none;">
-                <h4 style="margin:0 0 12px 0; font-family:var(--font-serif); color:var(--neon);">📏 Normal Reference Range vs. Your Lab Result</h4>
+                <h4 style="margin:0 0 12px 0; font-family:var(--font-serif); color:var(--brand-deep-teal);">📏 Normal Reference Range vs. Your Lab Result</h4>
                 <div class="flag-filter-bar">
                   <button type="button" class="flag-filter-btn active" id="filter-all" onclick="filterLabFlags('all')">All Lab Items</button>
                   <button type="button" class="flag-filter-btn" id="filter-flagged" onclick="filterLabFlags('flagged')">🚩 Out of Range Only</button>
@@ -2324,17 +2378,17 @@
           <button class="btn-secondary" onclick="exportToText()">📄 Download Summary (.TXT)</button>
         </div>
 
-        <!-- OPTIONAL TOPIC-SPECIFIC VERIFIED CLINICAL REFERENCE DROPDOWN (ONE-SEARCH RESEARCH ENGINE) -->
+        <!-- OPTIONAL TOPIC-SPECIFIC VERIFIED CLINICAL REFERENCE DROPDOWN -->
         <details class="verified-references-dropdown" id="topic-references-Accordion">
           <summary>
-            <span>📚 Optional: Research Verified Clinical References for <strong id="ref-current-topic-label" style="color:var(--cyan);">Your Clinical Inquiry</strong> ▾</span>
+            <span>📚 Optional: Research Verified Clinical References for <strong id="ref-current-topic-label" style="color:var(--brand-teal);">Your Clinical Inquiry</strong> ▾</span>
             <span class="ref-strict-badge">✓ NO WIKIPEDIA • NO SCRIBD • PEER-REVIEWED ONLY</span>
           </summary>
 
           <div class="ref-dropdown-body">
             <label class="field-label" for="topic-reference-select" style="margin-top:14px;">
               <span>Select a Researched Reference Tailored to Your Clinical Input:</span>
-              <span id="ref-topic-pill" style="color:var(--cyan);">Dynamic Topic Match</span>
+              <span id="ref-topic-pill" style="color:var(--brand-teal);">Dynamic Topic Match</span>
             </label>
 
             <div class="ref-search-bar-row">
@@ -2343,7 +2397,7 @@
 
             <div class="ref-selected-card" id="ref-selected-detail">
               <div style="flex:1; min-width:240px;">
-                <span id="ref-selected-pillar" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">01 / Consumer &amp; National Library of Medicine</span>
+                <span id="ref-selected-pillar" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--brand-teal); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">01 / Consumer &amp; National Library of Medicine</span>
                 <strong id="ref-selected-title" style="font-size:1rem; display:block; margin-bottom:4px;">MedlinePlus (NIH / NLM) — Topic Research</strong>
                 <span id="ref-selected-summary" style="font-size:0.86rem; color:var(--text-muted); display:block;">Peer-reviewed patient &amp; clinical summary tailored directly to your clinical inquiry.</span>
               </div>
@@ -2365,7 +2419,7 @@
 </div>
 
 <!-- =========================================================
-     CLEAN HEALTH LITERACY FOOTER (NO "BRANCH APP" BOXES)
+     CLEAN HEALTH LITERACY FOOTER
      ========================================================= -->
 <footer class="site-footer">
   <div class="footer-grid">
@@ -2431,63 +2485,63 @@
 <div class="modal-center-backdrop" id="ncr-hotline-modal" onclick="if(event.target === this) toggleHotlineModal(false)">
   <div class="hotline-modal-card">
     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:14px;">
-      <h3 style="margin:0; font-family:var(--font-serif); color:var(--neon); font-size:1.35rem;">🚨 Metro Manila (NCR) Emergency &amp; Hospital Hotlines</h3>
+      <h3 style="margin:0; font-family:var(--font-serif); color:var(--brand-deep-teal); font-size:1.35rem;">🚨 Metro Manila (NCR) Emergency &amp; Hospital Hotlines</h3>
       <button class="btn-small-action btn-small-danger" onclick="toggleHotlineModal(false)">✖ Close</button>
     </div>
-    <p style="font-size:0.9rem; color:var(--text-muted); margin:12px 0 0;">Click any hotline below to dial immediately on mobile or open the full <a href="ncr-hotlines.html" style="color:var(--cyan);">NCR Emergency Directory</a>:</p>
+    <p style="font-size:0.9rem; color:var(--text-muted); margin:12px 0 0;">Click any hotline below to dial immediately on mobile or open the full <a href="ncr-hotlines.html" style="color:var(--brand-teal);">NCR Emergency Directory</a>:</p>
     <div class="hotline-directory-grid">
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">National Emergency Hotline (NCR)</strong>
+          <strong style="color:var(--brand-teal); display:block;">National Emergency Hotline (NCR)</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Police, Fire &amp; Medical Dispatch</span>
         </div>
         <a href="tel:911" class="btn-call-now">📞 Call 911</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">Philippine Red Cross EMS</strong>
+          <strong style="color:var(--brand-teal); display:block;">Philippine Red Cross EMS</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Ambulance &amp; Emergency Dispatch</span>
         </div>
         <a href="tel:143" class="btn-call-now">📞 Dial 143 / (02) 8790-2300</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">DOH One Hospital Command</strong>
+          <strong style="color:var(--brand-teal); display:block;">DOH One Hospital Command</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Medical &amp; ER Referral</span>
         </div>
         <a href="tel:1555" class="btn-call-now">📞 Dial 1555 / (02) 8865-0500</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">UP-Philippine General Hospital</strong>
+          <strong style="color:var(--brand-teal); display:block;">UP-Philippine General Hospital</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Ermita, Manila Tertiary Hospital</span>
         </div>
         <a href="tel:+63285548400" class="btn-call-now">📞 (02) 8554-8400</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">Makati Medical Center</strong>
+          <strong style="color:var(--brand-teal); display:block;">Makati Medical Center</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Makati City 24/7 Emergency</span>
         </div>
         <a href="tel:+63288888999" class="btn-call-now">📞 (02) 8888-8999</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">St. Luke's Medical Center (QC &amp; BGC)</strong>
+          <strong style="color:var(--brand-teal); display:block;">St. Luke's Medical Center (QC &amp; BGC)</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Quezon City &amp; Taguig Emergency</span>
         </div>
         <a href="tel:+63287230101" class="btn-call-now">📞 (02) 8723-0101 / 8789-7700</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">NCMH 24/7 Crisis Hotline</strong>
+          <strong style="color:var(--brand-teal); display:block;">NCMH 24/7 Crisis Hotline</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Mandaluyong Mental Health Support</span>
         </div>
         <a href="tel:1553" class="btn-call-now">📞 Dial 1553</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--cyan); display:block;">MMDA Metro Manila Rescue</strong>
+          <strong style="color:var(--brand-teal); display:block;">MMDA Metro Manila Rescue</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Roadside &amp; Disaster Rescue</span>
         </div>
         <a href="tel:136" class="btn-call-now">📞 Dial 136</a>
@@ -2599,20 +2653,21 @@
   function toggleTheme() {
     const body = document.body;
     const btn = document.getElementById('theme-toggle');
-    if (body.getAttribute('data-theme') === 'light') {
+    if (body.getAttribute('data-theme') === 'dark') {
       body.removeAttribute('data-theme');
-      btn.innerHTML = '☀️ Light';
-      localStorage.setItem('translanurse_cobalt_theme', 'dark');
-    } else {
-      body.setAttribute('data-theme', 'light');
-      btn.innerHTML = '🌙 Cobalt';
+      btn.innerHTML = '🌙 Cobalt Dark';
       localStorage.setItem('translanurse_cobalt_theme', 'light');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      btn.innerHTML = '☀️ White Mode';
+      localStorage.setItem('translanurse_cobalt_theme', 'dark');
     }
   }
 
-  if (localStorage.getItem('translanurse_cobalt_theme') === 'light') {
-    document.body.setAttribute('data-theme', 'light');
-    document.getElementById('theme-toggle').innerHTML = '🌙 Cobalt';
+  // Default is Clean White Mode; switch to Cobalt Dark only if user previously selected dark
+  if (localStorage.getItem('translanurse_cobalt_theme') === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('theme-toggle').innerHTML = '☀️ White Mode';
   }
 
   function loadSampleScenario(type) {
@@ -2647,7 +2702,6 @@
     if (/\bbp\b|blood pressure|hypertension|\d{2,3}\/\d{2,3}/i.test(text)) return "High Blood Pressure (Hypertension)";
     if (/fever|dengue|chills|flu/i.test(text)) return "Acute Febrile Illness & Fever Triage";
 
-    // Extract concise medical keyword phrase
     const cleaned = text
       .replace(/my x-ray report says|what does|mean|i have|i think|please explain/gi, '')
       .replace(/[^\w\s\-/]/g, ' ')
@@ -2714,7 +2768,6 @@
     ];
 
     if (Array.isArray(aiReferences) && aiReferences.length > 0) {
-      // Prepend AI-researched topic notes while guaranteeing verified clickable URLs
       const merged = aiReferences.map((item, idx) => {
         const fallback = curatedFivePillarLinks[idx % curatedFivePillarLinks.length];
         const safeUrl = (item.url && /^https?:\/\/(www\.)?(who\.int|doh\.gov\.ph|cdc\.gov|nih\.gov|ncbi\.nlm\.nih\.gov|medlineplus\.gov|mayoclinic\.org|my\.clevelandclinic\.org|hopkinsmedicine\.org|health\.harvard\.edu|msdmanuals\.com|heart\.org|diabetes\.org|orthoinfo\.aaos\.org|testing\.com|uptodate\.com|bestpractice\.bmj\.com)/i.test(item.url))
@@ -3258,7 +3311,6 @@ Respond ONLY with valid JSON:
     document.getElementById('score-cultural').textContent = data.culturalFitScore || "Aligned";
     document.getElementById('score-safety').textContent = data.safetyScore || "No Meds • Safe";
 
-    // Populate the Optional Topic-Specific Reference Dropdown based on what the patient asked
     const researchedTopic = data.researchedTopicName || extractCoreMedicalTopic(lastRawInput);
     renderTopicReferenceDropdown(researchedTopic, data.topicReferences);
   }
