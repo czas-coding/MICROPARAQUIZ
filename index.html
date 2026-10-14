@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TranslaNurse — Clinical Insights & Lab Translator</title>
-  <!-- Preserved Fonts: Fraunces (Serif), Plus Jakarta Sans (Sans), JetBrains Mono (Mono) -->
+  <title>TranslaNurse — Clinical Consult & Lab Translator</title>
+  <!-- Preserved Editorial Fonts: Fraunces (Serif), Plus Jakarta Sans (Sans), JetBrains Mono (Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +22,8 @@
       --text: #f8fafc;
       --text-muted: #9eb1d4;
       --text-dark: #0a142e;
-      --neon: #d9ff00; /* Electric Chartreuse Badge Accent */
+      --neon: #d9ff00;
+      --neon-TextOnBadge: #081229;
       --neon-soft: rgba(217, 255, 0, 0.14);
       --cyan: #38bdf8;
       --cyan-glow: rgba(56, 189, 248, 0.25);
@@ -58,6 +59,7 @@
       --text-muted: #4b5e82;
       --text-dark: #ffffff;
       --neon: #0f3699;
+      --neon-TextOnBadge: #ffffff;
       --neon-soft: rgba(15, 54, 153, 0.1);
       --cyan: #0284c7;
       --border: rgba(15, 23, 42, 0.12);
@@ -93,7 +95,7 @@
       min-height: 100vh;
     }
 
-    /* Architectural Vertical Translucent Columns (From Reference Design) */
+    /* Architectural Vertical Translucent Columns */
     .bg-vertical-stripes {
       position: fixed;
       inset: 0;
@@ -124,7 +126,7 @@
     }
 
     /* =========================================
-       MINIMALIST TOP NAVIGATION (MERCK-STYLE)
+       TOP NAVIGATION BAR
        ========================================= */
     header.top-navbar {
       display: flex;
@@ -132,8 +134,8 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
-      padding: 20px 36px;
-      background: rgba(8, 18, 41, 0.72);
+      padding: 18px 36px;
+      background: rgba(8, 18, 41, 0.78);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -143,7 +145,7 @@
     }
 
     [data-theme="light"] header.top-navbar {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.88);
     }
 
     .nav-left {
@@ -154,15 +156,16 @@
     }
 
     .brand-geometric-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-strong);
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .brand-geometric-mark img,
@@ -175,18 +178,16 @@
     .brand-title-group h1 {
       margin: 0;
       font-family: var(--font-serif);
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: 800;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.01em;
       color: var(--text);
-      text-transform: uppercase;
       line-height: 1;
     }
 
     .brand-title-group h1 span.mint {
-      color: var(--neon);
+      color: #52a986;
       font-style: italic;
-      text-transform: lowercase;
     }
 
     .brand-title-group p {
@@ -223,10 +224,7 @@
       text-decoration: none;
     }
 
-    .nav-text-link:hover,
-    .nav-text-link.active {
-      color: var(--text);
-    }
+    .nav-text-link:hover { color: var(--text); }
 
     .nav-text-link::after {
       content: '';
@@ -239,9 +237,7 @@
       transition: width 0.22s ease;
     }
 
-    .nav-text-link:hover::after {
-      width: 100%;
-    }
+    .nav-text-link:hover::after { width: 100%; }
 
     .nav-right {
       display: flex;
@@ -266,7 +262,7 @@
     }
 
     .btn-nav-circle:hover {
-      background: var(--neon);
+      background: #d9ff00;
       transform: translateY(-2px);
     }
 
@@ -309,7 +305,7 @@
 
     .followup-badge-count {
       background: var(--neon);
-      color: #081229;
+      color: var(--neon-TextOnBadge);
       font-family: var(--font-mono);
       border-radius: 999px;
       padding: 1px 7px;
@@ -317,12 +313,8 @@
       font-weight: 800;
     }
 
-    [data-theme="light"] .followup-badge-count {
-      color: #ffffff;
-    }
-
     /* =========================================
-       VIEW 1: COBALT BIOMEDICAL HERO SPREAD
+       VIEW 1: FRONT PAGE WITH TRANSLANURSE & LOGO
        ========================================= */
     #home-view {
       display: flex;
@@ -335,21 +327,19 @@
 
     .hero-showcase {
       position: relative;
-      padding: 36px 0 0;
+      padding: 24px 0 0;
     }
 
     .hero-main-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
+      gap: 36px;
       align-items: center;
-      min-height: 440px;
+      min-height: 430px;
     }
 
     @media (max-width: 980px) {
-      .hero-main-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-main-grid { grid-template-columns: 1fr; }
     }
 
     .hero-typography-stage {
@@ -357,17 +347,30 @@
       z-index: 2;
     }
 
+    .hero-kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      margin-bottom: 14px;
+    }
+
     .hero-display-line1 {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .hero-giant-word {
       font-family: var(--font-serif);
-      font-size: clamp(3.1rem, 6.2vw, 5.4rem);
+      font-size: clamp(2.9rem, 5.8vw, 5.1rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 0.98;
@@ -376,16 +379,21 @@
       margin: 0;
     }
 
+    .hero-giant-word .mint-accent {
+      color: #52a986;
+      font-style: italic;
+    }
+
     .neon-heart-orb {
-      width: 66px;
-      height: 66px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
       background: #d9ff00;
       color: #081229;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       box-shadow: 0 0 0 10px rgba(217, 255, 0, 0.16), 0 12px 30px rgba(217, 255, 0, 0.35);
       animation: floatPulse 3.2s ease-in-out infinite;
     }
@@ -398,14 +406,14 @@
     .hero-display-line2 {
       display: flex;
       align-items: baseline;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .hero-issue-number {
       font-family: var(--font-mono);
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.9rem);
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.03em;
@@ -419,17 +427,17 @@
     }
 
     .hero-subtitle {
-      font-size: 1.08rem;
+      font-size: 1.06rem;
       color: var(--text-muted);
       max-width: 580px;
-      margin: 0 0 34px 0;
+      margin: 0 0 32px 0;
       line-height: 1.72;
     }
 
     .hero-cta-row {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
@@ -443,7 +451,7 @@
       font-size: 0.98rem;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -487,7 +495,7 @@
       transform: scale(1.08);
     }
 
-    /* Right 3D Bio-Sphere Illustration & Vertical Magazine Rail */
+    /* Right Hero Visual Stage: TranslaNurse Official Logo Showcase */
     .hero-visual-stage {
       position: relative;
       display: flex;
@@ -495,35 +503,32 @@
       justify-content: center;
     }
 
-    .biocell-3d-wrapper {
-      width: 340px;
-      height: 340px;
-      position: relative;
+    .hero-logo-pedestal {
+      width: 320px;
+      height: 320px;
+      background: #ffffff;
+      border-radius: 34px;
+      padding: 24px;
+      box-shadow: 0 28px 65px rgba(3, 8, 22, 0.55), 0 0 0 10px rgba(255, 255, 255, 0.08);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
+      z-index: 1;
       animation: slowFloat 6s ease-in-out infinite;
     }
 
     @keyframes slowFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(3deg); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
-    .biocell-glow {
-      position: absolute;
-      inset: 15%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.55) 0%, rgba(19, 40, 96, 0) 70%);
-      filter: blur(28px);
-      z-index: 0;
-    }
-
-    .biocell-svg {
+    .hero-logo-pedestal img,
+    .hero-logo-pedestal svg {
       width: 100%;
       height: 100%;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 24px 40px rgba(3, 8, 22, 0.7));
+      object-fit: contain;
     }
 
     .vertical-mag-rail {
@@ -557,7 +562,7 @@
       background: var(--border-strong);
     }
 
-    /* Bottom Asymmetric Bento Cards (Dark Navy Feature + White Stat Card) */
+    /* Bottom Asymmetric Bento Cards */
     .hero-bottom-deck {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -567,33 +572,29 @@
     }
 
     @media (max-width: 960px) {
-      .hero-bottom-deck {
-        grid-template-columns: 1fr;
-      }
+      .hero-bottom-deck { grid-template-columns: 1fr; }
     }
 
     .dark-cellular-card {
-      background: rgba(5, 12, 30, 0.82);
-      border: 1px solid var(--border);
+      background: #0b1736;
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 20px;
       padding: 28px 32px;
       display: grid;
-      grid-template-columns: 130px 1fr;
+      grid-template-columns: 110px 1fr;
       gap: 24px;
       align-items: center;
       box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(12px);
+      color: #f8fafc;
     }
 
     @media (max-width: 600px) {
-      .dark-cellular-card {
-        grid-template-columns: 1fr;
-      }
+      .dark-cellular-card { grid-template-columns: 1fr; }
     }
 
     .dark-cellular-card h3 {
       font-family: var(--font-mono);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #ffffff;
@@ -604,7 +605,8 @@
     .dark-cellular-card p {
       margin: 0;
       font-size: 0.88rem;
-      color: var(--text-muted);
+      color: #cbd5e1;
+      line-height: 1.65;
     }
 
     .right-stats-stack {
@@ -655,9 +657,7 @@
       cursor: pointer;
     }
 
-    .white-stat-card:hover {
-      transform: translateY(-3px);
-    }
+    .white-stat-card:hover { transform: translateY(-3px); }
 
     .stat-big-number {
       font-family: var(--font-serif);
@@ -667,20 +667,15 @@
       margin-bottom: 6px;
     }
 
-    .stat-big-number span {
-      color: #84cc16;
-    }
+    .stat-big-number span { color: #84cc16; }
 
     .stat-caption {
       font-size: 0.85rem;
       font-weight: 600;
-      opacity: 0.78;
+      opacity: 0.85;
     }
 
-    .avatar-cluster {
-      display: flex;
-      align-items: center;
-    }
+    .avatar-cluster { display: flex; align-items: center; }
 
     .avatar-badge {
       width: 44px;
@@ -717,9 +712,7 @@
     }
 
     @media (max-width: 1120px) {
-      .grid-main {
-        grid-template-columns: 1fr;
-      }
+      .grid-main { grid-template-columns: 1fr; }
     }
 
     .card {
@@ -731,9 +724,7 @@
       box-shadow: var(--shadow-soft);
     }
 
-    [data-theme="light"] .card {
-      background: #ffffff;
-    }
+    [data-theme="light"] .card { background: #ffffff; }
 
     .card-header {
       margin-top: 0;
@@ -809,10 +800,7 @@
       box-shadow: 0 0 0 3px var(--neon-soft);
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 132px;
-    }
+    textarea { resize: vertical; min-height: 132px; }
 
     .scanner-panel {
       background: var(--bg-card);
@@ -964,6 +952,7 @@
 
     .btn-primary:hover {
       background: #ffffff;
+      color: #081229;
       transform: translateY(-2px);
     }
 
@@ -1023,7 +1012,7 @@
     .lab-unsafe { background-color: var(--fail-bg); color: var(--fail); }
 
     /* =========================================
-       8 BENTO SQUARES + READING STAGE
+       BENTO SQUARES + READING STAGE
        ========================================= */
     .Guidance-workspace {
       display: grid;
@@ -1098,14 +1087,8 @@
       color: #ffffff;
     }
 
-    .info-square.active::after {
-      color: #081229;
-      opacity: 0.75;
-    }
-
-    [data-theme="light"] .info-square.active::after {
-      color: #d9ff00;
-    }
+    .info-square.active::after { color: #081229; opacity: 0.75; }
+    [data-theme="light"] .info-square.active::after { color: #d9ff00; }
 
     .info-square .sq-icon { font-size: 1.45rem; line-height: 1; }
     .info-square .sq-title { font-size: 0.8rem; font-weight: 800; color: inherit; line-height: 1.22; }
@@ -1198,7 +1181,6 @@
     .spacious-item-card.symptoms-border { border-left-color: #fb923c; }
     .spacious-item-card.doctor-border { border-left-color: var(--pass); margin-top: 16px; }
 
-    /* Lab Reference Subbox Inside Square 01 */
     .lab-ranges-subbox {
       margin-top: 20px;
       padding-top: 18px;
@@ -1226,7 +1208,7 @@
 
     .flag-filter-btn.active {
       background: var(--neon);
-      color: #081229;
+      color: var(--neon-TextOnBadge);
       border-color: var(--neon);
     }
 
@@ -1281,7 +1263,7 @@
 
     .action-step-num {
       background: var(--neon);
-      color: #081229;
+      color: var(--neon-TextOnBadge);
       font-family: var(--font-mono);
       width: 30px;
       height: 30px;
@@ -1315,7 +1297,7 @@
     .lang-quick-pill.active,
     .lang-quick-pill:hover {
       background: var(--neon);
-      color: #081229;
+      color: var(--neon-TextOnBadge);
       border-color: var(--neon);
     }
 
@@ -1405,72 +1387,133 @@
     }
 
     /* =========================================
-       5-PILLAR VERIFIED REFERENCES SECTION
+       OPTIONAL TOPIC-SPECIFIC RESEARCH DROPDOWN
        ========================================= */
-    .verified-references-section {
-      margin-top: 24px;
-      padding-top: 22px;
-      border-top: 1px solid var(--border-strong);
+    .verified-references-dropdown {
+      margin-top: 22px;
+      background: var(--bg-card-elevated);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 14px;
+      overflow: hidden;
     }
 
-    .ref-header-row {
+    .verified-references-dropdown summary {
+      padding: 16px 20px;
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 14px;
+      list-style: none;
+      font-family: var(--font-serif);
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text);
+      user-select: none;
     }
 
-    .ref-header-row h3 {
-      margin: 0;
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--neon);
+    .verified-references-dropdown summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .verified-references-dropdown summary:hover {
+      background: var(--neon-soft);
     }
 
     .ref-strict-badge {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      background: rgba(22, 101, 52, 0.4);
-      color: #86efac;
-      border: 1px solid #4ade80;
-      padding: 4px 10px;
+      background: var(--pass-bg);
+      color: var(--pass);
+      border: 1px solid var(--pass);
+      padding: 4px 11px;
       border-radius: 999px;
       font-weight: 700;
     }
 
+    .ref-dropdown-body {
+      padding: 0 20px 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .ref-search-bar-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .ref-search-bar-row { grid-template-columns: 1fr; }
+    }
+
+    .ref-selected-card {
+      margin-top: 14px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--cyan);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-open-ref {
+      background: var(--neon);
+      color: var(--neon-TextOnBadge);
+      text-decoration: none;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-open-ref:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
     .ref-pillars-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
     }
 
     .ref-pillar-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-size: 0.82rem;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.8rem;
     }
 
     .ref-pillar-card strong {
       display: block;
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       color: var(--cyan);
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .ref-pillar-card a {
       color: var(--text);
       text-decoration: underline;
-      text-decoration-color: var(--neon);
+      text-decoration-color: var(--cyan);
+      font-weight: 600;
     }
 
     /* =========================================
-       WEBSITE FOOTER (CONNECTED TO BRANCH APPS)
+       CLEAN WEBSITE FOOTER (NO "BRANCH APP" BOXES)
        ========================================= */
     footer.site-footer {
       margin-top: 60px;
@@ -1511,7 +1554,7 @@
       margin-bottom: 10px;
     }
 
-    .footer-brand .mint { color: var(--neon); font-style: italic; }
+    .footer-brand .mint { color: #52a986; font-style: italic; }
     .footer-mission { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; }
     .trust-badges { display: flex; flex-wrap: wrap; gap: 6px; }
     .trust-pill {
@@ -1552,20 +1595,10 @@
 
     .footer-links a:hover { color: var(--neon); }
 
-    .branch-tag {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      padding: 2px 6px;
-      border-radius: 6px;
-      border: 1px solid var(--border-strong);
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
     .btn-footer-hotline {
-      background: rgba(185, 28, 28, 0.3);
+      background: rgba(185, 28, 28, 0.25);
       border: 1.5px solid #f87171;
-      color: #fecaca;
+      color: #dc2626;
       padding: 10px 16px;
       border-radius: 999px;
       font-weight: 700;
@@ -1575,9 +1608,13 @@
       display: inline-block;
     }
 
+    body:not([data-theme="light"]) .btn-footer-hotline {
+      color: #fecaca;
+    }
+
     .btn-footer-hotline:hover {
       background: #dc2626;
-      color: #ffffff;
+      color: #ffffff !important;
     }
 
     .footer-bottom {
@@ -1706,7 +1743,7 @@
     }
 
     .msg-bubble { padding: 11px 14px; border-radius: 10px; font-size: 0.9rem; line-height: 1.55; }
-    .msg-user { background: var(--neon); color: #081229; align-self: flex-end; font-weight: 700; }
+    .msg-user { background: var(--neon); color: var(--neon-TextOnBadge); align-self: flex-end; font-weight: 700; }
     .msg-nurse { background: var(--bg-card-elevated); color: var(--text); border: 1px solid var(--border); align-self: flex-start; }
 
     .history-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
@@ -1715,7 +1752,7 @@
 
     .btn-small-action {
       background: var(--cyan);
-      color: #081229;
+      color: #ffffff;
       border: none;
       padding: 6px 12px;
       border-radius: 6px;
@@ -1744,7 +1781,41 @@
 </head>
 <body>
 
-<!-- ARCHITECTURAL VERTICAL GLASS COLUMNS (MERCK WEB-MAGAZINE AESTHETIC) -->
+<!-- =========================================================
+     REUSABLE SVG TEMPLATE OF TRANSLANURSE LOGO (AUTO-FALLBACK)
+     ========================================================= -->
+<template id="translanurse-logo-svg">
+  <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TranslaNurse Official Logo">
+    <path d="M 320 95 A 175 175 0 0 0 140 190" fill="none" stroke="#9ad5db" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 320 95 A 175 175 0 0 0 215 80" fill="none" stroke="#f79d9c" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="323" cy="97" r="8" fill="#f79d9c"/>
+    <path d="M 140 190 A 175 175 0 0 0 265 340" fill="none" stroke="#62b289" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 265 340 A 175 175 0 0 0 345 305" fill="none" stroke="#9ad5db" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="347" cy="303" r="8" fill="#9ad5db"/>
+    <ellipse cx="255" cy="195" rx="52" ry="40" fill="#f79d9c"/>
+    <polygon points="275,228 292,242 288,220" fill="#f79d9c"/>
+    <circle cx="235" cy="195" r="6" fill="#ffffff"/>
+    <circle cx="255" cy="195" r="6" fill="#ffffff"/>
+    <circle cx="275" cy="195" r="6" fill="#ffffff"/>
+    <ellipse cx="202" cy="238" rx="52" ry="40" fill="#8fd3de"/>
+    <polygon points="222,272 238,288 236,265" fill="#8fd3de"/>
+    <circle cx="182" cy="238" r="6" fill="#ffffff"/>
+    <circle cx="202" cy="238" r="6" fill="#ffffff"/>
+    <circle cx="222" cy="238" r="6" fill="#ffffff"/>
+    <path d="M320 120 H342 V145 H367 V167 H342 V192 H320 V167 H295 V145 H320 Z" fill="#005f6b"/>
+    <path d="M262 252 H278 V268 H294 V284 H278 V300 H262 V284 H246 V268 H262 Z" fill="none" stroke="#00b4b8" stroke-width="3"/>
+    <path d="M348 188 H364 V204 H380 V220 H364 V236 H348 V220 H332 V204 H348 Z" fill="none" stroke="#f2bdbd" stroke-width="3"/>
+    <path d="M174 162 H184 V172 H194 V182 H184 V192 H174 V182 H164 V172 H174 Z" fill="none" stroke="#00b4b8" stroke-width="2.5"/>
+    <text x="250" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="60">
+      <tspan fill="#76b89a">transla</tspan><tspan fill="#3cb6c3">nurse</tspan>
+    </text>
+    <line x1="65" y1="418" x2="155" y2="418" stroke="#005f6b" stroke-width="2"/>
+    <text x="250" y="423" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#64748b">patient friendly information</text>
+    <line x1="345" y1="418" x2="435" y2="418" stroke="#005f6b" stroke-width="2"/>
+  </svg>
+</template>
+
+<!-- ARCHITECTURAL VERTICAL GLASS COLUMNS -->
 <div class="bg-vertical-stripes">
   <div></div>
   <div></div>
@@ -1753,22 +1824,22 @@
 </div>
 
 <!-- =========================================================
-     TOP NAVIGATION BAR (MERCK INSIGHTS LAYOUT)
+     TOP NAVIGATION BAR
      ========================================================= -->
 <header class="top-navbar">
-  <div class="nav-left" onclick="showHomePage()" title="Return to Cover">
+  <div class="nav-left" onclick="showHomePage()" title="Return to TranslaNurse Home">
     <div class="brand-geometric-mark">
-      <img src="logo.png" alt="TranslaNurse" onerror="this.style.display='none'; this.parentNode.innerHTML='💠';">
+      <img src="logo.png" alt="TranslaNurse Logo" onerror="replaceWithSvgLogo(this)">
     </div>
     <div class="brand-title-group">
       <h1><span class="mint">transla</span>nurse</h1>
-      <p>Clinical Insights &amp; Lab Translator</p>
+      <p>Patient-Friendly Clinical Consult &amp; Lab Scanner</p>
     </div>
   </div>
 
   <nav class="nav-center-links">
-    <button class="nav-text-link" onclick="showHomePage()">Cover Issue</button>
-    <button class="nav-text-link" onclick="openClinicalInput()">Consult Workspace</button>
+    <button class="nav-text-link" onclick="showHomePage()">Cover</button>
+    <button class="nav-text-link" onclick="openClinicalInput()">Workspace</button>
     <a class="nav-text-link" href="sourcing-methodology.html">5-Pillar Sources</a>
     <a class="nav-text-link" href="faqs.html">FAQs &amp; Guide</a>
   </nav>
@@ -1792,30 +1863,33 @@
 <div class="container">
 
   <!-- =========================================================
-       VIEW 1: COBALT BIOMEDICAL MAGAZINE COVER SPREAD
+       VIEW 1: FRONT PAGE WITH TRANSLANURSE, LOGO & DESCRIPTION
        ========================================================= -->
   <section id="home-view">
     <div class="hero-showcase">
       <div class="hero-main-grid">
 
-        <!-- Left Column: Bold Editorial Display Typography + Neon Heart Badge -->
+        <!-- Left Column: TranslaNurse Title + Concise Description -->
         <div class="hero-typography-stage">
+          <div class="hero-kicker-pill">
+            <span>✦</span> PATIENT-FRIENDLY CLINICAL LITERACY &amp; LAB TRANSLATOR
+          </div>
           <div class="hero-display-line1">
-            <h2 class="hero-giant-word">CLINICAL</h2>
+            <h2 class="hero-giant-word"><span class="mint-accent">TRANSLA</span>NURSE</h2>
             <span class="neon-heart-orb" title="Patient-First Empathy & Zero-Medication Guardrail">🖤</span>
           </div>
           <div class="hero-display-line2">
-            <span class="hero-issue-number"><sup>Nº</sup>26</span>
-            <h2 class="hero-giant-word">INSIGHTS</h2>
+            <span class="hero-issue-number"><sup>PH</sup>26</span>
+            <h2 class="hero-giant-word" style="font-size: clamp(2rem, 4.2vw, 3.6rem);">CLINICAL GUIDE</h2>
           </div>
 
           <p class="hero-subtitle">
-            Complex medical jargon, laboratory values, and clinical symptoms translated into clear, culturally grounded guidance across <strong>10 Philippine languages</strong> and <strong>7 Asian languages</strong>.
+            <strong>TranslaNurse</strong> is an open-access, non-commercial clinical literacy companion that translates complex medical jargon, laboratory results, and symptom questions into plain, compassionate guidance across <strong>10 Philippine languages</strong> and <strong>7 Asian languages</strong>.
           </p>
 
           <div class="hero-cta-row">
             <button class="btn-white-pill" onclick="openClinicalInput()">
-              Launch Scanner →
+              Launch Clinical Scanner →
             </button>
             <button class="btn-play-outline" onclick="openClinicalInput(); loadSampleScenario('labs');">
               <span class="play-circle-icon">▶</span>
@@ -1824,79 +1898,25 @@
           </div>
         </div>
 
-        <!-- Right Column: 3D Cellular Bio-Sphere Graphic + Vertical Magazine Rail -->
+        <!-- Right Column: Official TranslaNurse Logo Showcase -->
         <div class="hero-visual-stage">
-          <div class="biocell-3d-wrapper">
-            <div class="biocell-glow"></div>
-            <svg class="biocell-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3D Biomedical Cell Illustration">
-              <defs>
-                <radialGradient id="coreGrad" cx="38%" cy="32%" r="65%">
-                  <stop offset="0%" stop-color="#7dd3fc"/>
-                  <stop offset="45%" stop-color="#0284c7"/>
-                  <stop offset="85%" stop-color="#1e1b4b"/>
-                  <stop offset="100%" stop-color="#090d16"/>
-                </radialGradient>
-                <radialGradient id="nodeWarm" cx="35%" cy="30%" r="70%">
-                  <stop offset="0%" stop-color="#fed7aa"/>
-                  <stop offset="55%" stop-color="#fb923c"/>
-                  <stop offset="100%" stop-color="#312e81"/>
-                </radialGradient>
-                <radialGradient id="nodeCyan" cx="35%" cy="30%" r="70%">
-                  <stop offset="0%" stop-color="#e0f2fe"/>
-                  <stop offset="50%" stop-color="#38bdf8"/>
-                  <stop offset="100%" stop-color="#1e3a8a"/>
-                </radialGradient>
-              </defs>
-              <!-- Outer Corona Spikes -->
-              <g stroke="#38bdf8" stroke-width="6" stroke-linecap="round" opacity="0.75">
-                <line x1="200" y1="200" x2="200" y2="38"/>
-                <line x1="200" y1="200" x2="295" y2="62"/>
-                <line x1="200" y1="200" x2="352" y2="135"/>
-                <line x1="200" y1="200" x2="362" y2="225"/>
-                <line x1="200" y1="200" x2="322" y2="312"/>
-                <line x1="200" y1="200" x2="235" y2="360"/>
-                <line x1="200" y1="200" x2="135" y2="348"/>
-                <line x1="200" y1="200" x2="62" y2="285"/>
-                <line x1="200" y1="200" x2="42" y2="195"/>
-                <line x1="200" y1="200" x2="72" y2="108"/>
-                <line x1="200" y1="200" x2="138" y2="52"/>
-              </g>
-              <!-- Core 3D Biomedical Sphere -->
-              <circle cx="200" cy="200" r="112" fill="url(#coreGrad)"/>
-              <!-- Organic Surface Receptors -->
-              <circle cx="200" cy="36" r="14" fill="url(#nodeCyan)"/>
-              <circle cx="298" cy="60" r="16" fill="url(#nodeWarm)"/>
-              <circle cx="354" cy="134" r="13" fill="url(#nodeCyan)"/>
-              <circle cx="364" cy="226" r="15" fill="url(#nodeCyan)"/>
-              <circle cx="324" cy="314" r="16" fill="url(#nodeWarm)"/>
-              <circle cx="235" cy="362" r="13" fill="url(#nodeCyan)"/>
-              <circle cx="134" cy="350" r="15" fill="url(#nodeCyan)"/>
-              <circle cx="60" cy="286" r="14" fill="url(#nodeWarm)"/>
-              <circle cx="40" cy="195" r="15" fill="url(#nodeCyan)"/>
-              <circle cx="70" cy="106" r="16" fill="url(#nodeCyan)"/>
-              <circle cx="138" cy="50" r="13" fill="url(#nodeWarm)"/>
-              <!-- Foreground 3D Receptors -->
-              <circle cx="162" cy="155" r="22" fill="url(#nodeCyan)"/>
-              <circle cx="242" cy="172" r="25" fill="url(#nodeWarm)"/>
-              <circle cx="195" cy="242" r="20" fill="url(#nodeWarm)"/>
-              <circle cx="132" cy="222" r="16" fill="url(#nodeCyan)"/>
-              <circle cx="255" cy="245" r="17" fill="url(#nodeCyan)"/>
-            </svg>
+          <div class="hero-logo-pedestal" onclick="openClinicalInput()" title="Click to Open Clinical Workspace" style="cursor:pointer;">
+            <img src="logo.png" alt="TranslaNurse Official Logo" onerror="replaceWithSvgLogo(this)">
           </div>
 
           <div class="vertical-mag-rail">
             <div class="rail-line"></div>
             <span>2026</span>
-            <span>Web - magazine</span>
+            <span>TranslaNurse</span>
           </div>
         </div>
 
       </div>
 
-      <!-- Bottom Deck: Dark Molecular Card + Floating White Stat Card -->
+      <!-- Bottom Deck: Dark Feature Card + Stat Card -->
       <div class="hero-bottom-deck">
         <div class="dark-cellular-card">
-          <svg viewBox="0 0 120 120" width="115" height="115" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 120 120" width="95" height="95" xmlns="http://www.w3.org/2000/svg">
             <g stroke="#38bdf8" stroke-width="8" stroke-linecap="round">
               <line x1="20" y1="95" x2="95" y2="25"/>
               <line x1="15" y1="60" x2="85" y2="15"/>
@@ -1906,8 +1926,8 @@
             <circle cx="60" cy="60" r="14" fill="#d9ff00"/>
           </svg>
           <div>
-            <h3>MULTIMODAL LAB OCR &amp; TRIAGE STRUCTURE: HOW IT WORKS</h3>
-            <p>Drop any laboratory image or PDF, or describe your symptoms. TranslaNurse isolates abnormal flags, checks clinical red-flag limits, and translates every finding into 8 interactive Bento squares.</p>
+            <h3>MULTIMODAL LAB OCR &amp; RESEARCH ENGINE: HOW IT WORKS</h3>
+            <p>Drop any laboratory image or PDF, or ask about any condition (such as <em>dextroscoliosis</em> or <em>high creatinine</em>). TranslaNurse explains what it means, checks red-flag limits, and prepares topic-specific verified medical references.</p>
           </div>
         </div>
 
@@ -1920,7 +1940,7 @@
           <div class="white-stat-card" onclick="openClinicalInput()">
             <div>
               <div class="stat-big-number">17 <span>+</span></div>
-              <div class="stat-caption">Philippine &amp; Asian Languages + 8 Interactive Clinical Squares</div>
+              <div class="stat-caption">10 Philippine Languages + 7 Asian Languages + Topic Reference Finder</div>
             </div>
             <div class="avatar-cluster">
               <span class="avatar-badge">🇵🇭</span>
@@ -1953,16 +1973,16 @@
           <span style="color:var(--neon);">1-Click Demo</span>
         </label>
         <div class="quick-chips-bar">
+          <button type="button" class="chip-preset" onclick="loadSampleScenario('dextroscoliosis')">脊椎 Dextroscoliosis</button>
           <button type="button" class="chip-preset" onclick="loadSampleScenario('fracture')">🦴 Wrist Fall / Fracture</button>
           <button type="button" class="chip-preset" onclick="loadSampleScenario('labs')">🧪 High FBS &amp; Creatinine</button>
-          <button type="button" class="chip-preset" onclick="loadSampleScenario('fever')">🌡️ 2-Day Fever &amp; Body Ache</button>
           <button type="button" class="chip-preset" onclick="loadSampleScenario('bp')">❤️ BP 152/96 mmHg</button>
         </div>
 
         <label class="field-label" for="clinical-input">
-          <span>Symptom, Question, or Lab Values</span>
+          <span>Symptom, Condition, or Lab Values</span>
         </label>
-        <textarea id="clinical-input" placeholder="Ask any health question, describe what you feel, or paste lab results...&#10;&#10;Examples:&#10;- 'I think I broke my bone / my wrist is swollen after a fall'&#10;- 'Fasting Blood Sugar: 148 mg/dL, HbA1c: 7.4%, Creatinine: 1.5 mg/dL'"></textarea>
+        <textarea id="clinical-input" placeholder="Ask any health question, condition (e.g., Dextroscoliosis), symptom, or paste lab results...&#10;&#10;Examples:&#10;- 'My X-ray report says mild thoracic dextroscoliosis, what does that mean?'&#10;- 'Fasting Blood Sugar: 148 mg/dL, HbA1c: 7.4%, Creatinine: 1.5 mg/dL'"></textarea>
 
         <label class="field-label">
           <span>Scan or Drop Lab Report (Image / PDF)</span>
@@ -2037,26 +2057,26 @@
         </button>
       </div>
 
-      <!-- RIGHT COLUMN: 8 BENTO SQUARES + SPACIOUS READING STAGE -->
+      <!-- RIGHT COLUMN: CLINICAL GUIDANCE & DIGEST -->
       <div class="card" id="output-panel">
         <h2 class="card-header">
-          <span>02. Clinical Guidance &amp; Digest (8 Squares)</span>
+          <span>02. Clinical Guidance &amp; Digest</span>
           <button type="button" class="btn-nav-pill" onclick="toggleShowAllPanels()" id="toggle-all-btn" style="font-size:0.78rem; padding:6px 14px;">
-            ⊞ Open All 8 Squares
+            ⊞ Open All Squares
           </button>
         </h2>
 
         <div id="lab-safety-container">
           <div class="status-banner lab-safe">
             <span>✅ Safe - Great Job in being healthy</span>
-            <span style="font-family:var(--font-mono); font-size:0.72rem; font-weight:700;">PICK ANY OF THE 8 SQUARES BELOW</span>
+            <span style="font-family:var(--font-mono); font-size:0.72rem; font-weight:700;">SELECT ANY SQUARE BELOW</span>
           </div>
         </div>
 
         <div class="Guidance-workspace">
 
-          <!-- ALWAYS 8 BENTO SQUARES (01 TO 08) -->
-          <div class="squares-sidebar" role="tablist" aria-label="8 Clinical Information Squares">
+          <!-- 8 BENTO SQUARES (01 TO 08) -->
+          <div class="squares-sidebar" role="tablist" aria-label="Clinical Information Squares">
 
             <div class="info-square active" data-index="01" id="sq-meaning" onclick="selectInfoSquare('meaning')">
               <span class="sq-icon">🩺</span>
@@ -2108,7 +2128,7 @@
 
           </div>
 
-          <!-- RIGHT STAGE: 8 PANELS MATCHING THE 8 SQUARES -->
+          <!-- RIGHT STAGE: 8 PANELS -->
           <div class="info-stage">
 
             <!-- PANEL 01: WHAT IT MEANS + LAB REFERENCE RANGES -->
@@ -2123,11 +2143,10 @@
 
               <div class="spacious-block-list" id="explain-meaning-output">
                 <div class="spacious-item-card">
-                  <em>Select a 1-click scenario chip on the left, type your symptom/question, or upload a lab report to generate a plain-language clinical digest...</em>
+                  <em>Select a 1-click scenario chip on the left, type your symptom/question (such as Dextroscoliosis), or upload a lab report to generate a plain-language clinical digest...</em>
                 </div>
               </div>
 
-              <!-- Lab Reference Ranges Sub-Section (Automatically displayed inside Square 01 when lab values exist) -->
               <div class="lab-ranges-subbox" id="lab-ranges-wrapper" style="display:none;">
                 <h4 style="margin:0 0 12px 0; font-family:var(--font-serif); color:var(--neon);">📏 Normal Reference Range vs. Your Lab Result</h4>
                 <div class="flag-filter-bar">
@@ -2305,35 +2324,38 @@
           <button class="btn-secondary" onclick="exportToText()">📄 Download Summary (.TXT)</button>
         </div>
 
-        <!-- 5-PILLAR VERIFIED CLINICAL REFERENCE LIST (BELOW PRINT & DOWNLOAD) -->
-        <div class="verified-references-section">
-          <div class="ref-header-row">
-            <h3>📚 Verified Clinical &amp; Health Literacy Reference Sources</h3>
+        <!-- OPTIONAL TOPIC-SPECIFIC VERIFIED CLINICAL REFERENCE DROPDOWN (ONE-SEARCH RESEARCH ENGINE) -->
+        <details class="verified-references-dropdown" id="topic-references-Accordion">
+          <summary>
+            <span>📚 Optional: Research Verified Clinical References for <strong id="ref-current-topic-label" style="color:var(--cyan);">Your Clinical Inquiry</strong> ▾</span>
             <span class="ref-strict-badge">✓ NO WIKIPEDIA • NO SCRIBD • PEER-REVIEWED ONLY</span>
+          </summary>
+
+          <div class="ref-dropdown-body">
+            <label class="field-label" for="topic-reference-select" style="margin-top:14px;">
+              <span>Select a Researched Reference Tailored to Your Clinical Input:</span>
+              <span id="ref-topic-pill" style="color:var(--cyan);">Dynamic Topic Match</span>
+            </label>
+
+            <div class="ref-search-bar-row">
+              <select id="topic-reference-select" onchange="updateSelectedReferenceCard()"></select>
+            </div>
+
+            <div class="ref-selected-card" id="ref-selected-detail">
+              <div style="flex:1; min-width:240px;">
+                <span id="ref-selected-pillar" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">01 / Consumer &amp; National Library of Medicine</span>
+                <strong id="ref-selected-title" style="font-size:1rem; display:block; margin-bottom:4px;">MedlinePlus (NIH / NLM) — Topic Research</strong>
+                <span id="ref-selected-summary" style="font-size:0.86rem; color:var(--text-muted); display:block;">Peer-reviewed patient &amp; clinical summary tailored directly to your clinical inquiry.</span>
+              </div>
+              <a id="ref-selected-link" href="https://medlineplus.gov/" target="_blank" rel="noopener" class="btn-open-ref">
+                🔎 Research This Source →
+              </a>
+            </div>
+
+            <!-- 5-Pillar Dynamic Quick Links for the Active Topic -->
+            <div class="ref-pillars-grid" id="dynamic-pillars-grid"></div>
           </div>
-          <div class="ref-pillars-grid">
-            <div class="ref-pillar-card">
-              <strong>01 / Global &amp; Gov Authorities</strong>
-              <a href="https://www.who.int" target="_blank" rel="noopener">World Health Organization (WHO)</a>, <a href="https://doh.gov.ph" target="_blank" rel="noopener">Philippines DOH</a>, <a href="https://www.cdc.gov" target="_blank" rel="noopener">U.S. CDC</a>, &amp; <a href="https://www.nih.gov" target="_blank" rel="noopener">NIH</a>.
-            </div>
-            <div class="ref-pillar-card">
-              <strong>02 / Elite Academic Centers</strong>
-              <a href="https://www.mayoclinic.org" target="_blank" rel="noopener">Mayo Clinic</a>, <a href="https://my.clevelandclinic.org" target="_blank" rel="noopener">Cleveland Clinic</a>, <a href="https://www.hopkinsmedicine.org" target="_blank" rel="noopener">Johns Hopkins</a>, &amp; <a href="https://www.health.harvard.edu" target="_blank" rel="noopener">Harvard Health</a>.
-            </div>
-            <div class="ref-pillar-card">
-              <strong>03 / Specialized Manuals</strong>
-              <a href="https://www.msdmanuals.com" target="_blank" rel="noopener">MSD Manuals</a>, <a href="https://www.heart.org" target="_blank" rel="noopener">American Heart Assoc. (AHA)</a>, <a href="https://diabetes.org" target="_blank" rel="noopener">ADA</a>, &amp; <a href="https://orthoinfo.aaos.org" target="_blank" rel="noopener">AAOS OrthoInfo</a>.
-            </div>
-            <div class="ref-pillar-card">
-              <strong>04 / Lab &amp; Consumer Portals</strong>
-              <a href="https://medlineplus.gov" target="_blank" rel="noopener">MedlinePlus (NLM)</a> &amp; <a href="https://www.testing.com" target="_blank" rel="noopener">Testing.com (ADLM Lab Reference)</a>.
-            </div>
-            <div class="ref-pillar-card">
-              <strong>05 / Open-Access Point-of-Care</strong>
-              <a href="https://www.ncbi.nlm.nih.gov/books/NBK430685/" target="_blank" rel="noopener">NCBI StatPearls</a>, <a href="https://www.uptodate.com/contents/table-of-contents/patient-education" target="_blank" rel="noopener">UpToDate Patient Ed</a>, &amp; <a href="https://bestpractice.bmj.com" target="_blank" rel="noopener">BMJ</a>.
-            </div>
-          </div>
-        </div>
+        </details>
 
       </div>
 
@@ -2343,7 +2365,7 @@
 </div>
 
 <!-- =========================================================
-     CONNECTED HEALTH LITERACY FOOTER (LINKS DIRECTLY TO BRANCH FILES)
+     CLEAN HEALTH LITERACY FOOTER (NO "BRANCH APP" BOXES)
      ========================================================= -->
 <footer class="site-footer">
   <div class="footer-grid">
@@ -2366,19 +2388,19 @@
       <ul class="footer-links">
         <li><a href="javascript:void(0)" onclick="showHomePage()">🏠 Cover Page &amp; Mission</a></li>
         <li><a href="javascript:void(0)" onclick="openClinicalInput()">🩺 Clinical Consult &amp; Lab Workspace</a></li>
-        <li><a href="faqs.html">❓ Clinical FAQs &amp; How It Works <span class="branch-tag">Branch App</span></a></li>
-        <li><a href="sourcing-methodology.html">📚 5-Pillar Sourcing Methodology <span class="branch-tag">Branch App</span></a></li>
-        <li><a href="language-glossary.html">🇵🇭 Regional Language Health Glossary <span class="branch-tag">Branch App</span></a></li>
+        <li><a href="faqs.html">❓ Clinical FAQs &amp; How It Works</a></li>
+        <li><a href="sourcing-methodology.html">📚 5-Pillar Sourcing Methodology</a></li>
+        <li><a href="language-glossary.html">🇵🇭 Regional Language Health Glossary</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>⚖️ Legal &amp; Health Literacy Compliance</h4>
       <ul class="footer-links">
-        <li><a href="privacy-policy.html">🔒 Privacy Policy &amp; Local Storage Policy <span class="branch-tag">Branch App</span></a></li>
-        <li><a href="privacy-policy.html#cookie-policy">🍪 Cookie &amp; Zero-Commercial Tracking <span class="branch-tag">Branch App</span></a></li>
-        <li><a href="terms-of-use.html">📜 Terms of Use &amp; Medical Disclaimer <span class="branch-tag">Branch App</span></a></li>
-        <li><a href="terms-of-use.html#scope-triage">👩‍⚕️ Scope of Educational Triage <span class="branch-tag">Branch App</span></a></li>
+        <li><a href="privacy-policy.html">🔒 Privacy Policy &amp; Local Storage Policy</a></li>
+        <li><a href="privacy-policy.html#cookie-policy">🍪 Cookie &amp; Zero-Commercial Tracking</a></li>
+        <li><a href="terms-of-use.html">📜 Terms of Use &amp; Medical Disclaimer</a></li>
+        <li><a href="terms-of-use.html#scope-triage">👩‍⚕️ Scope of Educational Triage</a></li>
       </ul>
     </div>
 
@@ -2412,60 +2434,60 @@
       <h3 style="margin:0; font-family:var(--font-serif); color:var(--neon); font-size:1.35rem;">🚨 Metro Manila (NCR) Emergency &amp; Hospital Hotlines</h3>
       <button class="btn-small-action btn-small-danger" onclick="toggleHotlineModal(false)">✖ Close</button>
     </div>
-    <p style="font-size:0.9rem; color:var(--text-muted); margin:12px 0 0;">Click any hotline below to dial immediately on mobile or open the full <a href="ncr-hotlines.html" style="color:var(--neon);">NCR Emergency Branch Page</a>:</p>
+    <p style="font-size:0.9rem; color:var(--text-muted); margin:12px 0 0;">Click any hotline below to dial immediately on mobile or open the full <a href="ncr-hotlines.html" style="color:var(--cyan);">NCR Emergency Directory</a>:</p>
     <div class="hotline-directory-grid">
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">National Emergency Hotline (NCR)</strong>
+          <strong style="color:var(--cyan); display:block;">National Emergency Hotline (NCR)</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Police, Fire &amp; Medical Dispatch</span>
         </div>
         <a href="tel:911" class="btn-call-now">📞 Call 911</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">Philippine Red Cross EMS</strong>
+          <strong style="color:var(--cyan); display:block;">Philippine Red Cross EMS</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Ambulance &amp; Emergency Dispatch</span>
         </div>
         <a href="tel:143" class="btn-call-now">📞 Dial 143 / (02) 8790-2300</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">DOH One Hospital Command</strong>
+          <strong style="color:var(--cyan); display:block;">DOH One Hospital Command</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Medical &amp; ER Referral</span>
         </div>
         <a href="tel:1555" class="btn-call-now">📞 Dial 1555 / (02) 8865-0500</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">UP-Philippine General Hospital</strong>
+          <strong style="color:var(--cyan); display:block;">UP-Philippine General Hospital</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Ermita, Manila Tertiary Hospital</span>
         </div>
         <a href="tel:+63285548400" class="btn-call-now">📞 (02) 8554-8400</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">Makati Medical Center</strong>
+          <strong style="color:var(--cyan); display:block;">Makati Medical Center</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Makati City 24/7 Emergency</span>
         </div>
         <a href="tel:+63288888999" class="btn-call-now">📞 (02) 8888-8999</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">St. Luke's Medical Center (QC &amp; BGC)</strong>
+          <strong style="color:var(--cyan); display:block;">St. Luke's Medical Center (QC &amp; BGC)</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Quezon City &amp; Taguig Emergency</span>
         </div>
         <a href="tel:+63287230101" class="btn-call-now">📞 (02) 8723-0101 / 8789-7700</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">NCMH 24/7 Crisis Hotline</strong>
+          <strong style="color:var(--cyan); display:block;">NCMH 24/7 Crisis Hotline</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Mandaluyong Mental Health Support</span>
         </div>
         <a href="tel:1553" class="btn-call-now">📞 Dial 1553</a>
       </div>
       <div class="hotline-dir-item">
         <div>
-          <strong style="color:var(--neon); display:block;">MMDA Metro Manila Rescue</strong>
+          <strong style="color:var(--cyan); display:block;">MMDA Metro Manila Rescue</strong>
           <span style="font-size:0.8rem; color:var(--text-muted);">Roadside &amp; Disaster Rescue</span>
         </div>
         <a href="tel:136" class="btn-call-now">📞 Dial 136</a>
@@ -2492,7 +2514,7 @@
         </div>
       </div>
       <div style="display:flex; gap:8px;">
-        <input type="text" id="followup-input" placeholder="Ask any question (e.g., Should I put ice?)" onkeydown="if(event.key==='Enter') sendFollowUpQuestion()">
+        <input type="text" id="followup-input" placeholder="Ask any question (e.g., What exercises are safe?)" onkeydown="if(event.key==='Enter') sendFollowUpQuestion()">
         <button class="btn-small-action" style="padding:0 16px;" onclick="sendFollowUpQuestion()">Ask</button>
       </div>
     </div>
@@ -2540,6 +2562,15 @@
   let latestAnalysisData = null;
   let lastRawInput = "";
   let showAllMode = false;
+  let activeTopicReferences = [];
+
+  function replaceWithSvgLogo(imgElement) {
+    const template = document.getElementById('translanurse-logo-svg');
+    if (template && imgElement && imgElement.parentNode) {
+      const clone = template.content.cloneNode(true);
+      imgElement.parentNode.replaceChild(clone, imgElement);
+    }
+  }
 
   function showHomePage() {
     stopLiveCamera();
@@ -2587,9 +2618,9 @@
   function loadSampleScenario(type) {
     const inputEl = document.getElementById('clinical-input');
     const scenarios = {
+      dextroscoliosis: "My chest X-ray report says 'mild thoracic dextroscoliosis'. What does dextroscoliosis mean, what might I feel, and what safe steps can I do?",
       fracture: "I slipped on the stairs and landed hard on my right wrist. It is swollen, throbbing, and hurts sharply whenever I try to rotate my hand.",
       labs: "Fasting Blood Sugar: 154 mg/dL, HbA1c: 7.6%, Serum Creatinine: 1.6 mg/dL, Uric Acid: 8.2 mg/dL",
-      fever: "I have had a high fever of 38.8°C, chills, headache behind my eyes, and body aches for the past 2 days.",
       bp: "My home blood pressure monitor reads BP 152/96 mmHg and I feel a dull heaviness at the back of my neck."
     };
     if (scenarios[type]) {
@@ -2599,12 +2630,151 @@
   }
 
   /* =========================================
+     ONE-SEARCH CLINICAL TOPIC REFERENCE ENGINE
+     ========================================= */
+  function extractCoreMedicalTopic(rawInput) {
+    if (!rawInput || !rawInput.trim()) {
+      return currentAttachment ? "Clinical Laboratory Reference Ranges" : "General Clinical Symptoms";
+    }
+    const text = rawInput.trim();
+    if (/dextroscoliosis/i.test(text)) return "Dextroscoliosis (Rightward Spinal Curvature)";
+    if (/levoscoliosis/i.test(text)) return "Levoscoliosis (Leftward Spinal Curvature)";
+    if (/scoliosis/i.test(text)) return "Scoliosis (Spinal Curvature)";
+    if (/fracture|broke.*bone|wrist.*fall|sprain/i.test(text)) return "Bone Fracture & Joint Sprain";
+    if (/fbs|fasting blood sugar|hba1c|glucose|diabetes/i.test(text)) return "Fasting Blood Glucose & HbA1c";
+    if (/creatinine|egfr|kidney|bun/i.test(text)) return "Serum Creatinine & Kidney Function";
+    if (/uric acid|gout/i.test(text)) return "Blood Uric Acid & Hyperuricemia";
+    if (/\bbp\b|blood pressure|hypertension|\d{2,3}\/\d{2,3}/i.test(text)) return "High Blood Pressure (Hypertension)";
+    if (/fever|dengue|chills|flu/i.test(text)) return "Acute Febrile Illness & Fever Triage";
+
+    // Extract concise medical keyword phrase
+    const cleaned = text
+      .replace(/my x-ray report says|what does|mean|i have|i think|please explain/gi, '')
+      .replace(/[^\w\s\-/]/g, ' ')
+      .trim()
+      .split(/\s+/)
+      .slice(0, 5)
+      .join(' ');
+    return cleaned || "Clinical Symptoms & Lab Evaluation";
+  }
+
+  function buildTopicSpecificReferences(topicLabel, aiReferences) {
+    const cleanSearchTerm = topicLabel.replace(/\(.*?\)/g, '').trim();
+    const q = encodeURIComponent(cleanSearchTerm);
+
+    const curatedFivePillarLinks = [
+      {
+        pillar: "01 / Consumer & National Library of Medicine (NIH)",
+        title: `MedlinePlus (NIH): ${topicLabel}`,
+        summary: `Official U.S. National Library of Medicine plain-language medical encyclopedia & clinical guide on ${topicLabel}.`,
+        url: `https://vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta?v%3Aproject=medlineplus&v%3Asources=medlineplus-bundle&query=${q}`
+      },
+      {
+        pillar: "02 / Open-Access Point-of-Care Clinical Review",
+        title: `NCBI StatPearls (Peer-Reviewed): ${topicLabel}`,
+        summary: `Open-access, peer-reviewed clinical pathophysiology, diagnostic criteria, and management overview for ${topicLabel}.`,
+        url: `https://www.ncbi.nlm.nih.gov/books/?term=${q}`
+      },
+      {
+        pillar: "03 / Elite Academic Medical Center",
+        title: `Mayo Clinic Patient Care & Health Library: ${topicLabel}`,
+        summary: `Academic medical center overview covering causes, physical findings, red flags, and doctor evaluation for ${topicLabel}.`,
+        url: `https://www.mayoclinic.org/search/search-results?q=${q}`
+      },
+      {
+        pillar: "04 / Elite Academic Medical Center",
+        title: `Cleveland Clinic Health Library: ${topicLabel}`,
+        summary: `Clinical anatomy, symptoms, non-pharmacological care, and diagnostic explanation for ${topicLabel}.`,
+        url: `https://my.clevelandclinic.org/health?q=${q}`
+      },
+      {
+        pillar: "05 / Specialized Professional Manual",
+        title: `MSD Manuals (Consumer & Professional): ${topicLabel}`,
+        summary: `Comprehensive medical reference manual detailing clinical presentation and evaluation of ${topicLabel}.`,
+        url: `https://www.msdmanuals.com/home/SearchResults?query=${q}`
+      },
+      {
+        pillar: "06 / Specialized Orthopedic / Lab / Specialty Portal",
+        title: /scoliosis|fracture|bone|wrist|joint|spine/i.test(topicLabel)
+          ? `AAOS OrthoInfo (American Academy of Orthopaedic Surgeons): ${topicLabel}`
+          : `Testing.com (ADLM Peer-Reviewed Lab Directory): ${topicLabel}`,
+        summary: /scoliosis|fracture|bone|wrist|joint|spine/i.test(topicLabel)
+          ? `Specialized orthopedic surgeon patient guide on spinal curvature, bone alignment, and safe physical care for ${topicLabel}.`
+          : `Peer-reviewed laboratory medicine reference range and biomarker interpretation for ${topicLabel}.`,
+        url: /scoliosis|fracture|bone|wrist|joint|spine/i.test(topicLabel)
+          ? `https://orthoinfo.aaos.org/en/search/?q=${q}`
+          : `https://www.testing.com/?s=${q}`
+      },
+      {
+        pillar: "07 / Global & Government Health Authority",
+        title: `World Health Organization (WHO) & U.S. CDC: ${topicLabel}`,
+        summary: `Global public health guidelines and clinical evidence standards related to ${topicLabel}.`,
+        url: `https://www.cdc.gov/search/?query=${q}`
+      }
+    ];
+
+    if (Array.isArray(aiReferences) && aiReferences.length > 0) {
+      // Prepend AI-researched topic notes while guaranteeing verified clickable URLs
+      const merged = aiReferences.map((item, idx) => {
+        const fallback = curatedFivePillarLinks[idx % curatedFivePillarLinks.length];
+        const safeUrl = (item.url && /^https?:\/\/(www\.)?(who\.int|doh\.gov\.ph|cdc\.gov|nih\.gov|ncbi\.nlm\.nih\.gov|medlineplus\.gov|mayoclinic\.org|my\.clevelandclinic\.org|hopkinsmedicine\.org|health\.harvard\.edu|msdmanuals\.com|heart\.org|diabetes\.org|orthoinfo\.aaos\.org|testing\.com|uptodate\.com|bestpractice\.bmj\.com)/i.test(item.url))
+          ? item.url
+          : fallback.url;
+        return {
+          pillar: item.pillar || fallback.pillar,
+          title: item.title || fallback.title,
+          summary: item.summary || fallback.summary,
+          url: safeUrl
+        };
+      });
+      return [...merged, ...curatedFivePillarLinks.slice(merged.length)];
+    }
+
+    return curatedFivePillarLinks;
+  }
+
+  function renderTopicReferenceDropdown(topicLabel, aiReferences) {
+    const cleanTopic = topicLabel || extractCoreMedicalTopic(lastRawInput);
+    document.getElementById('ref-current-topic-label').textContent = `"${cleanTopic}"`;
+    document.getElementById('ref-topic-pill').textContent = `Researched for: ${cleanTopic}`;
+
+    activeTopicReferences = buildTopicSpecificReferences(cleanTopic, aiReferences);
+    const selectEl = document.getElementById('topic-reference-select');
+    selectEl.innerHTML = activeTopicReferences.map((ref, idx) =>
+      `<option value="${idx}">${escapeHtml(ref.pillar)} — ${escapeHtml(ref.title)}</option>`
+    ).join('');
+
+    updateSelectedReferenceCard();
+
+    const gridEl = document.getElementById('dynamic-pillars-grid');
+    gridEl.innerHTML = activeTopicReferences.slice(0, 5).map(ref => `
+      <div class="ref-pillar-card">
+        <strong>${escapeHtml(ref.pillar)}</strong>
+        <a href="${escapeHtml(ref.url)}" target="_blank" rel="noopener">${escapeHtml(ref.title)} →</a>
+      </div>
+    `).join('');
+  }
+
+  function updateSelectedReferenceCard() {
+    const selectEl = document.getElementById('topic-reference-select');
+    const idx = parseInt(selectEl.value, 10) || 0;
+    const ref = activeTopicReferences[idx] || activeTopicReferences[0];
+    if (!ref) return;
+
+    document.getElementById('ref-selected-pillar').textContent = ref.pillar;
+    document.getElementById('ref-selected-title').textContent = ref.title;
+    document.getElementById('ref-selected-summary').textContent = ref.summary;
+    const linkEl = document.getElementById('ref-selected-link');
+    linkEl.href = ref.url;
+  }
+
+  /* =========================================
      8 BENTO SQUARES NAVIGATION CONTROLLER
      ========================================= */
   function selectInfoSquare(sectionKey) {
     showAllMode = false;
     const toggleBtn = document.getElementById('toggle-all-btn');
-    if (toggleBtn) toggleBtn.textContent = "⊞ Open All 8 Squares";
+    if (toggleBtn) toggleBtn.textContent = "⊞ Open All Squares";
 
     document.querySelectorAll('.info-square').forEach(sq => sq.classList.remove('active'));
     const targetSquare = document.getElementById(`sq-${sectionKey}`);
@@ -2624,7 +2794,7 @@
       toggleBtn.textContent = "🗂️ Single Square View";
       allPanels.forEach(p => p.classList.add('active-panel'));
     } else {
-      toggleBtn.textContent = "⊞ Open All 8 Squares";
+      toggleBtn.textContent = "⊞ Open All Squares";
       selectInfoSquare('meaning');
     }
   }
@@ -2676,15 +2846,15 @@
 
   function buildRegionalPhFallback(lang, summary) {
     const templates = {
-      "Tagalog": `🇵🇭 Paliwanag sa Tagalog:\n• Kahulugan: ${summary}\n• Paalala: Ipahinga ang katawan, uminom ng sapat na tubig, huwag uminom ng gamot nang walang reseta, at magpakonsulta sa doktor.`,
+      "Tagalog": `🇵🇭 Paliwanag sa Tagalog:\n• Kahulugan: ${summary}\n• Paalala: Ipahinga ang katawan, bantayan ang anumang red-flag na sintomas, huwag uminom ng gamot nang walang reseta, at magpakonsulta sa doktor.`,
       "Cebuano": `🇵🇭 Patin-aw sa Cebuano / Bisaya:\n• Pasabot: ${summary}\n• Pahimangno: Ipahulay ang lawas, ayaw pag-inom og tambal nga walay reseta, ug pagpakonsulta sa lisensyadong doktor.`,
       "Ilocano": `🇵🇭 Palawag iti Ilocano:\n• Kayat a Sawen: ${summary}\n• Palagip: Iinana ti bagi, saan nga uminum iti agas no awan reseta, ken agpakonsulta iti doktor.`,
       "Pangasinan": `🇵🇭 Paliwawa ed Pangasinan / Pangasinense:\n• Kabaliksan: ${summary}\n• Panonot: Painawaan so laman, ag oninom na tambal no anggapoy reseta, tan manpakonsulta ed doktor.`,
-      "Hiligaynon": `🇵🇭 Paathag sa Hiligaynon (Ilonggo):\n• Kahulugan: ${summary}\n•ahanumdom: Magpahuway, indi mag-inom sang bulong nga wala reseta, kag magpakonsulta sa doktor.`,
+      "Hiligaynon": `🇵🇭 Paathag sa Hiligaynon (Ilonggo):\n• Kahulugan: ${summary}\n• Pahanumdom: Magpahuway, indi mag-inom sang bulong nga wala reseta, kag magpakonsulta sa doktor.`,
       "Chavacano": `🇵🇭 Explicacion na Chavacano:\n• Significado: ${summary}\n• Aviso: Descansa el cuerpo, no toma medicina sin receta, y consulta con el doctor.`,
-      "Kapampangan": `🇵🇭 Kabaldugan king Kapampangan:\n•ulugan: ${summary}\n• Paunawa: Painawa ya ing katawan, e mimnum panulu nung alang reseta, at magpakonsulta keng doktor.`,
-      "Waray": `🇵🇭 Saysay ha Waray:\n• Kahulogan: ${summary}\n• Pahinumdom:ahuway an lawas, ayaw pag-inom hin bulong nga waray reseta, ngan magpakonsulta ha doktor.`,
-      "Bicolano": `🇵🇭 Paliwanag sa Bicolano:\n• Kahulugan: ${summary}\n•agiromdom: Ipahingalo an lawas, dai mag-inom nin bulong kun mayo nin reseta, asin magpakonsulta sa doktor.`,
+      "Kapampangan": `🇵🇭 Kabaldugan king Kapampangan:\n• Katulugan: ${summary}\n• Paunawa: Painawa ya ing katawan, e mimnum panulu nung alang reseta, at magpakonsulta keng doktor.`,
+      "Waray": `🇵🇭 Saysay ha Waray:\n• Kahulogan: ${summary}\n• Pahinumdom: Pahuway an lawas, ayaw pag-inom hin bulong nga waray reseta, ngan magpakonsulta ha doktor.`,
+      "Bicolano": `🇵🇭 Paliwanag sa Bicolano:\n• Kahulugan: ${summary}\n• Pagiromdom: Ipahingalo an lawas, dai mag-inom nin bulong kun mayo nin reseta, asin magpakonsulta sa doktor.`,
       "Maguindanaon": `🇵🇭 Pidtuwan sa Maguindanaon:\n• Maana: ${summary}\n• Tadman: Pakadsangkal ka sa lawas, di ka pegarup sa gamut a da reseta, endu pakikonsulta sa doktor.`
     };
     return templates[lang] || templates["Tagalog"];
@@ -2800,7 +2970,7 @@
   }
 
   /* =========================================
-     TRANSLATION & LAB ANALYSIS ENGINE
+     TRANSLATION, CONSULT & RESEARCH ENGINE
      ========================================= */
   async function runTranslationEngine() {
     const rawInput = document.getElementById('clinical-input').value.trim();
@@ -2811,27 +2981,32 @@
     const btnText = document.getElementById('btn-text');
 
     if (!rawInput && !currentAttachment) {
-      alert("Please type your health question, symptom, or upload/scan a lab result.");
+      alert("Please type your health question, condition, symptom, or upload/scan a lab result.");
       return;
     }
 
     lastRawInput = rawInput || `[Scanned Lab File: ${currentAttachment.name}]`;
     btn.disabled = true;
     loader.style.display = 'inline-block';
-    btnText.textContent = "Analyzing Clinical Digest...";
+    btnText.textContent = "Researching & Translating Clinical Digest...";
 
     const systemPrompt = `
-You are TranslaNurse, an empathetic clinical nurse educator in the Philippines.
+You are TranslaNurse, an empathetic clinical nurse educator and medical literacy researcher in the Philippines.
 Target Health Literacy: ${gradeLevel} | Persona: ${persona}.
-Provide translations across ALL 10 Philippine languages ("Tagalog", "Cebuano", "Ilocano", "Pangasinan", "Hiligaynon", "Chavacano", "Kapampangan", "Waray", "Bicolano", "Maguindanaon") and 7 Other Asian languages ("Japanese", "Korean", "Mandarin Chinese", "Vietnamese", "Thai", "Bahasa Indonesia", "Hindi").
-NEVER recommend or prescribe any medications.
+1. Provide clear explanations of what the patient's condition, X-ray finding (e.g., dextroscoliosis), symptom, or lab result means.
+2. Provide translations across ALL 10 Philippine languages ("Tagalog", "Cebuano", "Ilocano", "Pangasinan", "Hiligaynon", "Chavacano", "Kapampangan", "Waray", "Bicolano", "Maguindanaon") and 7 Other Asian languages ("Japanese", "Korean", "Mandarin Chinese", "Vietnamese", "Thai", "Bahasa Indonesia", "Hindi").
+3. Set "researchedTopicName" to the exact clinical condition or lab test the patient asked about (e.g., "Dextroscoliosis", "Fasting Blood Sugar & Creatinine").
+4. In "topicReferences", provide 5 topic-specific reference entries strictly from valid Global/Gov Authorities (WHO, DOH, CDC, NIH), Elite Academic Centers (Mayo Clinic, Cleveland Clinic, Johns Hopkins, Harvard), Specialized Manuals (MSD Manuals, AAOS OrthoInfo, AHA, ADA), Consumer/Lab Portals (MedlinePlus, Testing.com), or Open-Access Point-of-Care (NCBI StatPearls, UpToDate Patient Ed). NEVER cite Wikipedia or Scribd.
+5. NEVER recommend or prescribe any medications.
+
 Respond ONLY with valid JSON:
 {
-  "isLabResult": true,
+  "isLabResult": false,
+  "researchedTopicName": "Exact Clinical Topic Name",
   "labSafetyStatus": "Safe - Great Job in being healthy | Caution - Consult to a health professional | ALERT - Seek a Health Professional",
   "safetyReasoning": "...",
   "inputMeaning": "...",
-  "normalRangeComparison": "Test Name: Result [Value] (Normal Range: [Range]) - [Within Normal Range | High | Low]",
+  "normalRangeComparison": "",
   "outOfRangeSymptoms": "...",
   "seekProfessionalRecommendation": "...",
   "actionPlan": ["Step 1", "Step 2", "Step 3", "Step 4"],
@@ -2841,6 +3016,9 @@ Respond ONLY with valid JSON:
   },
   "kidAnalogy": "...",
   "jargonBreakdown": [{ "term": "...", "explanation": "..." }],
+  "topicReferences": [
+    { "pillar": "01 / Consumer & National Library of Medicine", "title": "MedlinePlus (NIH): Topic Title", "summary": "How this source explains the patient's specific condition." }
+  ],
   "readingLevelScore": "Passed",
   "culturalFitScore": "Aligned",
   "safetyScore": "No Meds • Safe"
@@ -2886,10 +3064,61 @@ Respond ONLY with valid JSON:
   }
 
   function runOfflineFallback(rawText, grade) {
-    const isLab = /fbs|blood sugar|hba1c|creatinine|uric|bp|mmhg|mg\/dl/i.test(rawText) || Boolean(currentAttachment);
-    const summaryMeaning = isLab
-      ? `Your laboratory values (${rawText || currentAttachment?.name}) measure key metabolic, kidney, or cardiovascular markers so your doctor can check organ balance.`
-      : `Your symptom inquiry ("${rawText}") is an important physical signal from your body that the affected area needs rest, observation, and an in-person clinical evaluation.`;
+    const isDextro = /dextroscoliosis|scoliosis/i.test(rawText);
+    const isLab = !isDextro && (/fbs|blood sugar|hba1c|creatinine|uric|bp|mmhg|mg\/dl/i.test(rawText) || Boolean(currentAttachment));
+    const detectedTopic = extractCoreMedicalTopic(rawText);
+
+    let summaryMeaning = "";
+    let feelAndLimits = "";
+    let actions = [];
+    let jargon = [];
+    let analogy = "";
+
+    if (isDextro) {
+      summaryMeaning =
+        "Dextroscoliosis means a sideways curvature of the spine that bends toward the RIGHT side ('dextro' = right, 'scoliosis' = sideways curve of the backbone).\n" +
+        "It is commonly seen on chest or spinal X-rays in the upper/middle back (thoracic spine) or lower back (lumbar spine). Mild curves often develop gradually from posture, growth, or muscle asymmetry.";
+      feelAndLimits =
+        "What You Might Feel: Mild dextroscoliosis often causes no pain at all, or may cause mild muscle tightness, uneven shoulder or hip height, or back fatigue after prolonged standing or sitting.\n" +
+        "Clinical Limits & Red Flags: An X-ray Cobb angle measurement by a physician or orthopedic specialist is required to know the exact degree of curvature. Seek immediate medical evaluation if you experience numbness/tingling in the legs, weakness, or breathing difficulty.";
+      actions = [
+        "Schedule a non-urgent appointment with a primary care physician, physiatrist (rehabilitation doctor), or orthopedic specialist to review your X-ray Cobb angle.",
+        "Practice ergonomic posture when sitting and avoid carrying heavy bags slung over only one shoulder.",
+        "Ask a licensed physical therapist about guided core-strengthening and spinal-stretching exercises tailored to your curve.",
+        "Never attempt forceful spinal manipulation or take unprescribed pain medications."
+      ];
+      analogy = "Imagine your backbone as a tall stack of building blocks that gently leans a little to the right side—by keeping the supporting muscles around the tower balanced and letting a bone specialist check the angle, your back stays strong and supported!";
+      jargon = [
+        { term: "Dextroscoliosis", explanation: "'Dextro' means right and 'scoliosis' means a sideways curve of the spine—so the spine curves gently toward the right side of the body." },
+        { term: "Thoracic vs. Lumbar", explanation: "Thoracic refers to the middle/upper back (attached to the ribcage), while lumbar refers to the lower back." },
+        { term: "Cobb Angle", explanation: "The measurement in degrees that doctors draw on an X-ray to check whether a spinal curve is mild, moderate, or severe." }
+      ];
+    } else if (isLab) {
+      summaryMeaning = `Your laboratory values (${rawText || currentAttachment?.name}) measure key metabolic, kidney, or cardiovascular markers so your doctor can check organ balance.`;
+      feelAndLimits = "What You Might Feel: Fatigue, localized discomfort, swelling, dizziness, or increased thirst.\nClinical Limits & Red Flags: Seek immediate ER care (Dial 911 / 143) if you experience severe pain, chest tightness, shortness of breath, or confusion.";
+      actions = [
+        "Schedule an in-person consultation with a licensed physician to correlate these lab numbers with a physical exam.",
+        "Stay hydrated with water unless your physician has placed you on a fluid restriction.",
+        "Bring your original laboratory printout or PDF to your clinic appointment.",
+        "Never self-medicate—TranslaNurse strictly prohibits suggesting or prescribing medications."
+      ];
+      analogy = "Think of your lab numbers like friendly dashboard gauges on a car—they let your doctor see which engine system needs rest and care!";
+      jargon = [
+        { term: "Reference Range", explanation: "The normal set of values expected in healthy individuals used to compare your test result." }
+      ];
+    } else {
+      summaryMeaning = `Your inquiry ("${rawText}") describes an important signal from your body that warrants rest, close observation, and evaluation by a licensed healthcare professional.`;
+      feelAndLimits = "What You Might Feel: Localized discomfort, tenderness, fatigue, or stiffness.\nClinical Limits & Red Flags: Seek immediate ER care (Dial 911 / 143) if symptoms rapidly worsen or involve difficulty breathing, chest pain, or neurological weakness.";
+      actions = [
+        "Rest the affected area and avoid movements that trigger sharp pain.",
+        "Track when your symptoms started and what makes them better or worse to share with your physician.",
+        "Never self-medicate—TranslaNurse strictly prohibits suggesting or prescribing medications."
+      ];
+      analogy = "Think of your body's signals like a helpful dashboard light reminding you to slow down and let a trusted doctor take a look!";
+      jargon = [
+        { term: "Clinical Red Flags", explanation: "Warning signs that mean you need an in-person Emergency Room evaluation right away." }
+      ];
+    }
 
     const rangeLines = isLab
       ? "Fasting Blood Sugar: Result 154 mg/dL (Normal Range: 70 - 99 mg/dL) - High\nHbA1c: Result 7.6 % (Normal Range: 4.0 - 5.6 %) - High\nSerum Creatinine: Result 1.6 mg/dL (Normal Range: 0.6 - 1.2 mg/dL) - High"
@@ -2897,18 +3126,14 @@ Respond ONLY with valid JSON:
 
     const fallbackObj = {
       isLabResult: isLab,
+      researchedTopicName: detectedTopic,
       labSafetyStatus: "Caution - Consult to a health professional",
-      safetyReasoning: "Because out-of-range lab values or physical symptoms require an in-person physical exam by a licensed physician, this is prioritized under Caution.",
+      safetyReasoning: `Because "${detectedTopic}" requires an in-person physical examination or imaging review by a licensed physician, this is classified under Caution.`,
       inputMeaning: summaryMeaning,
       normalRangeComparison: rangeLines,
-      outOfRangeSymptoms: "What You Might Feel: Fatigue, localized discomfort, swelling, dizziness, or increased thirst.\nClinical Limits & Red Flags: Seek immediate ER care (Dial 911 / 143) if you experience severe pain, limb deformity, chest tightness, shortness of breath, or high persistent fever.",
-      seekProfessionalRecommendation: "Please schedule an in-person consultation with a licensed physician to correlate these findings with a physical examination.",
-      actionPlan: [
-        "Rest the affected area and avoid strenuous physical strain while monitoring your symptoms.",
-        "Stay hydrated with water unless your physician has placed you on a fluid restriction.",
-        "Write down when your symptoms started and bring your lab printout to your doctor.",
-        "Never self-medicate—TranslaNurse strictly prohibits suggesting or prescribing medications."
-      ],
+      outOfRangeSymptoms: feelAndLimits,
+      seekProfessionalRecommendation: `Please consult a licensed physician to evaluate "${detectedTopic}" in person and guide your personalized care plan.`,
+      actionPlan: actions,
       translations: {
         "Tagalog": buildRegionalPhFallback("Tagalog", summaryMeaning),
         "Cebuano": buildRegionalPhFallback("Cebuano", summaryMeaning),
@@ -2928,11 +3153,9 @@ Respond ONLY with valid JSON:
         "Bahasa Indonesia": `🇮🇩 Panduan Bahasa Indonesia:\n${summaryMeaning}\nJangan minum obat tanpa resep dan segera konsultasikan ke dokter.`,
         "Hindi": `🇮🇳 हिंदी मार्गदर्शन:\n${summaryMeaning}\nबिना डॉक्टर की सलाह के कोई दवा न लें और चिकित्सक से परामर्श करें।`
       },
-      kidAnalogy: "Think of your body's signals and lab numbers like friendly dashboard lights on a spaceship—they let the captain and the mechanic (your doctor) know which part needs rest and care!",
-      jargonBreakdown: [
-        { term: "Reference Range", explanation: "The normal set of values expected in healthy individuals used to compare your test result." },
-        { term: "Clinical Red Flags", explanation: "Warning signs (like difficulty breathing, chest pain, or bone deformity) that mean you need an Emergency Room visit right away." }
-      ],
+      kidAnalogy: analogy,
+      jargonBreakdown: jargon,
+      topicReferences: [],
       readingLevelScore: grade.split(' ')[0] + " Verified",
       culturalFitScore: "17 Languages Ready",
       safetyScore: "No Meds • Safe"
@@ -2993,7 +3216,7 @@ Respond ONLY with valid JSON:
     document.getElementById('lab-safety-container').innerHTML = `
       <div class="status-banner ${statusClass}">
         <span>${statusIcon} ${escapeHtml(normalizedStatus)}</span>
-        <span style="font-family:var(--font-mono); font-size:0.72rem; font-weight:700;">8 INTERACTIVE SQUARES READY</span>
+        <span style="font-family:var(--font-mono); font-size:0.72rem; font-weight:700;">SELECT ANY SQUARE TO EXPLORE</span>
       </div>`;
     document.getElementById('sq-safety-badge').textContent = shortBadge;
     document.getElementById('safety-reasoning-output').innerText = data.safetyReasoning || "";
@@ -3034,6 +3257,10 @@ Respond ONLY with valid JSON:
     document.getElementById('score-literacy').textContent = data.readingLevelScore || "Passed";
     document.getElementById('score-cultural').textContent = data.culturalFitScore || "Aligned";
     document.getElementById('score-safety').textContent = data.safetyScore || "No Meds • Safe";
+
+    // Populate the Optional Topic-Specific Reference Dropdown based on what the patient asked
+    const researchedTopic = data.researchedTopicName || extractCoreMedicalTopic(lastRawInput);
+    renderTopicReferenceDropdown(researchedTopic, data.topicReferences);
   }
 
   async function sendFollowUpQuestion() {
@@ -3053,7 +3280,8 @@ Respond ONLY with valid JSON:
     const phLang = document.getElementById('ph-lang-select').value;
     const phText = document.getElementById('ph-translation-output').innerText;
     const actions = document.getElementById('action-plan-output').innerText;
-    const blob = new Blob([`TRANSLANURSE CLINICAL DIGEST\nSTATUS: ${status}\n\nMEANING:\n${meaning}\n\nPHILIPPINE TRANSLATION (${phLang}):\n${phText}\n\nSAFE NON-MEDICATION STEPS:\n${actions}`], { type: 'text/plain' });
+    const refs = activeTopicReferences.map(r => `- ${r.title}: ${r.url}`).join('\n');
+    const blob = new Blob([`TRANSLANURSE CLINICAL DIGEST\nSTATUS: ${status}\n\nMEANING:\n${meaning}\n\nPHILIPPINE TRANSLATION (${phLang}):\n${phText}\n\nSAFE NON-MEDICATION STEPS:\n${actions}\n\nVERIFIED TOPIC REFERENCES:\n${refs}`], { type: 'text/plain' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'TranslaNurse_Patient_Summary.txt';
@@ -3109,6 +3337,7 @@ Respond ONLY with valid JSON:
 
   document.addEventListener('DOMContentLoaded', () => {
     renderHistory();
+    renderTopicReferenceDropdown("Dextroscoliosis & General Clinical Triage", []);
   });
 </script>
 </body>
