@@ -4,14 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TranslaNurse — Graphic Editorial Clinical Consult & Lab Translator</title>
-  <!-- Editorial Google Fonts: Fraunces (Serif), Plus Jakarta Sans (Sans), JetBrains Mono (Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* =========================================
-       GRAPHIC EDITORIAL CSS VARIABLES & THEME
-       ========================================= */
     :root {
       --primary: #006874;
       --primary-dark: #004b54;
@@ -19,11 +15,11 @@
       --accent-teal: #2ab7c1;
       --accent-mint: #52a986;
       --accent-coral: #f28482;
-      --bg: #f6f4ef; /* Warm Editorial Paper */
+      --bg: #f6f4ef;
       --bg-grid: rgba(15, 23, 42, 0.04);
       --card-bg: #ffffff;
       --card-elevated: #fcfbf9;
-      --text: #111822; /* Deep Editorial Ink */
+      --text: #111822;
       --text-muted: #526071;
       --border: #d5d9df;
       --border-strong: #111822;
@@ -55,7 +51,7 @@
       --accent-teal: #4fd1db;
       --accent-mint: #6fc7a3;
       --accent-coral: #f79d9c;
-      --bg: #0b1116; /* Obsidian Editorial Ink */
+      --bg: #0b1116;
       --bg-grid: rgba(255, 255, 255, 0.03);
       --card-bg: #121c24;
       --card-elevated: #182530;
@@ -80,9 +76,6 @@
       --shadow-teal: 5px 5px 0px #4fd1db;
     }
 
-    /* =========================================
-       GLOBAL RESET & ARCHITECTURAL GRID CANVAS
-       ========================================= */
     * {
       box-sizing: border-box;
       transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
@@ -105,12 +98,9 @@
     .container {
       max-width: 1460px;
       margin: 0 auto;
-      padding: 24px 28px 70px;
+      padding: 24px 28px 50px;
     }
 
-    /* =========================================
-       EDITORIAL TOP TICKER & MASTHEAD NAVBAR
-       ========================================= */
     .editorial-ticker {
       background: var(--text);
       color: var(--bg);
@@ -258,6 +248,20 @@
       color: var(--primary);
     }
 
+    .btn-hotline-top {
+      background: var(--fail-bg);
+      border: 1.5px solid var(--fail);
+      color: var(--fail);
+      box-shadow: 2px 2px 0px var(--fail);
+    }
+
+    .btn-hotline-top:hover {
+      background: var(--fail);
+      color: #ffffff;
+      border-color: var(--fail);
+      box-shadow: 4px 4px 0px var(--text);
+    }
+
     .followup-badge-count {
       background: var(--primary);
       color: #fff;
@@ -293,15 +297,12 @@
       object-fit: contain;
     }
 
-    /* =========================================
-       EDITORIAL HOME VIEW (MAGAZINE COVER SPREAD)
-       ========================================= */
     #home-view {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 28px 0 40px;
-      min-height: calc(100vh - 165px);
+      min-height: calc(100vh - 200px);
     }
 
     .hero-card {
@@ -413,7 +414,7 @@
     .hero-cta-row {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
@@ -529,9 +530,6 @@
       font-size: 1.14rem;
     }
 
-    /* =========================================
-       MAIN CLINICAL WORKSPACE VIEW (EDITORIAL SPLIT)
-       ========================================= */
     #app-view {
       display: none;
       margin-top: 10px;
@@ -584,9 +582,6 @@
       border-bottom-color: var(--border);
     }
 
-    /* =========================================
-       INTERACTIVE QUICK-INSERT SCENARIO CHIPS
-       ========================================= */
     .quick-chips-bar {
       display: flex;
       flex-wrap: wrap;
@@ -615,9 +610,6 @@
       transform: translateY(-1px);
     }
 
-    /* =========================================
-       FORMS, CAMERA & LAB FILE UPLOAD
-       ========================================= */
     label.field-label {
       display: flex;
       justify-content: space-between;
@@ -837,6 +829,12 @@
       border-top: 1.5px dashed var(--border);
     }
 
+    @media (max-width: 600px) {
+      .btn-action-group {
+        flex-direction: column;
+      }
+    }
+
     .btn-secondary {
       background-color: var(--card-elevated);
       color: var(--text);
@@ -864,9 +862,6 @@
       transform: translateY(-1px);
     }
 
-    /* =========================================
-       EDITORIAL SAFETY STATUS BANNERS
-       ========================================= */
     .status-banner {
       padding: 16px 22px;
       border-radius: 12px;
@@ -897,12 +892,9 @@
       color: var(--fail);
     }
 
-    /* =========================================
-       EDITORIAL BENTO SQUARES + READING STAGE
-       ========================================= */
     .Guidance-workspace {
       display: grid;
-      grid-template-columns: 255px 1fr;
+      grid-template-columns: 265px 1fr;
       gap: 24px;
       align-items: start;
     }
@@ -936,7 +928,7 @@
       border: 1.5px solid var(--border);
       border-radius: 12px;
       padding: 14px 10px 12px;
-      min-height: 108px;
+      min-height: 112px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -1000,7 +992,7 @@
 
     .info-square .sq-badge {
       font-family: var(--font-mono);
-      font-size: 0.64rem;
+      font-size: 0.63rem;
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 999px;
@@ -1010,7 +1002,6 @@
       text-transform: uppercase;
     }
 
-    /* Right-side Editorial Reading Stage */
     .info-stage {
       display: flex;
       flex-direction: column;
@@ -1062,26 +1053,6 @@
       margin: 0;
     }
 
-    .btn-audio-speak {
-      background: var(--card-bg);
-      border: 1.5px solid var(--primary);
-      color: var(--primary);
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .btn-audio-speak:hover {
-      background: var(--primary);
-      color: #ffffff;
-    }
-
     .medical-disclaimer-note {
       background: var(--warn-bg);
       color: var(--warn);
@@ -1095,7 +1066,6 @@
       line-height: 1.55;
     }
 
-    /* Spacious Editorial Content Cards */
     .spacious-block-list {
       display: flex;
       flex-direction: column;
@@ -1123,7 +1093,12 @@
       margin-top: 16px;
     }
 
-    /* Lab Flag Filter Pills */
+    .integrated-lab-ranges-box {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 2px dashed var(--border);
+    }
+
     .flag-filter-bar {
       display: flex;
       gap: 8px;
@@ -1219,7 +1194,6 @@
       border: 1.5px solid var(--pass);
     }
 
-    /* Action Plan Numbered Editorial Cards */
     .action-step-card {
       background: var(--card-bg);
       border: 1.5px solid var(--border);
@@ -1254,7 +1228,6 @@
       margin-top: 2px;
     }
 
-    /* NCR Hotline Box */
     .ncr-hotline-alert {
       display: none;
       margin-top: 20px;
@@ -1301,13 +1274,19 @@
       padding: 10px 18px;
       border-radius: 8px;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      border: none;
+      cursor: pointer;
     }
 
-    /* Interactive Language Quick Pills */
+    .btn-call-now:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
     .lang-pill-grid {
       display: flex;
       flex-wrap: wrap;
@@ -1424,9 +1403,100 @@
       color: var(--primary);
     }
 
-    /* =========================================
-       FOLLOW-UP & HISTORY DRAWER MODAL
-       ========================================= */
+    .references-section {
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 2.5px solid var(--text);
+    }
+
+    [data-theme="dark"] .references-section {
+      border-top-color: var(--border);
+    }
+
+    .references-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .references-title {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .zero-unreliable-badge {
+      background: var(--pass-bg);
+      color: var(--pass);
+      border: 1.5px solid var(--pass);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .active-topic-citations {
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary);
+      border-left: 6px solid var(--primary);
+      border-radius: 10px;
+      padding: 15px 18px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+    }
+
+    .reference-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .ref-pillar-card {
+      background: var(--card-elevated);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ref-pillar-card h4 {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .ref-pillar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 0.84rem;
+    }
+
+    .ref-pillar-list li a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .ref-pillar-list li a:hover {
+      text-decoration: underline;
+    }
+
     .modal-backdrop {
       display: none;
       position: fixed;
@@ -1435,6 +1505,53 @@
       backdrop-filter: blur(4px);
       z-index: 200;
       justify-content: flex-end;
+    }
+
+    .modal-center-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.68);
+      backdrop-filter: blur(5px);
+      z-index: 220;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .ncr-directory-modal {
+      background: var(--card-bg);
+      border: 2.5px solid var(--text);
+      border-radius: 18px;
+      max-width: 920px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: var(--shadow-hard);
+    }
+
+    .ncr-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .ncr-item-card {
+      background: var(--card-elevated);
+      border: 1.5px solid var(--border);
+      border-left: 5px solid var(--fail);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .ncr-item-card.hospital-teal {
+      border-left-color: var(--primary);
     }
 
     .followup-drawer {
@@ -1549,6 +1666,136 @@
       color: #fff;
     }
 
+    footer.site-footer {
+      background: var(--card-bg);
+      border-top: 3px solid var(--text);
+      margin-top: 50px;
+      padding: 48px 28px 34px;
+      color: var(--text);
+    }
+
+    [data-theme="dark"] footer.site-footer {
+      border-top-color: var(--border);
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 2px dashed var(--border);
+    }
+
+    @media (max-width: 980px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      font-size: 1.08rem;
+      margin: 0 0 12px 0;
+      color: var(--primary);
+    }
+
+    .footer-trust-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid var(--primary);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    [data-theme="dark"] .footer-trust-badge {
+      color: var(--primary);
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-branch-link {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-branch-link:hover {
+      color: var(--primary);
+      transform: translateX(3px);
+    }
+
+    .branch-pill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      background: var(--card-elevated);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-bar {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--text);
+      color: var(--bg);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-hard);
+      z-index: 300;
+      display: none;
+      max-width: 420px;
+      line-height: 1.5;
+    }
+
     .loader {
       display: inline-block;
       width: 18px;
@@ -1568,7 +1815,7 @@
 
     @media print {
       body { background: #fff; color: #000; }
-      .editorial-ticker, header.top-navbar, #home-view, .grid-main > div:first-child, .btn-action-group, .modal-backdrop, .squares-sidebar, .btn-audio-speak {
+      .editorial-ticker, header.top-navbar, #home-view, .grid-main > div:first-child, .btn-action-group, .modal-backdrop, .modal-center-backdrop, .squares-sidebar, footer.site-footer {
         display: none !important;
       }
       #app-view { display: block !important; }
@@ -1580,9 +1827,6 @@
 </head>
 <body>
 
-<!-- =========================================================
-     REUSABLE SVG TEMPLATE OF TRANSLANURSE LOGO (AUTO-FALLBACK)
-     ========================================================= -->
 <template id="translanurse-logo-svg">
   <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TranslaNurse Logo">
     <path d="M 320 95 A 175 175 0 0 0 140 190" fill="none" stroke="#9ad5db" stroke-width="6" stroke-linecap="round"/>
@@ -1614,9 +1858,6 @@
   </svg>
 </template>
 
-<!-- =========================================================
-     EDITORIAL TOP TICKER BAR
-     ========================================================= -->
 <div class="editorial-ticker">
   <div class="ticker-left">
     <span><i class="pulse-dot"></i> CLINICAL LITERACY &amp; TRIAGE DIGEST</span>
@@ -1624,13 +1865,10 @@
     <span>ZERO-MEDICATION SAFETY PROTOCOL ACTIVE</span>
   </div>
   <div>
-    <span>10 ASIAN LANGUAGES • NCR HOTLINE DIRECTORY • MULTIMODAL LAB OCR</span>
+    <span>10 PHILIPPINE LANGUAGES • 7 ASIAN COUNTRIES • NCR HOTLINES • VERIFIED MEDICAL SOURCES</span>
   </div>
 </div>
 
-<!-- =========================================================
-     TOP NAVIGATION BAR (MASTHEAD + FOLLOW-UP DRAWER)
-     ========================================================= -->
 <header class="top-navbar">
   <div class="nav-left">
     <div class="editorial-issue-stamp">
@@ -1649,6 +1887,9 @@
     <button class="btn-nav" onclick="openClinicalInput()">
       🩺 Workspace
     </button>
+    <button class="btn-nav btn-hotline-top" onclick="toggleHotlineModal(true)" id="nav-hotlines-btn" title="View all Metro Manila (NCR) Emergency & Hospital Hotlines">
+      🚨 NCR Hotlines
+    </button>
     <button class="btn-nav btn-followup-top" onclick="toggleFollowUpDrawer(true)" id="nav-followup-btn" title="Ask a follow-up question or review past scans">
       💬 Follow-Up &amp; Log <span class="followup-badge-count" id="history-count-badge">0</span>
     </button>
@@ -1663,33 +1904,33 @@
 
 <div class="container">
 
-  <!-- =========================================================
-       VIEW 1: EDITORIAL COVER SPREAD HOME PAGE
-       ========================================================= -->
   <section id="home-view">
     <div class="hero-card">
       <div class="hero-editorial-bar">
         <span>ISSUE NO. 10 • CLINICAL EMPATHY MEETS PLAIN-LANGUAGE TRANSLATION</span>
-        <span>PH / NCR TRIAGE EDITION</span>
+        <span>PH / NCR HEALTH LITERACY EDITION</span>
       </div>
 
       <div class="hero-spread-grid">
         <div class="hero-left-column">
           <div>
             <div class="editorial-kicker">
-              <span>✦</span> INTERACTIVE CLINICAL LITERACY ENGINE
+              <span>✦</span> NON-COMMERCIAL HEALTH LITERACY INITIATIVE
             </div>
             <h2 class="hero-title">
               Complex medical jargon, translated into <em>human clarity</em>.
             </h2>
             <p class="hero-subtitle">
-              Ask any health question, describe what you feel, or drop any lab result image or PDF. Explore your personalized clinical breakdown through tactile, bite-sized Bento squares.
+              Ask any health question, describe what you feel, or drop any lab result image or PDF. Explore your clinical breakdown through <strong>8 interactive Bento squares</strong>—including 10 Philippine languages, 7 Asian countries, and verified medical references.
             </p>
           </div>
 
           <div class="hero-cta-row">
             <button class="btn-hero-cta" onclick="openClinicalInput()">
               🩺 Launch Clinical Input &amp; Lab Scanner →
+            </button>
+            <button class="btn-nav btn-hotline-top" style="padding:16px 24px; font-size:0.98rem;" onclick="toggleHotlineModal(true)">
+              🚨 View All NCR Emergency Hotlines
             </button>
           </div>
         </div>
@@ -1716,17 +1957,14 @@
           Upload, paste (Ctrl+V), or drag-and-drop PNG, JPG, JFIF, WEBP, or PDF lab sheets for individual normal-vs-flagged cards.
         </div>
         <div class="hero-feature-item">
-          <span class="feature-index-num">03 / BENTO NAVIGATION</span>
-          <strong>🗂️ Interactive Info Squares</strong>
-          Navigate explanations, lab flags, 10 Asian languages (Tagalog default), kid analogies, and NCR hotlines one clean square at a time.
+          <span class="feature-index-num">03 / 8 BENTO SQUARES</span>
+          <strong>🗂️ 8 Interactive Info Squares</strong>
+          Explore 8 dedicated squares including 10 Philippine Languages (Tagalog, Pangasinan, Hiligaynon, Chavacano, Kapampangan, Waray, Bicolano, Maguindanaon, Cebuano, Ilocano) &amp; 7 Asian Countries.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       VIEW 2: MAIN TRANSLANURSE CLINICAL WORKSPACE
-       ========================================================= -->
   <section id="app-view">
     <div class="grid-main">
 
@@ -1734,9 +1972,14 @@
       <div class="card">
         <h2 class="card-header">
           <span>01. Clinical Input</span>
-          <button class="btn-nav" onclick="toggleFollowUpDrawer(true)" style="font-size:0.78rem; padding:6px 12px;">
-            💬 Follow-Up Q&amp;A
-          </button>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="btn-nav btn-hotline-top" onclick="toggleHotlineModal(true)" style="font-size:0.76rem; padding:6px 11px;">
+              🚨 NCR Hotlines
+            </button>
+            <button class="btn-nav" onclick="toggleFollowUpDrawer(true)" style="font-size:0.76rem; padding:6px 11px;">
+              💬 Follow-Up Q&amp;A
+            </button>
+          </div>
         </h2>
 
         <label class="field-label">
@@ -1831,12 +2074,12 @@
         </button>
       </div>
 
-      <!-- RIGHT COLUMN: EDITORIAL RESULTS PANEL WITH BENTO SQUARES -->
+      <!-- RIGHT COLUMN: EDITORIAL RESULTS PANEL WITH 8 BENTO SQUARES -->
       <div class="card" id="output-panel">
         <h2 class="card-header">
-          <span>02. Clinical Guidance &amp; Digest</span>
+          <span>02. Clinical Guidance &amp; Digest (8 Interactive Squares)</span>
           <button type="button" class="btn-nav" onclick="toggleShowAllPanels()" id="toggle-all-btn" style="font-size:0.8rem; padding:6px 14px;">
-            ⊞ Open All Squares
+            ⊞ Open All 8 Squares
           </button>
         </h2>
 
@@ -1844,58 +2087,66 @@
         <div id="lab-safety-container">
           <div class="status-banner lab-safe">
             <span>✅ Safe - Great Job in being healthy</span>
-            <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700;">SELECT ANY INDEX SQUARE BELOW</span>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700;">PICK ANY OF THE 8 SQUARES BELOW</span>
           </div>
         </div>
 
-        <!-- INTERACTIVE SIDEBAR SQUARES + SPACIOUS READING STAGE -->
+        <!-- INTERACTIVE SIDEBAR: ALWAYS 8 SQUARES + SPACIOUS READING STAGE -->
         <div class="Guidance-workspace">
 
-          <!-- LEFT SIDEBAR: NUMBERED EDITORIAL BENTO SQUARES -->
-          <div class="squares-sidebar" role="tablist" aria-label="Clinical Information Sections">
+          <!-- LEFT SIDEBAR: EXACTLY 8 NUMBERED BENTO SQUARES -->
+          <div class="squares-sidebar" role="tablist" aria-label="8 Clinical Information Squares">
 
+            <!-- SQUARE 01 -->
             <div class="info-square active" data-index="01" id="sq-meaning" onclick="selectInfoSquare('meaning')">
               <span class="sq-icon">🩺</span>
-              <span class="sq-title" id="sq-meaning-label">What It Means</span>
-              <span class="sq-badge">Overview</span>
+              <span class="sq-title" id="sq-meaning-label">What It Means &amp; Ranges</span>
+              <span class="sq-badge" id="sq-meaning-badge">Overview</span>
             </div>
 
+            <!-- SQUARE 02 -->
             <div class="info-square" data-index="02" id="sq-safety" onclick="selectInfoSquare('safety')">
               <span class="sq-icon">🔍</span>
               <span class="sq-title">Why Safe / Unsafe</span>
               <span class="sq-badge" id="sq-safety-badge">Triage</span>
             </div>
 
-            <div class="info-square" data-index="03" id="sq-ranges" onclick="selectInfoSquare('ranges')" style="display:none;">
-              <span class="sq-icon">📏</span>
-              <span class="sq-title">Lab Ranges &amp; Flags</span>
-              <span class="sq-badge" id="sq-ranges-badge">Normal vs Result</span>
-            </div>
-
-            <div class="info-square" data-index="04" id="sq-symptoms" onclick="selectInfoSquare('symptoms')">
+            <!-- SQUARE 03 -->
+            <div class="info-square" data-index="03" id="sq-symptoms" onclick="selectInfoSquare('symptoms')">
               <span class="sq-icon">⚡</span>
               <span class="sq-title">What You Feel &amp; Limits</span>
               <span class="sq-badge">Red Flags</span>
             </div>
 
-            <div class="info-square" data-index="05" id="sq-actions" onclick="selectInfoSquare('actions')">
+            <!-- SQUARE 04 -->
+            <div class="info-square" data-index="04" id="sq-actions" onclick="selectInfoSquare('actions')">
               <span class="sq-icon">🛡️</span>
               <span class="sq-title">What Can I Do?</span>
               <span class="sq-badge" id="sq-actions-badge">First Aid &amp; NCR</span>
             </div>
 
-            <div class="info-square" data-index="06" id="sq-translation" onclick="selectInfoSquare('translation')">
-              <span class="sq-icon">🌏</span>
-              <span class="sq-title">10 Asian Languages</span>
-              <span class="sq-badge">Tagalog + 9</span>
+            <!-- SQUARE 05: PHILIPPINE LANGUAGES (10 LANGUAGES) -->
+            <div class="info-square" data-index="05" id="sq-ph-langs" onclick="selectInfoSquare('ph-langs')">
+              <span class="sq-icon">🇵🇭</span>
+              <span class="sq-title">Philippine Languages</span>
+              <span class="sq-badge">10 PH Dialects</span>
             </div>
 
+            <!-- SQUARE 06: OTHER ASIAN COUNTRIES (7 LANGUAGES) -->
+            <div class="info-square" data-index="06" id="sq-asian-langs" onclick="selectInfoSquare('asian-langs')">
+              <span class="sq-icon">🌏</span>
+              <span class="sq-title">Other Asian Countries</span>
+              <span class="sq-badge">7 Asian Langs</span>
+            </div>
+
+            <!-- SQUARE 07 -->
             <div class="info-square" data-index="07" id="sq-analogy" onclick="selectInfoSquare('analogy')">
               <span class="sq-icon">🧸</span>
               <span class="sq-title">Kid-Friendly Analogy</span>
               <span class="sq-badge">Simple Story</span>
             </div>
 
+            <!-- SQUARE 08 -->
             <div class="info-square" data-index="08" id="sq-jargon" onclick="selectInfoSquare('jargon')">
               <span class="sq-icon">📖</span>
               <span class="sq-title">Jargon &amp; Audit</span>
@@ -1904,26 +2155,35 @@
 
           </div>
 
-          <!-- RIGHT STAGE: SPACIOUS CONTENT PANELS -->
           <div class="info-stage">
 
-            <!-- PANEL 1: WHAT IT MEANS + PROFESSIONAL RECOMMENDATION -->
+            <!-- PANEL 01: WHAT IT MEANS + INTEGRATED LAB RANGES (WHEN APPLICABLE) -->
             <div class="stage-panel active-panel" id="panel-meaning">
               <div class="stage-panel-header">
                 <h3 class="stage-panel-title" id="explain-meaning-title">🩺 What Your Input / Situation Means</h3>
-                <button type="button" class="btn-audio-speak" onclick="speakPanelText('explain-meaning-output')">
-                  🔊 Read Aloud
-                </button>
               </div>
 
               <div class="medical-disclaimer-note">
-                ⚕️ <strong>Important Medical Note:</strong> Seeking a qualified health professional is strongly recommended. TranslaNurse is for patient education and consultation guidance only, and is <strong>not</strong> intended to replace doctors or licensed health professionals.
+                ⚕️ <strong>Important Medical Note:</strong> Seeking a qualified health professional is strongly recommended. TranslaNurse is for patient education and health literacy guidance only, and is <strong>not</strong> intended to replace doctors or licensed health professionals.
               </div>
 
               <div class="spacious-block-list" id="explain-meaning-output">
                 <div class="spacious-item-card">
                   <em>Select a 1-click scenario chip on the left, type your symptom/question, or upload a lab report to generate a plain-language clinical digest...</em>
                 </div>
+              </div>
+
+              <!-- Integrated Lab Reference Range & Flags Section (Visible when Lab Result is scanned/entered) -->
+              <div id="integrated-lab-ranges-wrapper" class="integrated-lab-ranges-box" style="display:none;">
+                <h4 style="font-family:var(--font-serif); font-size:1.15rem; color:var(--primary); margin:0 0 12px 0;">
+                  📏 Normal Reference Range vs. Your Lab Result
+                </h4>
+                <div class="flag-filter-bar">
+                  <button type="button" class="flag-filter-btn active" id="filter-all" onclick="filterLabFlags('all')">All Lab Items</button>
+                  <button type="button" class="flag-filter-btn" id="filter-flagged" onclick="filterLabFlags('flagged')">🚩 Out of Range Only (High / Low)</button>
+                  <button type="button" class="flag-filter-btn" id="filter-normal" onclick="filterLabFlags('normal')">✅ Within Normal Range</button>
+                </div>
+                <div class="lab-flag-grid" id="explain-range-output"></div>
               </div>
 
               <div class="spacious-item-card doctor-border">
@@ -1936,7 +2196,7 @@
               </div>
             </div>
 
-            <!-- PANEL 2: WHY IS THIS SAFE / UNSAFE -->
+            <!-- PANEL 02: WHY IS THIS SAFE / UNSAFE -->
             <div class="stage-panel" id="panel-safety">
               <div class="stage-panel-header">
                 <h3 class="stage-panel-title">🔍 Why Is This Classified as Safe, Caution, or ALERT?</h3>
@@ -1948,26 +2208,7 @@
               </div>
             </div>
 
-            <!-- PANEL 3: LAB REFERENCE RANGES & FLAGS -->
-            <div class="stage-panel" id="panel-ranges">
-              <div class="stage-panel-header">
-                <h3 class="stage-panel-title">📏 Normal Reference Range vs. Your Lab Result</h3>
-              </div>
-
-              <div class="flag-filter-bar">
-                <button type="button" class="flag-filter-btn active" id="filter-all" onclick="filterLabFlags('all')">All Lab Items</button>
-                <button type="button" class="flag-filter-btn" id="filter-flagged" onclick="filterLabFlags('flagged')">🚩 Out of Range Only (High / Low)</button>
-                <button type="button" class="flag-filter-btn" id="filter-normal" onclick="filterLabFlags('normal')">✅ Within Normal Range</button>
-              </div>
-
-              <div class="lab-flag-grid" id="explain-range-output">
-                <div class="spacious-item-card">
-                  <em>Upload or enter lab values to see individual Normal vs. Out-of-Range flag cards here.</em>
-                </div>
-              </div>
-            </div>
-
-            <!-- PANEL 4: WHAT YOU MIGHT FEEL & CLINICAL LIMITS (RED FLAGS) -->
+            <!-- PANEL 03: WHAT YOU MIGHT FEEL & CLINICAL LIMITS (RED FLAGS) -->
             <div class="stage-panel" id="panel-symptoms">
               <div class="stage-panel-header">
                 <h3 class="stage-panel-title" id="explain-symptoms-title">⚡ What You Might Feel &amp; Safe Clinical Limits</h3>
@@ -1979,10 +2220,13 @@
               </div>
             </div>
 
-            <!-- PANEL 5: WHAT CAN I DO (SAFE NON-MEDICATION STEPS + NCR HOTLINES) -->
+            <!-- PANEL 04: WHAT CAN I DO (SAFE NON-MEDICATION STEPS + NCR HOTLINES) -->
             <div class="stage-panel" id="panel-actions">
               <div class="stage-panel-header">
                 <h3 class="stage-panel-title">🛡️ What Can I Do Right Now? (Safe Non-Medication Steps)</h3>
+                <button type="button" class="btn-nav btn-hotline-top" style="font-size:0.76rem; padding:5px 12px;" onclick="toggleHotlineModal(true)">
+                  🚨 View All NCR Hotlines
+                </button>
               </div>
 
               <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted); margin-bottom:14px; font-weight:700;">
@@ -1995,7 +2239,7 @@
                 </div>
               </div>
 
-              <!-- NCR Hotline Box (Automatically shown when Caution or ALERT) -->
+              <!-- Inline NCR Hotline Box -->
               <div id="ncr-hotline-box" class="ncr-hotline-alert">
                 <h4>🚨 Please Call a Health Professional or NCR Emergency Hotline</h4>
                 <p>Because your consultation or result is marked under <strong>Caution</strong> or <strong>ALERT</strong>, please reach out to a doctor, family member, or an NCR-based medical hotline below right away:</p>
@@ -2003,14 +2247,14 @@
                 <label class="field-label" for="ncr-hotline-select" style="margin-top:4px; color:var(--fail);">Select an NCR (Metro Manila) Hotline:</label>
                 <select id="ncr-hotline-select" onchange="updateSelectedHotline()">
                   <option value="911|National Emergency Hotline (NCR / Nationwide)|https://ncr.dilg.gov.ph/dilg-leads-nationwide-campaign-for-unified-911-emergency-hotline/">National Emergency Hotline (NCR) — Dial 911</option>
-                  <option value="1555|DOH One Hospital Command / Telemedicine Hotline|https://caro.doh.gov.ph/doh-hospital-hotlines/">DOH Medical &amp; Hospital Referral Hotline — Dial 1555 or (02) 8865-0500</option>
+                  <option value="1555|DOH One Hospital Command / Telemedicine Hotline|https://doh.gov.ph">DOH Medical &amp; Hospital Referral Hotline — Dial 1555 or (02) 8865-0500</option>
                   <option value="143|Philippine Red Cross EMS (Mandaluyong / NCR)|https://redcross.org.ph/contact-us/">Philippine Red Cross Emergency EMS — Dial 143 or (02) 8790-2300</option>
                   <option value="+63285548400|UP-Philippine General Hospital (Ermita, Manila)|https://www.pgh.gov.ph/contact-us/">UP-Philippine General Hospital (Manila) — (02) 8554-8400</option>
                   <option value="+63288888999|Makati Medical Center (Makati City)|https://www.makatimed.net.ph/contact-form/">Makati Medical Center (Makati) — (02) 8888-8999</option>
                   <option value="+63287230101|St. Luke's Medical Center (Quezon City)|https://www.stlukes.com.ph/contact-us">St. Luke's Medical Center (Quezon City) — (02) 8723-0101</option>
                   <option value="+63287897700|St. Luke's Medical Center (Global City, Taguig)|https://www.stlukes.com.ph/contact-us">St. Luke's Medical Center (BGC, Taguig) — (02) 8789-7700</option>
                   <option value="1553|National Center for Mental Health (Mandaluyong, NCR)|https://ncmh.gov.ph/contact-us/">NCMH 24/7 Crisis Hotline (Mandaluyong) — Dial 1553 or 0917-899-8727</option>
-                  <option value="136|MMDA Metro Manila Emergency Rescue|https://www.instagram.com/reel/DbyF8YZAasT/">MMDA Metro Manila Rescue — Dial 136</option>
+                  <option value="136|MMDA Metro Manila Emergency Rescue|https://mmda.gov.ph">MMDA Metro Manila Rescue — Dial 136</option>
                 </select>
 
                 <div class="hotline-card-selected" id="hotline-detail-card">
@@ -2018,40 +2262,71 @@
                     <strong id="hotline-name-display" style="display:block; font-size:0.96rem;">National Emergency Hotline (NCR / Nationwide)</strong>
                     <span id="hotline-num-display" style="font-size:0.86rem; color:var(--text-muted);">Number: 911 • <a id="hotline-link-display" href="https://ncr.dilg.gov.ph/dilg-leads-nationwide-campaign-for-unified-911-emergency-hotline/" target="_blank" rel="noopener" style="color:var(--primary);">Official Info</a></span>
                   </div>
-                  <a id="hotline-call-btn" href="tel:911" class="btn-call-now">📞 Call 911 Now</a>
+                  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <a id="hotline-call-btn" href="tel:911" class="btn-call-now">📞 Call 911 Now</a>
+                    <button type="button" class="btn-call-now" style="background:var(--text);" onclick="toggleHotlineModal(true)">📋 Full NCR Directory</button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- PANEL 6: 10 ASIAN LANGUAGES TRANSLATION -->
-            <div class="stage-panel" id="panel-translation">
+            <!-- PANEL 05: PHILIPPINE LANGUAGES (10 REGIONAL LANGUAGES) -->
+            <div class="stage-panel" id="panel-ph-langs">
               <div class="stage-panel-header">
-                <h3 class="stage-panel-title">🌏 Asian Language Translation (Initial: Tagalog)</h3>
-                <button type="button" class="btn-audio-speak" onclick="speakPanelText('asian-translation-output')">
-                  🔊 Read Aloud
-                </button>
+                <h3 class="stage-panel-title">🇵🇭 Square 05: Philippine Languages (10 Regional Translations)</h3>
               </div>
 
-              <!-- Interactive Quick-Select Language Pills -->
-              <div class="lang-pill-grid" id="lang-pill-bar">
-                <button type="button" class="lang-quick-pill active" onclick="quickPickLanguage('Tagalog', this)">🇵🇭 Tagalog</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Cebuano', this)">🇵🇭 Cebuano</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Ilocano', this)">🇵🇭 Ilocano</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Japanese', this)">🇯🇵 日本語</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Korean', this)">🇰🇷 한국어</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Mandarin Chinese', this)">🇨🇳 中文</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Vietnamese', this)">🇻🇳 Tiếng Việt</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Thai', this)">🇹🇭 ไทย</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Bahasa Indonesia', this)">🇮🇩 Indonesia</button>
-                <button type="button" class="lang-quick-pill" onclick="quickPickLanguage('Hindi', this)">🇮🇳 हिन्दी</button>
+              <div class="lang-pill-grid" id="ph-lang-pill-bar">
+                <button type="button" class="lang-quick-pill active" onclick="quickPickPhLanguage('Tagalog', this)">🇵🇭 Tagalog</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Cebuano', this)">🇵🇭 Cebuano / Bisaya</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Ilocano', this)">🇵🇭 Ilocano</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Pangasinan', this)">🇵🇭 Pangasinan / Pangasinense</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Hiligaynon', this)">🇵🇭 Hiligaynon (Ilonggo)</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Chavacano', this)">🇵🇭 Chavacano</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Kapampangan', this)">🇵🇭 Kapampangan</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Waray', this)">🇵🇭 Waray</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Bicolano', this)">🇵🇭 Bicolano</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickPhLanguage('Maguindanaon', this)">🇵🇭 Maguindanaon</button>
               </div>
 
-              <label class="field-label" for="asian-lang-select" style="margin-top:0;">Or Select from Dropdown:</label>
-              <select id="asian-lang-select" onchange="switchAsianLanguage()">
-                <option value="Tagalog" selected>🇵🇭 Tagalog (Default Initial Translation)</option>
+              <label class="field-label" for="ph-lang-select" style="margin-top:0;">Select Philippine Language:</label>
+              <select id="ph-lang-select" onchange="switchPhLanguage()">
+                <option value="Tagalog" selected>🇵🇭 Tagalog (Default Philippine Translation)</option>
                 <option value="Cebuano">🇵🇭 Cebuano / Bisaya</option>
                 <option value="Ilocano">🇵🇭 Ilocano</option>
-                <option value="Japanese">🇯🇵 Japanese (日本語)</option>
+                <option value="Pangasinan">🇵🇭 Pangasinan / Pangasinense</option>
+                <option value="Hiligaynon">🇵🇭 Hiligaynon (Ilonggo)</option>
+                <option value="Chavacano">🇵🇭 Chavacano (Zamboanga / Cavite Chabacano)</option>
+                <option value="Kapampangan">🇵🇭 Kapampangan</option>
+                <option value="Waray">🇵🇭 Waray (Waray-Waray)</option>
+                <option value="Bicolano">🇵🇭 Bicolano (Central Bikol)</option>
+                <option value="Maguindanaon">🇵🇭 Maguindanaon</option>
+              </select>
+
+              <div id="ph-translation-output" class="translation-box">
+                <em>Maikling paliwanag sa Tagalog at iba pang wikang Pilipino para madaling maintindihan (Select any of the 10 Philippine languages above)...</em>
+              </div>
+            </div>
+
+            <!-- PANEL 06: OTHER ASIAN COUNTRIES (7 LANGUAGES) -->
+            <div class="stage-panel" id="panel-asian-langs">
+              <div class="stage-panel-header">
+                <h3 class="stage-panel-title">🌏 Square 06: Other Asian Countries (7 Languages)</h3>
+              </div>
+
+              <div class="lang-pill-grid" id="asian-lang-pill-bar">
+                <button type="button" class="lang-quick-pill active" onclick="quickPickAsianLanguage('Japanese', this)">🇯🇵 日本語 (Japanese)</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickAsianLanguage('Korean', this)">🇰🇷 한국어 (Korean)</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickAsianLanguage('Mandarin Chinese', this)">🇨🇳 中文 (Mandarin)</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickAsianLanguage('Vietnamese', this)">🇻🇳 Tiếng Việt</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickAsianLanguage('Thai', this)">🇹🇭 ภาษาไทย (Thai)</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickAsianLanguage('Bahasa Indonesia', this)">🇮🇩 Bahasa Indonesia</button>
+                <button type="button" class="lang-quick-pill" onclick="quickPickAsianLanguage('Hindi', this)">🇮🇳 हिन्दी (Hindi)</button>
+              </div>
+
+              <label class="field-label" for="asian-lang-select" style="margin-top:0;">Select Asian Country Language:</label>
+              <select id="asian-lang-select" onchange="switchAsianLanguage()">
+                <option value="Japanese" selected>🇯🇵 Japanese (日本語)</option>
                 <option value="Korean">🇰🇷 Korean (한국어)</option>
                 <option value="Mandarin Chinese">🇨🇳 Mandarin Chinese (简体中文)</option>
                 <option value="Vietnamese">🇻🇳 Vietnamese (Tiếng Việt)</option>
@@ -2059,12 +2334,13 @@
                 <option value="Bahasa Indonesia">🇮🇩 Bahasa Indonesia</option>
                 <option value="Hindi">🇮🇳 Hindi (हिन्दी)</option>
               </select>
+
               <div id="asian-translation-output" class="translation-box">
-                <em>Maikling paliwanag sa Tagalog para madaling maintindihan (Initial translation in Tagalog will appear here)...</em>
+                <em>Translations for Other Asian Countries (Japanese, Korean, Mandarin Chinese, Vietnamese, Thai, Bahasa Indonesia, and Hindi) will appear here...</em>
               </div>
             </div>
 
-            <!-- PANEL 7: KID-FRIENDLY ANALOGY -->
+            <!-- PANEL 07: KID-FRIENDLY ANALOGY -->
             <div class="stage-panel" id="panel-analogy">
               <div class="stage-panel-header">
                 <h3 class="stage-panel-title">🧸 Kid-Friendly Story Analogy</h3>
@@ -2074,7 +2350,7 @@
               </div>
             </div>
 
-            <!-- PANEL 8: DETAILED JARGON BREAKDOWN & QUALITY AUDIT -->
+            <!-- PANEL 08: DETAILED JARGON BREAKDOWN & QUALITY AUDIT -->
             <div class="stage-panel" id="panel-jargon">
               <div class="stage-panel-header">
                 <h3 class="stage-panel-title">📖 Medical Jargon Dictionary &amp; Quality Audit</h3>
@@ -2101,10 +2377,87 @@
           </div>
         </div>
 
+        <!-- PRINT & DOWNLOAD ACTION BUTTONS -->
         <div class="btn-action-group">
           <button class="btn-secondary" onclick="window.print()">🖨️ Print Editorial Patient Guide</button>
           <button class="btn-secondary" onclick="exportToText()">📄 Download Summary (.TXT)</button>
         </div>
+
+        <div class="references-section" id="clinical-references-section">
+          <div class="references-header-row">
+            <div>
+              <h3 class="references-title">📚 Verified Clinical References &amp; Evidence Sources</h3>
+              <p style="margin:4px 0 0 0; font-size:0.86rem; color:var(--text-muted);">
+                All health literacy explanations and reference ranges are grounded strictly in peer-reviewed, governmental, and academic medical repositories.
+              </p>
+            </div>
+            <span class="zero-unreliable-badge">
+              🛡️ Verified: Zero Wikipedia, Scribd, or Unreliable Sources
+            </span>
+          </div>
+
+          <!-- Dynamic Consultation-Specific Citation Box -->
+          <div class="active-topic-citations" id="dynamic-topic-references">
+            <strong>📌 Primary Clinical Reference Standards for Current Workspace:</strong>
+            <div id="dynamic-references-list" style="margin-top:6px; line-height:1.65;">
+              • <strong>World Health Organization (WHO) &amp; DOH Philippines:</strong> Clinical Triage &amp; Primary Patient Education Guidelines.<br>
+              • <strong>MedlinePlus (U.S. National Library of Medicine) &amp; Testing.com (ADLM):</strong> Standard Diagnostic Laboratory Reference Intervals.<br>
+              • <strong>Mayo Clinic &amp; MSD Manual (Consumer Edition):</strong> Non-Pharmacological First-Aid &amp; Red-Flag Warning Criteria.
+            </div>
+          </div>
+
+          <!-- 5 Required Valid & Reliable Medical Reference Pillars -->
+          <div class="reference-pillars-grid">
+            <div class="ref-pillar-card">
+              <h4>1. Global &amp; Government Health Authorities</h4>
+              <ul class="ref-pillar-list">
+                <li>🏛️ <a href="https://www.who.int/health-topics" target="_blank" rel="noopener">World Health Organization (WHO) — Global Health Fact Sheets</a></li>
+                <li>🇵🇭 <a href="https://doh.gov.ph" target="_blank" rel="noopener">Department of Health Philippines (DOH) — Clinical Practice Guidelines</a></li>
+                <li>🔬 <a href="https://www.cdc.gov/health-topics.html" target="_blank" rel="noopener">U.S. Centers for Disease Control and Prevention (CDC)</a></li>
+                <li>🧬 <a href="https://www.nih.gov/health-information" target="_blank" rel="noopener">National Institutes of Health (NIH) — Health Information</a></li>
+              </ul>
+            </div>
+
+            <div class="ref-pillar-card">
+              <h4>2. Elite Academic Medical Centers</h4>
+              <ul class="ref-pillar-list">
+                <li>🏥 <a href="https://www.mayoclinic.org/patient-care-and-health-information" target="_blank" rel="noopener">Mayo Clinic — Patient Care &amp; Health Information</a></li>
+                <li>🩺 <a href="https://my.clevelandclinic.org/health" target="_blank" rel="noopener">Cleveland Clinic — Peer-Reviewed Health Library</a></li>
+                <li>🎓 <a href="https://www.hopkinsmedicine.org/health" target="_blank" rel="noopener">Johns Hopkins Medicine — Conditions &amp; Diseases</a></li>
+                <li>📘 <a href="https://www.health.harvard.edu/topics" target="_blank" rel="noopener">Harvard Medical School — Harvard Health Publishing</a></li>
+              </ul>
+            </div>
+
+            <div class="ref-pillar-card">
+              <h4>3. Specialized Associations &amp; Manuals</h4>
+              <ul class="ref-pillar-list">
+                <li>📖 <a href="https://www.msdmanuals.com/home" target="_blank" rel="noopener">MSD Manual (Merck Manual) — Consumer &amp; Professional</a></li>
+                <li>❤️ <a href="https://www.heart.org/en/health-topics" target="_blank" rel="noopener">American Heart Association (AHA) — BP &amp; Cardiac Standards</a></li>
+                <li>🩸 <a href="https://diabetes.org/about-diabetes" target="_blank" rel="noopener">American Diabetes Association (ADA) — Glycemic Targets</a></li>
+                <li>🦴 <a href="https://orthoinfo.aaos.org/" target="_blank" rel="noopener">AAOS OrthoInfo — Bone Fracture &amp; Sprain First-Aid</a></li>
+              </ul>
+            </div>
+
+            <div class="ref-pillar-card">
+              <h4>4. Consumer Portals &amp; Lab Directories</h4>
+              <ul class="ref-pillar-list">
+                <li>🧪 <a href="https://medlineplus.gov/lab-tests/" target="_blank" rel="noopener">MedlinePlus (NLM) — Medical Encyclopedia &amp; Lab Tests</a></li>
+                <li>🔎 <a href="https://www.testing.com/tests/" target="_blank" rel="noopener">Testing.com (ADLM / formerly Lab Tests Online)</a></li>
+                <li>📋 <a href="https://dailymed.nlm.nih.gov/" target="_blank" rel="noopener">NLM DailyMed &amp; ClinicalReference Laboratory Standards</a></li>
+              </ul>
+            </div>
+
+            <div class="ref-pillar-card">
+              <h4>5. Point-of-Care &amp; Open Access Portals</h4>
+              <ul class="ref-pillar-list">
+                <li>📚 <a href="https://www.ncbi.nlm.nih.gov/books/NBK430685/" target="_blank" rel="noopener">StatPearls (NCBI Bookshelf / National Library of Medicine)</a></li>
+                <li>🌐 <a href="https://www.uptodate.com/contents/table-of-contents/patient-education" target="_blank" rel="noopener">UpToDate — Open-Access Patient Education (Beyond the Basics)</a></li>
+                <li>⚕️ <a href="https://bestpractice.bmj.com/info/patient-leaflets/" target="_blank" rel="noopener">BMJ Best Practice — Evidence-Based Patient Leaflets</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -2112,9 +2465,144 @@
 
 </div>
 
-<!-- =========================================================
-     TOP-RIGHT FOLLOW-UP & AUDIT HISTORY DRAWER
-     ========================================================= -->
+<div class="modal-center-backdrop" id="ncr-hotlines-modal" onclick="if(event.target === this) toggleHotlineModal(false)">
+  <div class="ncr-directory-modal">
+    <div class="drawer-header">
+      <div>
+        <span style="font-family:var(--font-mono); font-size:0.74rem; color:var(--fail); font-weight:700; text-transform:uppercase;">24/7 METRO MANILA (NCR) EMERGENCY &amp; MEDICAL TRIAGE</span>
+        <h3 style="margin-top:4px;">🚨 All NCR Emergency, Ambulance &amp; Hospital Hotlines</h3>
+      </div>
+      <button class="btn-small-action btn-small-danger" onclick="toggleHotlineModal(false)" style="padding:8px 14px; font-size:0.86rem;">✖ Close Directory</button>
+    </div>
+
+    <p style="margin:12px 0 6px 0; font-size:0.93rem; color:var(--text-muted);">
+      Press any hotline below to dial directly on mobile or view official agency contact pages across the National Capital Region (Metro Manila):
+    </p>
+
+    <div class="ncr-grid-cards">
+      <div class="ncr-item-card">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--fail); font-weight:700;">NATIONWIDE / NCR COMMAND</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">National Emergency Hotline 911</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Unified emergency police, fire, and medical rescue dispatch across Metro Manila.</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:911" class="btn-call-now">📞 Dial 911</a>
+          <a href="https://ncr.dilg.gov.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">DILG NCR →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--fail); font-weight:700;">DEPARTMENT OF HEALTH (DOH)</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">DOH Hotline 1555 / One Hospital Command</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Dial <strong>1555</strong> or <strong>(02) 8865-0500</strong> for DOH telemedicine &amp; hospital bed referral.</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:1555" class="btn-call-now">📞 Dial 1555</a>
+          <a href="https://doh.gov.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">DOH Portal →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--fail); font-weight:700;">24/7 AMBULANCE &amp; FIRST AID</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">Philippine Red Cross EMS (143)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Dial <strong>143</strong> or <strong>(02) 8790-2300</strong> (Mandaluyong / NCR Chapters) for ambulance dispatch.</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:143" class="btn-call-now">📞 Dial 143</a>
+          <a href="https://redcross.org.ph/contact-us/" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">Red Cross →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--fail); font-weight:700;">ROAD &amp; METRO RESCUE</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">MMDA Metro Manila Rescue (136)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Dial <strong>136</strong> or <strong>(02) 8882-4151</strong> for road emergencies and NCR rescue assistance.</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:136" class="btn-call-now">📞 Dial 136</a>
+          <a href="https://mmda.gov.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">MMDA Info →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card hospital-teal">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:700;">MANILA (ERMITA) • NATIONAL UNIVERSITY HOSPITAL</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">UP-Philippine General Hospital (UP-PGH)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Trunkline: <strong>(02) 8554-8400</strong> • Poison Control: (02) 8524-1078 (Taft Ave, Manila).</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:+63285548400" class="btn-call-now" style="background:var(--primary);">📞 (02) 8554-8400</a>
+          <a href="https://www.pgh.gov.ph/contact-us/" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">UP-PGH →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card hospital-teal">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:700;">QUEZON CITY • DOH TERTIARY TRAUMA CENTER</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">East Avenue Medical Center (EAMC)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Emergency &amp; Trunkline: <strong>(02) 8928-0611</strong> (East Ave, Diliman, Quezon City).</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:+63289280611" class="btn-call-now" style="background:var(--primary);">📞 (02) 8928-0611</a>
+          <a href="https://eamc.doh.gov.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">EAMC DOH →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card hospital-teal">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:700;">MAKATI CITY • TERTIARY HOSPITAL</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">Makati Medical Center (MakatiMed)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">24/7 Emergency &amp; Trunkline: <strong>(02) 8888-8999</strong> (Amorsolo St., Legazpi Village, Makati).</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:+63288888999" class="btn-call-now" style="background:var(--primary);">📞 (02) 8888-8999</a>
+          <a href="https://www.makatimed.net.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">MakatiMed →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card hospital-teal">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:700;">QUEZON CITY &amp; BGC TAGUIG</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">St. Luke's Medical Center (QC &amp; BGC)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">QC: <strong>(02) 8723-0101</strong> • Global City (BGC Taguig): <strong>(02) 8789-7700</strong>.</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+          <a href="tel:+63287230101" class="btn-call-now" style="background:var(--primary);">📞 QC: 8723-0101</a>
+          <a href="tel:+63287897700" class="btn-call-now" style="background:var(--primary-dark);">📞 BGC: 8789-7700</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card hospital-teal">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:700;">PASIG CITY • DOH TERTIARY HOSPITAL</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">Rizal Medical Center (Pasig)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Trunkline &amp; ER: <strong>(02) 8865-8400</strong> (Pasig Blvd, Pasig City, Metro Manila).</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:+63288658400" class="btn-call-now" style="background:var(--primary);">📞 (02) 8865-8400</a>
+          <a href="https://rmc.doh.gov.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">RMC DOH →</a>
+        </div>
+      </div>
+
+      <div class="ncr-item-card">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--fail); font-weight:700;">MANDALUYONG • 24/7 MENTAL HEALTH CRISIS</span>
+          <h4 style="margin:4px 0; font-family:var(--font-serif); font-size:1.08rem;">National Center for Mental Health (1553)</h4>
+          <p style="margin:0; font-size:0.84rem; color:var(--text-muted);">Luzon/NCR Toll-Free: <strong>1553</strong> • Mobile: <strong>0917-899-8727</strong> / (02) 7989-8727.</p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <a href="tel:1553" class="btn-call-now">📞 Dial 1553</a>
+          <a href="https://ncmh.gov.ph" target="_blank" rel="noopener" style="font-size:0.8rem; font-weight:700; color:var(--primary);">NCMH →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal-backdrop" id="followup-modal" onclick="if(event.target === this) toggleFollowUpDrawer(false)">
   <div class="followup-drawer">
     <div class="drawer-header">
@@ -2160,10 +2648,111 @@
   </div>
 </div>
 
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top-grid">
+
+      <!-- Column 1: Brand & Health Literacy Trust Elements -->
+      <div class="footer-col">
+        <h4>🩺 TranslaNurse — Health Literacy Initiative</h4>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin:0 0 10px 0; line-height:1.65;">
+          Built strictly for <strong>public health literacy, patient empowerment, and nursing education</strong>—not for commercial business. We bridge the gap between complex medical records and everyday understanding across Philippine and Asian languages.
+        </p>
+        <div>
+          <span class="footer-trust-badge">🛡️ Non-Commercial Health Literacy</span>
+          <span class="footer-trust-badge">🚫 Zero-Medication Guardrail</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Navigation & Clinical FAQs Branch Links -->
+      <div class="footer-col">
+        <h4>🧭 Quick Navigation &amp; FAQs</h4>
+        <ul class="footer-links-list">
+          <li>
+            <button type="button" class="footer-branch-link" onclick="showHomePage()">
+              🏠 Cover Page &amp; Mission
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="openClinicalInput()">
+              🩺 Clinical Consult &amp; Lab Workspace
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('Clinical FAQs & Health Literacy Guide')">
+              ❓ Clinical FAQs &amp; How It Works <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('5-Pillar Medical Sourcing & Editorial Standards')">
+              📚 5-Pillar Sourcing Methodology <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('Philippine & Asian Language Health Glossary')">
+              🇵🇭 Regional Language Health Glossary <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal, Compliance & Ethical Disclosures (Health Literacy) -->
+      <div class="footer-col">
+        <h4>⚖️ Legal &amp; Health Literacy Compliance</h4>
+        <ul class="footer-links-list">
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('Privacy Policy & Local Storage Disclosure')">
+              🔒 Privacy Policy &amp; Local Storage Policy <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('Cookie & Zero-Tracking Policy')">
+              🍪 Cookie &amp; Zero-Commercial Tracking <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('Terms of Use & Clinical Educational Disclaimer')">
+              📜 Terms of Use &amp; Medical Disclaimer <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="footer-branch-link" onclick="triggerBranchPlaceholder('Patient Rights & Non-Replacement of Physicians')">
+              👩‍⚕️ Scope of Educational Triage <span class="branch-pill-tag">Branch App</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Details & NCR Emergency Access -->
+      <div class="footer-col">
+        <h4>📍 Contact &amp; NCR Triage Desk</h4>
+        <p style="font-size:0.86rem; color:var(--text-muted); margin:0 0 10px 0; line-height:1.6;">
+          <strong>Location:</strong> Metro Manila (National Capital Region), Philippines<br>
+          <strong>Initiative:</strong> Nursing Health Literacy &amp; Patient Communication Advocate Desk<br>
+          <strong>Emergency Triage:</strong> Dial <strong>911</strong> (National), <strong>1555</strong> (DOH), or <strong>143</strong> (Red Cross)
+        </p>
+        <button type="button" class="btn-nav btn-hotline-top" style="font-size:0.8rem; padding:7px 14px;" onclick="toggleHotlineModal(true)">
+          🚨 Open Full NCR Hotline Directory
+        </button>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div>
+        <strong>© 2026 TranslaNurse Health Literacy Initiative.</strong> All Rights Reserved. Created strictly for non-commercial health literacy, patient education, and academic clinical communication—never a substitute for a licensed physician.
+      </div>
+      <div style="font-family:var(--font-mono); font-size:0.75rem;">
+        VERIFIED SOURCES ONLY • NO WIKIPEDIA / NO SCRIBD • ZERO-MEDICATION SAFETY
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Custom Non-Blocking Toast Notification -->
+<div id="custom-toast" class="toast-notification"></div>
+
 <script>
-  /* =========================================
-     CONFIGURATION (API KEY + GEMINI 3.5 FLASH LITE), LOGO & NAVIGATION
-     ========================================= */
   const keyPart1 = "AQ.Ab8RN6KoYr8-Fh0-aDCXXKC";
   const keyPart2 = "1gJMTps8c7J1OMft9NeTTdIkzVg";
   const GEMINI_API_KEY = (typeof process !== "undefined" && process.env && process.env.GEMINI_API_KEY)
@@ -2171,10 +2760,9 @@
     : (keyPart1 + keyPart2);
 
   const GEMINI_MODELS = [
-    "gemini-3.5-flash-lite",
+    "gemini-3-flash-preview",
     "gemini-2.5-flash-lite",
-    "gemini-2.5-flash",
-    "gemini-2.0-flash-lite"
+    "gemini-2.5-flash"
   ];
 
   let currentAttachment = null;
@@ -2183,14 +2771,27 @@
   let lastRawInput = "";
   let showAllMode = false;
 
-  const EMBEDDED_LOGO_DATA_URI = "data:image/jpeg;base64,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";
+  function showToast(message) {
+    const toast = document.getElementById('custom-toast');
+    if (!toast) return;
+    toast.innerHTML = message;
+    toast.style.display = 'block';
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => {
+      toast.style.display = 'none';
+    }, 4500);
+  }
+
+  function triggerBranchPlaceholder(branchName) {
+    showToast(`🌿 <strong>${escapeHtml(branchName)}</strong><br>Ready for Branch Web App connection! Tell Gemini when you're ready to generate the code for this branch page.`);
+  }
+
+  function toggleHotlineModal(open) {
+    const modal = document.getElementById('ncr-hotlines-modal');
+    if (modal) modal.style.display = open ? 'flex' : 'none';
+  }
 
   function replaceWithSvgLogo(imgElement) {
-    if (imgElement && !imgElement.dataset.triedEmbedded) {
-      imgElement.dataset.triedEmbedded = "true";
-      imgElement.src = EMBEDDED_LOGO_DATA_URI;
-      return;
-    }
     const template = document.getElementById('translanurse-logo-svg');
     if (template && imgElement && imgElement.parentNode) {
       const clone = template.content.cloneNode(true);
@@ -2214,9 +2815,6 @@
     }, 150);
   }
 
-  /* =========================================
-     INTERACTIVE SCENARIO PRESETS & AUDIO SPEECH
-     ========================================= */
   function loadSampleScenario(type) {
     const inputEl = document.getElementById('clinical-input');
     const scenarios = {
@@ -2231,26 +2829,23 @@
     }
   }
 
-  function speakPanelText(elementId) {
-    if (!('speechSynthesis' in window)) {
-      alert("Text-to-speech is not supported in this browser.");
-      return;
+  function quickPickPhLanguage(langName, btnEl) {
+    const select = document.getElementById('ph-lang-select');
+    if (select) {
+      select.value = langName;
+      switchPhLanguage();
     }
-    window.speechSynthesis.cancel();
-    const target = document.getElementById(elementId);
-    if (!target) return;
-    const utterance = new SpeechSynthesisUtterance(target.innerText);
-    utterance.rate = 0.96;
-    window.speechSynthesis.speak(utterance);
+    document.querySelectorAll('#ph-lang-pill-bar .lang-quick-pill').forEach(b => b.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
   }
 
-  function quickPickLanguage(langName, btnEl) {
+  function quickPickAsianLanguage(langName, btnEl) {
     const select = document.getElementById('asian-lang-select');
     if (select) {
       select.value = langName;
       switchAsianLanguage();
     }
-    document.querySelectorAll('.lang-quick-pill').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#asian-lang-pill-bar .lang-quick-pill').forEach(b => b.classList.remove('active'));
     if (btnEl) btnEl.classList.add('active');
   }
 
@@ -2297,13 +2892,10 @@
     });
   });
 
-  /* =========================================
-     INTERACTIVE SIDEBAR SQUARES CONTROLLER
-     ========================================= */
   function selectInfoSquare(sectionKey) {
     showAllMode = false;
     const toggleBtn = document.getElementById('toggle-all-btn');
-    if (toggleBtn) toggleBtn.textContent = "⊞ Open All Squares";
+    if (toggleBtn) toggleBtn.textContent = "⊞ Open All 8 Squares";
 
     const allSquares = document.querySelectorAll('.info-square');
     allSquares.forEach(sq => sq.classList.remove('active'));
@@ -2322,26 +2914,16 @@
     showAllMode = !showAllMode;
     const toggleBtn = document.getElementById('toggle-all-btn');
     const allPanels = document.querySelectorAll('.stage-panel');
-    const hasLab = document.getElementById('sq-ranges').style.display !== 'none';
 
     if (showAllMode) {
       toggleBtn.textContent = "🗂️ Single Square View";
-      allPanels.forEach(p => {
-        if (p.id === 'panel-ranges' && !hasLab) {
-          p.classList.remove('active-panel');
-        } else {
-          p.classList.add('active-panel');
-        }
-      });
+      allPanels.forEach(p => p.classList.add('active-panel'));
     } else {
-      toggleBtn.textContent = "⊞ Open All Squares";
+      toggleBtn.textContent = "⊞ Open All 8 Squares";
       selectInfoSquare('meaning');
     }
   }
 
-  /* =========================================
-     UNIVERSAL FILE UPLOAD, DRAG-DROP & IMAGE NORMALIZER
-     ========================================= */
   function handleDragOver(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -2381,7 +2963,6 @@
       video.srcObject = cameraStream;
       modal.style.display = 'block';
     } catch (err) {
-      console.warn("Live webcam unavailable, showing camera file picker:", err);
       modal.style.display = 'block';
     }
   }
@@ -2528,9 +3109,6 @@
     renderAttachmentPreview();
   }
 
-  /* =========================================
-     NCR HOTLINE DIRECTORY HANDLER
-     ========================================= */
   function updateSelectedHotline() {
     const select = document.getElementById('ncr-hotline-select');
     if (!select) return;
@@ -2543,12 +3121,9 @@
     document.getElementById('hotline-num-display').innerHTML = `Number: <strong>${phone}</strong> • <a href="${url}" target="_blank" rel="noopener" style="color:var(--primary);">Official Info</a>`;
     const callBtn = document.getElementById('hotline-call-btn');
     callBtn.href = `tel:${phone}`;
-    callBtn.textContent = `📞 Call ${phone}`;
+    callBtn.textContent = `📞 Call ${phone} Now`;
   }
 
-  /* =========================================
-     MEDICATION SAFETY FILTER (HARD GUARDRAIL)
-     ========================================= */
   function stripMedicationSuggestions(actionArray) {
     if (!Array.isArray(actionArray)) return [];
     const forbiddenMedRegex = /\b(take|prescribe|buy|dose|mg|tablet|capsule|pill|antibiotic|ibuprofen|paracetamol|acetaminophen|aspirin|metformin|amlodipine|losartan|atorvastatin|omeprazole|insulin|medication|drug|medicine)\b/i;
@@ -2560,9 +3135,48 @@
     });
   }
 
-  /* =========================================
-     CORE TRANSLATION, CONSULT & LAB ENGINE
-     ========================================= */
+  function build17Translations(displayInput, isLab, baseTranslations = {}) {
+    const defaults = isLab ? {
+      "Tagalog": `🇵🇭 Tagalog (Resulta ng Lab — "${displayInput}"):\n• Ibig Sabihin: Sinusukat ng lab test na ito ang kalagayan ng iyong dugo at organo.\n• Normal Range at Sintomas: Ihambing ang resulta sa normal reference range. Kung mataas o mababa, maaaring makaramdam ng pagkapagod, pagkahilo, o pagkauhaw.\n• Ligtas na Hakbang: Magpakonsulta sa lisensyadong doktor at huwag uminom ng anumang gamot nang walang reseta.`,
+      "Cebuano": `🇵🇭 Cebuano / Bisaya (Resulta sa Lab — "${displayInput}"):\n• Pasabot: Nagpakita kini sa kahimtang sa imong dugo ug organo.\n• Sintomas ug Limitasyon: Kung gawas sa normal range, mahimong mobati og kakapoy o pagkalipong. Pagpakonsulta sa doktor ug ayaw pag-inom og tambal nga walay reseta.`,
+      "Ilocano": `🇵🇭 Ilocano (Resulta ti Lab — "${displayInput}"):\n• Kayat a Sawen: Ipakita daytoy a test ti kasasaad ti dara ken organom.\n• Aramiden: No ruwar ti normal range, mabalin a marikna ti panagbannog wenno panagulaw. Agpakonsulta iti doktor ken saan nga uminum iti agas no awan reseta.`,
+      "Pangasinan": `🇵🇭 Pangasinan / Pangasinense (Resulta na Lab — "${displayInput}"):\n• Kabaliksan: Ipapanengneng na sayan lab test so kipapasen na dala tan laman mo.\n• Gawaen: No ompaway ed normal range, nayarin makalikna na kaskas o pagelew. Onkerew na tulong ed doktor tan ag oninum na tambal ya anggapoy reseta.`,
+      "Hiligaynon": `🇵🇭 Hiligaynon / Ilonggo (Resulta sang Lab — "${displayInput}"):\n• Kahulugan: Ginapakita sini ang kahimtangan sang imo dugo kag mga organo.\n• Himuon: Kon lampas sa normal range, mahimo mabatyagan ang kakapoy ukon pagkalipong. Magpakonsulta sa doktor kag indi mag-inom sang bulong nga wala sing reseta.`,
+      "Chavacano": `🇵🇭 Chavacano (Resultado de Lab — "${displayInput}"):\n• Significado: Este examen de laboratorio ta medi el condicion del de uste sangre y cuerpo.\n• Que Puede Hace: Si fuera del normal range, consulta dayun con el doctor y no toma medicina sin receta.`,
+      "Kapampangan": `🇵🇭 Kapampangan (Resulta ning Lab — "${displayInput}"):\n• Kabaldugan: Ing lab test ayni papakit na ing kabilian ning daya at katawan mu.\n• Dapat Gawan: Nung lual ya king normal range, malyaring makaramdam pagal oilu. Mangutang king doktor at e mimnum panulu nung alang reseta.`,
+      "Waray": `🇵🇭 Waray-Waray (Resulta han Lab — "${displayInput}"):\n• Kahulogan: Nagpapakita ini han kahimtang han imo dugo ngan lawas.\n• Buhaton: Kun gawas ha normal range, mahimo umabat hin kakapoy o pagkalipong. Pakigkita ha doktor ngan ayaw pag-inom hin bulong nga waray reseta.`,
+      "Bicolano": `🇵🇭 Bicolano / Central Bikol (Resulta kan Lab — "${displayInput}"):\n• Kahulugan: Ipinapahiling kan lab test na ini an kamugtakan kan saimong dugo asin hawak.\n• Gibuhon: Kun luwas sa normal range, magpakonsulta sa doktor asin dai mag-inom nin bulong na mayo nin reseta.`,
+      "Maguindanaon": `🇵🇭 Maguindanaon (Resulta nu Lab — "${displayInput}"):\n• Mana Nin: Pedsukaten nu lab test nia su kapegkamal nu lugu enduanggawa nengka.\n• Nginto suanggula: Amayka liyo sa normal range, pakikilala ka sa doktor endu di ka peginum sa gamot a da reseta nin.`,
+      "Japanese": `🇯🇵 日本語での検査説明（「${displayInput}」）:\n• 検査の意味: 血液や臓器の働きを確認する検査です。\n• 注意点: 基準値から外れると疲労感やめまい等を感じることがあります。自己判断で薬を飲まず、必ず医師にご相談ください。`,
+      "Korean": `🇰🇷 한국어 검사 설명 ("${displayInput}"):\n• 검사의 의미: 혈액 및 장기의 기능을 확인하는 검사입니다.\n• 안내 사항: 정상 범위를 벗어나면 피로감이나 어지러움을 느낄 수 있으므로 임의로 약을 복용하지 마시고 의사와 상담하세요.`,
+      "Mandarin Chinese": `🇨🇳 中文化验说明（“${displayInput}”）:\n• 指标含义: 反映血液与器官功能。\n• 建议: 若超出正常参考范围，可能感到疲倦或头晕，请勿自行服药，务必咨询专业医生。`,
+      "Vietnamese": `🇻🇳 Giải thích xét nghiệm ("${displayInput}"):\n• Ý nghĩa: Đánh giá chức năng máu và cơ quan.\n• Lưu ý: Nếu ngoài mức bình thường có thể gây mệt mỏi, chóng mặt. Không tự ý dùng thuốc và hãy hỏi ý kiến bác sĩ.`,
+      "Thai": `🇹🇭 คำอธิบายผลแล็บ ("${displayInput}"):\n• ความหมาย: ตรวจการทำงานของเลือดและอวัยวะ\n• คำแนะนำ: หากอยู่นอกเกณฑ์ปกติอาจรู้สึกอ่อนเพลีย ห้ามซื้อยาทานเองและควรปรึกษาแพทย์`,
+      "Bahasa Indonesia": `🇮🇩 Penjelasan Hasil Lab ("${displayInput}"):\n• Arti Pemeriksaan: Menunjukkan fungsi darah dan organ tubuh.\n• Saran: Jika di luar batas normal, jangan minum obat tanpa resep dan segera konsultasikan dengan dokter.`,
+      "Hindi": `🇮🇳 लैब रिपोर्ट विवरण ("${displayInput}"):\n• जांच का अर्थ: यह रक्त और अंगों की कार्यप्रणाली बताती है।\n• सलाह: सामान्य सीमा से बाहर होने पर बिना डॉक्टर की सलाह के कोई दवा न लें और चिकित्सक से परामर्श करें।`
+    } : {
+      "Tagalog": `🇵🇭 Tagalog (Konsultasyon — "${displayInput}"):\n• Ibig Sabihin: Ang iyong nararamdaman ay senyales ng katawan na nangangailangan ng pag-iingat, pahinga, at pagsusuri.\n• Limitasyon: Hindi kayang palitan ng online gabay ang pisikal na eksaminasyon o X-ray ng doktor.\n• Ligtas na Hakbang: Ipahinga ang masakit na bahagi, uminom ng sapat na tubig, at huwag uminom ng gamot nang walang reseta.`,
+      "Cebuano": `🇵🇭 Cebuano / Bisaya (Konsultasyon — "${displayInput}"):\n• Pasabot: Ang imong gibati timailhan nga ang imong lawas nagkinahanglan og pag-amping ug pagsusi sa doktor.\n• Unsay Mahimo: Ipahulay ang apektadong bahin sa lawas ug ayaw pag-inom og tambal nga walay reseta sa doktor.`,
+      "Ilocano": `🇵🇭 Ilocano (Konsultasyon — "${displayInput}"):\n• Kayat a Sawen: Daytoy a mariknam ket pagilasinan a masapul ti panagannad ken panagkita ti doktor.\n• Aramiden: Iinana ti nasakit a paset ti bagi ken saan nga uminum iti agas no awan bilin ti doktor.`,
+      "Pangasinan": `🇵🇭 Pangasinan / Pangasinense (Konsultasyon — "${displayInput}"):\n• Kabaliksan: Say naliliknam et tanda ya kaukolan na laman mo so panag-inawa tan panag-asikaso na doktor.\n• Gawaen: Painawaen so masakit ya parte na laman tan ag oninum na tambal ya anggapoy reseta na doktor.`,
+      "Hiligaynon": `🇵🇭 Hiligaynon / Ilonggo (Konsultasyon — "${displayInput}"):\n• Kahulugan: Ang imo ginabatyag senyales nga kinahanglan sang imo lawas ang pahuway kag paglantaw sang doktor.\n• Himuon: Ipahuway ang masakit nga bahin kag indi mag-inom sang bulong nga wala sing reseta.`,
+      "Chavacano": `🇵🇭 Chavacano (Consulta — "${displayInput}"):\n• Significado: El cosa uste ta sinti ahora amo un señal que necesita descanso y examinacion del doctor.\n• Que Puede Hace: Descansa el parte doliente y no toma medicina sin receta del doctor.`,
+      "Kapampangan": `🇵🇭 Kapampangan (Konsultasyun — "${displayInput}"):\n• Kabaldugan: Ing panamdaman mu tanda ya king mangailangan yang paynawa at pamagsuri ning doktor ing katawan mu.\n• Dapat Gawan: Paynawa me ing masakit a parti at e ka mimnum panulu nung alang reseta.`,
+      "Waray": `🇵🇭 Waray-Waray (Konsultasyon — "${displayInput}"):\n• Kahulogan: An imo gin-aabat senyales nga kinahanglan hin pahuway ngan pagkita han doktor.\n• Buhaton: Ipahuway an maul-ol nga parte han lawas ngan ayaw pag-inom hin bulong nga waray reseta.`,
+      "Bicolano": `🇵🇭 Bicolano / Central Bikol (Konsultasyon — "${displayInput}"):\n• Kahulugan: An saimong namamatean senyales na kaipuhan nin pahingalo asin paghiling nin doktor.\n• Gibuhon: Ipahingalo an makulog na parte kan hawak asin dai mag-inom nin bulong na mayong reseta.`,
+      "Maguindanaon": `🇵🇭 Maguindanaon (Konsultasyon — "${displayInput}"):\n• Mana Nin: Su gedam nengka bantu tanda a kailangan nu anggawa nengka su kapegpawa endu kapagilay nu doktor.\n• Nginto suanggula: Pakapawa ka su masakit aumpongan endu di ka peginum sa gamot a da reseta.`,
+      "Japanese": `🇯🇵 日本語での相談ガイド（「${displayInput}」）:\n• 意味と注意点: 痛みや不調は身体を休ませるための大切なサインです。患部を無理に動かさず安静にし、自己判断で薬を服用せず医師の診察を受けてください。`,
+      "Korean": `🇰🇷 한국어 상담 안내 ("${displayInput}"):\n• 증상의 의미: 통증이나 불편감은 신체를 보호하고 휴식을 취하라는 신호입니다. 의사의 처방 없이 약물을 복용하지 마시고 병원을 방문하세요.`,
+      "Mandarin Chinese": `🇨🇳 中文健康咨询说明（“${displayInput}”）:\n• 症状说明: 疼痛或不适是身体发出的保护信号。请保持患处安静休息，不要自行服药，尽快咨询专业医生。`,
+      "Vietnamese": `🇻🇳 Hướng dẫn tư vấn ("${displayInput}"):\n• Ý nghĩa: Đau hoặc khó chịu là tín hiệu cơ thể cần được nghỉ ngơi và kiểm tra y tế. Không tự ý dùng thuốc.`,
+      "Thai": `🇹🇭 คำแนะนำการปรึกษาเบื้องต้น ("${displayInput}"):\n• คำแนะนำ: พักส่วนที่บาดเจ็บหรือปวด ห้ามซื้อยามารับประทานเอง และควรไปพบแพทย์เพื่อตรวจร่างกาย`,
+      "Bahasa Indonesia": `🇮🇩 Panduan Konsultasi ("${displayInput}"):\n• Saran: Istirahatkan area yang sakit, jangan minum obat tanpa resep, dan segera periksakan diri ke dokter.`,
+      "Hindi": `🇮🇳 हिंदी परामर्श मार्गदर्शन ("${displayInput}"):\n• सलाह: प्रभावित हिस्से को आराम दें, बिना डॉक्टर की सलाह के कोई दवा न लें, और जांच के लिए डॉक्टर से मिलें।`
+    };
+
+    return Object.assign({}, defaults, baseTranslations || {});
+  }
+
   async function runTranslationEngine() {
     const rawInput = document.getElementById('clinical-input').value.trim();
     const gradeLevel = document.getElementById('reading-grade').value;
@@ -2572,7 +3186,7 @@
     const btnText = document.getElementById('btn-text');
 
     if (!rawInput && !currentAttachment) {
-      alert("Please type your health question, symptom, or upload/scan a lab result.");
+      showToast("⚠️ Please type your health question, symptom, or upload/scan a lab result first.");
       return;
     }
 
@@ -2581,10 +3195,10 @@
     btn.disabled = true;
     loader.style.display = 'inline-block';
     btnText.textContent = currentAttachment ? "Scanning Uploaded Lab & Explaining..." : "Analyzing Consultation...";
-    document.getElementById('explain-meaning-output').innerHTML = `<div class="spacious-item-card">⏳ Scanning your input / uploaded lab report and preparing spacious editorial cards...</div>`;
+    document.getElementById('explain-meaning-output').innerHTML = `<div class="spacious-item-card">⏳ Scanning your input / uploaded lab report and preparing all 8 interactive Bento squares...</div>`;
 
     const systemPrompt = `
-You are TranslaNurse, an expert, compassionate clinical nurse educator and triage guide in the Philippines.
+You are TranslaNurse, an expert, compassionate clinical nurse educator and health literacy guide in the Philippines.
 Answer ANY question, symptom consultation, injury inquiry, clinical note, or attached lab result image/PDF the patient provides.
 
 Target Specifications:
@@ -2593,36 +3207,35 @@ Target Specifications:
 
 CRITICAL DISTINCTION — LAB RESULT vs. SYMPTOM/QUESTION CONSULT:
 1. Set "isLabResult": true ONLY if the patient entered lab test values, vital sign numbers, or uploaded a lab report file.
-   Set "isLabResult": false if this is a symptom, injury, or general health consultation (for example, "I think I broke my bone", "my head hurts", "I have a fever").
-2. If "isLabResult" is false (General Consultation / Symptom / Injury):
-   - Set "normalRangeComparison" to "" (empty string — do NOT output unrelated lab reference ranges when the user is only asking about a symptom or injury!).
-   - In "inputMeaning", directly answer the patient's question and explain what their symptom, injury, or condition means in the body. Separate distinct points with newline (\n).
-   - In "outOfRangeSymptoms", explain:
-     (a) What the patient might feel physically right now, AND
-     (b) The Clinical Limits & Red Flags (what cannot be known without an in-person doctor's exam/X-ray, and what warning signs mean they must go to the Emergency Room immediately).
-3. If "isLabResult" is true (Lab Result / Vital Signs):
+   Set "isLabResult": false if this is a symptom, injury, or general health consultation.
+2. If "isLabResult" is false:
+   - Set "normalRangeComparison" to "".
+   - In "inputMeaning", directly answer the patient's question and explain what their symptom, injury, or condition means in the body. Separate distinct points with newline (\\n).
+   - In "outOfRangeSymptoms", explain what the patient might feel physically right now AND the Clinical Limits & Red Flags.
+3. If "isLabResult" is true:
    - In "inputMeaning", explain what the lab test(s) or panels measure in plain language.
-   - In "normalRangeComparison", list EACH test on its own separate line (separated by \n) in this clear format:
+   - In "normalRangeComparison", list EACH test on its own separate line (separated by \\n):
      "Test Name: Result [Value] (Normal Range: [Range]) - [Within Normal Range | High | Low]"
    - In "outOfRangeSymptoms", explain what the patient might feel for the out-of-range items and the limits/red flags to watch for.
 
-STRICT SAFETY RULES:
+STRICT SAFETY & REFERENCE RULES:
 - "labSafetyStatus" MUST be EXACTLY ONE of:
   - "Safe - Great Job in being healthy"
   - "Caution - Consult to a health professional"
   - "ALERT - Seek a Health Professional"
 - In "actionPlan": Give 4-5 specific, practical, non-medication steps the patient can safely do right now. NEVER suggest or name any medication.
-- Provide accurate translations in all 10 Asian languages ("Tagalog", "Cebuano", "Ilocano", "Japanese", "Korean", "Mandarin Chinese", "Vietnamese", "Thai", "Bahasa Indonesia", "Hindi").
+- Provide accurate translations in ALL 10 Philippine languages ("Tagalog", "Cebuano", "Ilocano", "Pangasinan", "Hiligaynon", "Chavacano", "Kapampangan", "Waray", "Bicolano", "Maguindanaon") AND ALL 7 Other Asian languages ("Japanese", "Korean", "Mandarin Chinese", "Vietnamese", "Thai", "Bahasa Indonesia", "Hindi").
+- In "topicReferences": Provide 3-4 specific, valid citations ONLY from WHO, DOH Philippines, CDC, NIH, Mayo Clinic, Cleveland Clinic, Johns Hopkins, MSD Manuals, MedlinePlus, Testing.com, or StatPearls. NEVER cite Wikipedia or Scribd.
 
 Respond ONLY with a valid JSON object matching this exact schema:
 {
   "isLabResult": false,
   "labSafetyStatus": "Safe - Great Job in being healthy | Caution - Consult to a health professional | ALERT - Seek a Health Professional",
   "safetyReasoning": "Clear explanation of why this situation or lab result is Safe, Caution, or ALERT.",
-  "inputMeaning": "Direct answer to the patient's question and plain-language explanation of what their symptom, injury, or lab test means.",
-  "normalRangeComparison": "One test per line (Test Name: Result X (Normal Range: Y) - Within Normal Range / High / Low) ONLY if isLabResult is true; otherwise empty string \"\".",
+  "inputMeaning": "Direct answer to the patient's question and plain-language explanation.",
+  "normalRangeComparison": "One test per line ONLY if isLabResult is true; otherwise empty string.",
   "outOfRangeSymptoms": "What the patient might feel right now AND the clinical limits / red-flag warning signs.",
-  "seekProfessionalRecommendation": "Specific recommendation on seeking a doctor/ER and why in-person care is needed.",
+  "seekProfessionalRecommendation": "Specific recommendation on seeking a doctor/ER.",
   "actionPlan": [
     "Specific safe non-medication step 1",
     "Specific safe non-medication step 2"
@@ -2631,6 +3244,13 @@ Respond ONLY with a valid JSON object matching this exact schema:
     "Tagalog": "...",
     "Cebuano": "...",
     "Ilocano": "...",
+    "Pangasinan": "...",
+    "Hiligaynon": "...",
+    "Chavacano": "...",
+    "Kapampangan": "...",
+    "Waray": "...",
+    "Bicolano": "...",
+    "Maguindanaon": "...",
     "Japanese": "...",
     "Korean": "...",
     "Mandarin Chinese": "...",
@@ -2642,6 +3262,10 @@ Respond ONLY with a valid JSON object matching this exact schema:
   "kidAnalogy": "A gentle, kid-friendly analogy.",
   "jargonBreakdown": [
     { "term": "Medical/Clinical Term", "explanation": "Plain-language definition." }
+  ],
+  "topicReferences": [
+    "World Health Organization (WHO) / DOH Philippines — Clinical Guideline on Topic",
+    "MedlinePlus (U.S. National Library of Medicine) / Mayo Clinic — Patient Education Reference"
   ],
   "readingLevelScore": "Passed - Target Level",
   "culturalFitScore": "Aligned to Persona",
@@ -2688,9 +3312,10 @@ Respond ONLY with a valid JSON object matching this exact schema:
         const rawText = data.candidates[0].content.parts[0].text;
         let cleanJson = rawText.replace(/```json/gi, '').replace(/```/g, '').trim();
         resultData = JSON.parse(cleanJson);
+        resultData.translations = build17Translations(lastRawInput, Boolean(resultData.isLabResult), resultData.translations);
         success = true;
       } catch (error) {
-        console.warn(`Attempt with ${modelName} failed:`, error.message);
+        // Fallback to next model or offline clinical engine
       }
     }
 
@@ -2707,9 +3332,6 @@ Respond ONLY with a valid JSON object matching this exact schema:
     btnText.textContent = "Analyze & Translate Clinical Digest →";
   }
 
-  /* =========================================
-     COMPREHENSIVE CLINICAL CONSULTATION & LAB ENGINE
-     ========================================= */
   const CLINICAL_LAB_DB = [
     {
       keys: [/fasting blood sugar|\bfbs\b|fasting glucose|\bglucose\b|\brbs\b|random blood sugar/i],
@@ -2719,7 +3341,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "Fasting Blood Sugar (FBS) measures the amount of sugar (glucose) circulating in your blood after fasting for at least 8 hours.",
       normalText: "70 - 99 mg/dL",
       feelHigh: "If Blood Sugar is High: You might feel increased thirst, frequent urination, unusual tiredness, or blurry vision.",
-      feelLow: "If Blood Sugar is Low: You might feel shaky, dizzy, cold sweats, sudden hunger, or a fast heartbeat."
+      feelLow: "If Blood Sugar is Low: You might feel shaky, dizzy, cold sweats, sudden hunger, or a fast heartbeat.",
+      ref: "American Diabetes Association (ADA) Standards of Care in Diabetes & MedlinePlus (NLM) Fasting Blood Glucose Test."
     },
     {
       keys: [/hba1c|a1c|glycosylated hemoglobin/i],
@@ -2729,7 +3352,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "HbA1c measures your average blood sugar level over the past 2 to 3 months.",
       normalText: "4.0 - 5.6 %",
       feelHigh: "If HbA1c is High: You might feel ongoing fatigue, increased thirst, frequent nighttime urination, or tingling in hands/feet.",
-      feelLow: "If HbA1c is Low: You might experience episodes of shakiness, dizziness, or cold sweats."
+      feelLow: "If HbA1c is Low: You might experience episodes of shakiness, dizziness, or cold sweats.",
+      ref: "National Institute of Diabetes and Digestive and Kidney Diseases (NIH/NIDDK) & Testing.com (ADLM) Hemoglobin A1c."
     },
     {
       keys: [/creatinine|\bcrea\b|\begfr\b/i],
@@ -2739,7 +3363,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "Creatinine is a muscle waste product filtered out by healthy kidneys; it shows how well your kidneys are working.",
       normalText: "0.6 - 1.2 mg/dL",
       feelHigh: "If Creatinine is High: A patient might feel swelling in the feet/ankles or around the eyes, foamy urination, fatigue, or flank discomfort.",
-      feelLow: "If Creatinine is Low: Usually linked to lower muscle mass."
+      feelLow: "If Creatinine is Low: Usually linked to lower muscle mass.",
+      ref: "National Kidney Foundation / MedlinePlus (U.S. National Library of Medicine) Creatinine Test & Mayo Clinic Kidney Function Guidelines."
     },
     {
       keys: [/\bbun\b|blood urea nitrogen|\burea\b/i],
@@ -2749,7 +3374,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "BUN measures protein waste nitrogen in your blood to evaluate kidney function and hydration.",
       normalText: "7 - 20 mg/dL",
       feelHigh: "If BUN is High: You might feel dry mouth, concentrated dark urine, fatigue, or dizziness.",
-      feelLow: "Low BUN is usually linked to low protein intake or overhydration."
+      feelLow: "Low BUN is usually linked to low protein intake or overhydration.",
+      ref: "Testing.com (Association for Diagnostics & Laboratory Medicine) Blood Urea Nitrogen (BUN) & Cleveland Clinic Lab Reference."
     },
     {
       keys: [/uric acid|\bbua\b/i],
@@ -2759,7 +3385,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "Uric acid is produced when your body breaks down purines from food and cells.",
       normalText: "3.4 - 7.0 mg/dL",
       feelHigh: "If Uric Acid is High: A patient might feel sudden redness, heat, swelling, or sharp pain in the big toe, ankle, or knee (gout).",
-      feelLow: "Low uric acid rarely causes physical symptoms."
+      feelLow: "Low uric acid rarely causes physical symptoms.",
+      ref: "MSD Manual (Consumer & Professional Edition) Hyperuricemia and Gout & MedlinePlus Uric Acid Blood Test."
     },
     {
       keys: [/hemoglobin|\bhgb\b|\bhb\b|hematocrit|\bhct\b|\bcbc\b/i],
@@ -2769,7 +3396,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "Hemoglobin is the oxygen-carrying protein in red blood cells that delivers oxygen throughout your body.",
       normalText: "12.0 - 17.0 g/dL",
       feelHigh: "If Hemoglobin is High: A patient might feel headaches, dizziness, or flushed skin.",
-      feelLow: "If Hemoglobin is Low (Anemia): You might feel pale, easily tired, dizzy when standing up, or short of breath."
+      feelLow: "If Hemoglobin is Low (Anemia): You might feel pale, easily tired, dizzy when standing up, or short of breath.",
+      ref: "World Health Organization (WHO) Haemoglobin Concentrations for the Diagnosis of Anaemia & Mayo Clinic Complete Blood Count (CBC)."
     },
     {
       keys: [/\bwbc\b|white blood cell|leukocyte/i],
@@ -2779,7 +3407,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "White blood cells are your immune system's defense cells that fight infection and inflammation.",
       normalText: "4.5 - 11.0 x10³/µL",
       feelHigh: "If WBC is High: Your body is fighting an infection or inflammation; you might feel fever, chills, or localized pain.",
-      feelLow: "If WBC is Low: Immune defenses are lower and you might feel fatigued or feverish."
+      feelLow: "If WBC is Low: Immune defenses are lower and you might feel fatigued or feverish.",
+      ref: "StatPearls (NCBI Bookshelf / NLM) Histology, White Blood Cell & MedlinePlus WBC Count."
     },
     {
       keys: [/platelet|\bplt\b|thrombocyte/i],
@@ -2789,7 +3418,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "Platelets help your blood clot and stop bleeding when blood vessels are injured.",
       normalText: "150 - 450 x10³/µL",
       feelHigh: "If Platelets are High: A patient might feel headaches, dizziness, or tingling in hands/feet.",
-      feelLow: "If Platelets are Low: A patient might notice easy bruising, tiny red skin spots (petechiae), bleeding gums, or nosebleeds."
+      feelLow: "If Platelets are Low: A patient might notice easy bruising, tiny red skin spots (petechiae), bleeding gums, or nosebleeds.",
+      ref: "Department of Health Philippines (DOH) National Dengue & Platelet Monitoring Guidelines & Johns Hopkins Medicine Thrombocytopenia."
     },
     {
       keys: [/cholesterol|lipid|\bldl\b|\bhdl\b|triglyceride/i],
@@ -2799,7 +3429,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "Cholesterol and triglycerides are blood lipids; excess levels can narrow arteries over time.",
       normalText: "120 - 199 mg/dL",
       feelHigh: "If Cholesterol is High: Often has no early symptoms, though long-term elevation increases cardiovascular strain.",
-      feelLow: "Low cholesterol rarely causes direct physical symptoms."
+      feelLow: "Low cholesterol rarely causes direct physical symptoms.",
+      ref: "American Heart Association (AHA) Cholesterol Management Guidelines & NIH National Heart, Lung, and Blood Institute."
     },
     {
       keys: [/sgpt|\balt\b|sgot|\bast\b|liver enzyme|bilirubin/i],
@@ -2809,7 +3440,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "SGPT (ALT) and SGOT (AST) are enzymes inside liver cells that rise when the liver is inflamed or stressed.",
       normalText: "7 - 45 U/L",
       feelHigh: "If Liver Enzymes are High: A patient might feel fatigue, mild right-upper belly fullness, nausea, or yellowish eyes/skin.",
-      feelLow: "Values within range indicate minimal liver cell irritation."
+      feelLow: "Values within range indicate minimal liver cell irritation.",
+      ref: "Mayo Clinic Liver Function Tests & Testing.com (ADLM) Alanine Aminotransferase (ALT/SGPT)."
     },
     {
       keys: [/\btsh\b|thyroid|free t4|ft4|ft3/i],
@@ -2819,7 +3451,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       meaning: "TSH is a hormone that signals your thyroid gland to control your body's metabolism, energy, and temperature.",
       normalText: "0.4 - 4.5 uIU/mL",
       feelHigh: "If TSH is High (Hypothyroidism): Your thyroid is underactive; you might feel sluggish/tired, sensitive to cold, dry skin, weight gain, or constipation.",
-      feelLow: "If TSH is Low (Hyperthyroidism): Your thyroid is overactive; you might feel a fast heartbeat, shakiness, feeling warm/sweaty, or weight loss."
+      feelLow: "If TSH is Low (Hyperthyroidism): Your thyroid is overactive; you might feel a fast heartbeat, shakiness, feeling warm/sweaty, or weight loss.",
+      ref: "Cleveland Clinic Thyroid Stimulating Hormone (TSH) Test & MedlinePlus (NLM) TSH Reference Guide."
     }
   ];
 
@@ -2840,12 +3473,17 @@ Respond ONLY with a valid JSON object matching this exact schema:
         "SUPPORT THE LIMB: Gently rest the injured limb on a pillow or use a folded towel/cardboard as a temporary support splint while traveling to the hospital.",
         "APPLY COLD INDIRECTLY: Place an ice pack wrapped in a clean cloth over the swollen area for 15–20 minutes to help reduce swelling (never place ice directly on bare skin).",
         "DO NOT BEAR WEIGHT OR EAT YET: Avoid walking on an injured leg/ankle, and avoid eating heavy food right before the ER visit in case the doctor needs to sedate the area to set the bone.",
-        "CALL FOR HELP: Have a family member drive you or call an NCR emergency ambulance hotline below—do not drive yourself with a suspected fracture."
+        "CALL FOR HELP: Have a family member drive you or call an NCR emergency ambulance hotline—do not drive yourself with a suspected fracture."
       ],
       analogy: "Think of a bone like a sturdy tree branch that holds up a treehouse. If the branch cracks in a storm, you shouldn't climb on it or bend it—you wrap a strong splint around it and let a master builder (your doctor with an X-ray camera) secure it so it grows back strong and straight!",
       jargon: [
         { term: "Fracture vs. Sprain", explanation: "A fracture is a crack or break in the bone itself, while a sprain is a stretched or torn ligament connecting bones. Both cause pain and swelling, so an X-ray is needed to tell them apart." },
         { term: "Immobilization (Splinting)", explanation: "Keeping an injured bone or joint from moving so the sharp bone edges do not injure nearby nerves or blood vessels." }
+      ],
+      refs: [
+        "American Academy of Orthopaedic Surgeons (AAOS - OrthoInfo) — Fractures (Broken Bones) & First Aid Management.",
+        "Mayo Clinic Patient Care — Broken Wrist / Bone Fracture First Aid & Emergency Red Flags.",
+        "MSD Manual (Consumer Version) — Overview of Fractures, Dislocations, and Sprains."
       ]
     },
     {
@@ -2863,13 +3501,18 @@ Respond ONLY with a valid JSON object matching this exact schema:
         "STOP ALL PHYSICAL ACTIVITY: Sit down immediately in a comfortable upright position to make breathing easier and reduce strain on your heart.",
         "LOOSEN TIGHT CLOTHING: Unbutton tight collars, belts, or waistbands and stay in a cool, well-ventilated space.",
         "BREATHE SLOWLY: Take slow, steady breaths while someone stays beside you.",
-        "CALL FOR EMERGENCY HELP: Do not drive yourself to the hospital—dial 911, 143 (Red Cross), or one of the NCR hospital hotlines below immediately.",
+        "CALL FOR EMERGENCY HELP: Do not drive yourself to the hospital—dial 911, 143 (Red Cross), or one of the NCR hospital hotlines immediately.",
         "NEVER SELF-MEDICATE: Do not take unprescribed pills; wait for emergency medical personnel to check your vital signs."
       ],
       analogy: "Think of your heart and lungs like the main water pump and air filter of a house. If the pump feels tight or the air feels blocked, you pause everything right away so emergency doctors can check the pipes!",
       jargon: [
         { term: "ECG / EKG (Electrocardiogram)", explanation: "A quick, painless test that records the electrical signals of your heart to check for heart strain or rhythm changes." },
         { term: "Dyspnea", explanation: "Medical word for shortness of breath or feeling winded." }
+      ],
+      refs: [
+        "American Heart Association (AHA) — Warning Signs of a Heart Attack & Acute Chest Pain Triage.",
+        "Cleveland Clinic Health Library — Chest Pain & Dyspnea Clinical Evaluation.",
+        "StatPearls (NCBI Bookshelf / NLM) — Acute Chest Pain Point-of-Care Assessment."
       ]
     },
     {
@@ -2894,78 +3537,11 @@ Respond ONLY with a valid JSON object matching this exact schema:
       jargon: [
         { term: "Pyrexia (Fever)", explanation: "An elevated body temperature above 37.8°C (100°F), usually triggered by the immune system fighting an infection." },
         { term: "Tepid Sponge Bath", explanation: "Gently sponging the skin with lukewarm water to help bring down body warmth safely without causing shivering." }
-      ]
-    },
-    {
-      keys: [/headache|migraine|masakit.*ulo|head injury|hit my head|bumped.*head|dizzy|dizziness|vertigo|hilo|faint/i],
-      topic: "Headache, Dizziness, or Head Injury Consultation",
-      severity: "CAUTION",
-      safetyReason: "Headaches and dizziness can range from tension, dehydration, or inner-ear imbalance to blood pressure changes or concussion after a head bump, so knowing red-flag limits is essential.",
-      meaning: "A headache or dizziness means pain-sensitive nerves, blood vessels, or balance sensors around your head, neck, or inner ear are irritated, strained, or experiencing changes in blood flow or hydration.",
-      feelAndLimits:
-        "What You Might Feel Right Now: Dull band-like tightness across the forehead/neck, throbbing on one side with sensitivity to light/sound, or a spinning/lightheaded feeling when standing up.\n" +
-        "Our Clinical Limit: You should have your Blood Pressure checked and see a doctor in person to evaluate your neurological reflexes.\n" +
-        "EMERGENCY RED FLAGS: Seek emergency care immediately for a sudden 'worst headache of your life', headache after hitting your head, vomiting, blurry/double vision, slurred speech, weakness on one side, or fainting.",
-      recommend: "Consult a healthcare professional for a blood pressure check and physical exam—or go to the Emergency Room immediately if you hit your head or notice any red-flag symptoms.",
-      actions: [
-        "REST IN A QUIET, DIM ROOM: Sit or lie down slowly with your head slightly elevated and close your eyes away from bright screens.",
-        "MOVE SLOWLY WHEN STANDING: If you feel dizzy, sit on the edge of the bed for 1–2 minutes before standing up so you do not fall.",
-        "APPLY A COOL OR WARM COMPRESS: Place a cool damp cloth on your forehead or a warm cloth on the back of your neck to relax tight muscles.",
-        "HYDRATE & CHECK BLOOD PRESSURE: Sip water slowly and record your blood pressure reading if you have a home monitor.",
-        "DO NOT SELF-MEDICATE: Avoid taking unprescribed painkillers; let a licensed doctor evaluate the cause first."
       ],
-      analogy: "Think of your head's nerves like guitar strings—when you're tired, dehydrated, or stressed, the strings get pulled too tight until you rest in a quiet room and let them relax!",
-      jargon: [
-        { term: "Vertigo vs. Lightheadedness", explanation: "Vertigo feels like the room is spinning around you, while lightheadedness feels like you might faint." },
-        { term: "Concussion", explanation: "A mild brain injury caused by a bump or blow to the head that requires medical observation." }
-      ]
-    },
-    {
-      keys: [/stomach|belly|abdominal|tummy|tiyan|sikmura|vomit|suka|nausea|diarrhea|lbm|constipat|acid|heartburn|ulcer|gastritis|appendicitis|bloat|kabag/i],
-      topic: "Stomach Pain, Digestive Upset, Nausea, or Diarrhea Consult",
-      severity: "CAUTION",
-      safetyReason: "Digestive symptoms can lead to dehydration or signal stomach irritation, foodborne illness, or surgical conditions like appendicitis if pain becomes severe.",
-      meaning: "Stomach pain, nausea, or diarrhea means the lining of your stomach or intestines is irritated, inflamed, or working overtime to clear out something that disagreed with your digestive tract.",
-      feelAndLimits:
-        "What You Might Feel Right Now: Cramping, burning in the upper belly, bloating, queasiness, loose watery stools, or sour acid taste.\n" +
-        "Our Clinical Limit: A doctor needs to gently press (palpate) your abdomen in person to check where the tenderness is located.\n" +
-        "EMERGENCY RED FLAGS: Go to the ER immediately if pain becomes sharp and moves to the lower-right belly (appendicitis sign), if your belly feels hard/rigid, if you cannot keep fluids down for 24 hours, or if you see blood/black material in vomit or stool.",
-      recommend: "Consult a licensed physician to examine your abdomen and guide safe hydration and dietary recovery.",
-      actions: [
-        "SIP SMALL AMOUNTS OF FLUIDS FREQUENTLY: Take small sips of water, clear broth, or oral rehydration solution every 10–15 minutes.",
-        "EAT BLAND, EASY-TO-DIGEST FOODS: Stick to gentle foods like plain lugaw (rice porridge), crackers, banana, or toast, and avoid spicy, oily, sour, or dairy-heavy foods.",
-        "STAY UPRIGHT AFTER EATING: If you feel acid reflux or upper stomach burning, remain sitting upright for at least 2 hours after meals.",
-        "NOTE PAIN LOCATION & TIMING: Write down where the pain is and whether eating makes it better or worse.",
-        "AVOID SELF-MEDICATING: Never take pain relievers on an empty or upset stomach, as many pain pills irritate the stomach lining."
-      ],
-      analogy: "Your stomach is like a kitchen blender—when it gets irritated, giving it gentle, soft foods and small sips of water lets the blender rest and clean itself out smoothly!",
-      jargon: [
-        { term: "Epigastric Pain", explanation: "Discomfort felt in the upper-middle part of the belly just below the ribs, often linked to stomach acid or gastritis." },
-        { term: "Dehydration", explanation: "When the body loses more water and electrolytes than it takes in, causing dry mouth, dark urine, and dizziness." }
-      ]
-    },
-    {
-      keys: [/burn|scald|paso|wound|cut|bleed|sugat|bite|dog|cat|scratch|kagat|kalmot|rabies|nosebleed|balinguyngoy/i],
-      topic: "Wound, Burn, Bleeding, or Animal Bite First-Aid Consult",
-      severity: "ALERT",
-      safetyReason: "Open wounds, burns, and animal bites carry risks of infection, tetanus, or rabies (for dog/cat bites/scratches) and require proper cleansing and timely medical evaluation.",
-      meaning: "Your skin is your body's protective shield. When skin is broken by a cut, burn, or animal bite/scratch, bacteria or viruses can enter the tissue unless cleaned properly right away and evaluated by a health professional.",
-      feelAndLimits:
-        "What You Might Feel Right Now: Stinging, burning heat, throbbing pain, redness, oozing, or bleeding at the injured skin site.\n" +
-        "Our Clinical Limit: A doctor or Animal Bite Treatment Center (ABTC) must inspect the wound to determine if stitches, tetanus protection, or anti-rabies shots are needed.\n" +
-        "EMERGENCY RED FLAGS: Seek immediate emergency care if bleeding does not slow down after 10 minutes of firm direct pressure, if a burn is large/blistered, or if the wound was caused by any dog/cat/animal bite or scratch.",
-      recommend: "Visit a clinic, hospital ER, or DOH Animal Bite Treatment Center (for any animal bite/scratch) promptly for professional wound care.",
-      actions: [
-        "FOR ANIMAL BITES OR SCRATCHES: Wash the wound immediately under running tap water and mild soap for a full 10 to 15 minutes, then go straight to an Animal Bite Treatment Center or hospital.",
-        "FOR BLEEDING CUTS: Press a clean sterile cloth firmly over the wound for 5–10 minutes and elevate the injured part.",
-        "FOR MINOR BURNS: Hold the burned skin under cool (not ice-cold) running tap water for 15–20 minutes. Never put toothpaste, butter, oil, or soy sauce on a burn.",
-        "COVER CLEANLY: Loosely cover the cleaned area with a sterile gauze dressing while traveling to the doctor.",
-        "DO NOT APPLY UNPRESCRIBED OINTMENTS OR ANTIBIOTICS: Let a physician examine the wound first."
-      ],
-      analogy: "Your skin is like a castle wall. If a gate gets scratched, washing it with clean running water right away sweeps away outside intruders before the doctor seals the gate!",
-      jargon: [
-        { term: "Wound Irrigation", explanation: "Flushing a cut or bite with steady running water to wash out germs and dirt." },
-        { term: "Rabies Post-Exposure Prophylaxis (PEP)", explanation: "Medical protection given at an Animal Bite Center after a dog or cat bite/scratch to prevent rabies." }
+      refs: [
+        "Department of Health Philippines (DOH) & World Health Organization (WHO) — Dengue & Acute Febrile Illness Clinical Guidelines.",
+        "Mayo Clinic Patient Care — Fever: First Aid and When to See a Doctor.",
+        "U.S. Centers for Disease Control and Prevention (CDC) — Respiratory Virus & Fever Management."
       ]
     }
   ];
@@ -3007,6 +3583,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
       let actionsList = [];
       let analogyText = "";
       let jargonList = [];
+      let refsList = [];
 
       const directQA = generateSmartOfflineFollowUpAnswer(rawText, rawText);
 
@@ -3015,10 +3592,11 @@ Respond ONLY with a valid JSON object matching this exact schema:
         safetyReason = matchedConsult.safetyReason;
         meaningText = `Consultation Topic (${matchedConsult.topic}): ${matchedConsult.meaning}\nDirect Nurse Answer: ${directQA}`;
         feelAndLimitsText = matchedConsult.feelAndLimits;
-        recommendText = `${matchedConsult.recommend} (Remember: TranslaNurse is for patient education and consultation guidance only, and never replaces a licensed physician.)`;
+        recommendText = `${matchedConsult.recommend} (Remember: TranslaNurse is for patient education and health literacy guidance only, and never replaces a licensed physician.)`;
         actionsList = matchedConsult.actions;
         analogyText = matchedConsult.analogy;
         jargonList = matchedConsult.jargon;
+        refsList = matchedConsult.refs;
       } else {
         if (/severe|critical|emergency|unconscious|seizure|stroke|paralyz|choking|poison|suicid/i.test(rawText)) {
           severity = "ALERT";
@@ -3048,7 +3626,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
           "TRACK YOUR SYMPTOM TIMELINE: Write down when the problem started, what makes it feel better or worse, and rate discomfort from 1 to 10 to share with your doctor.",
           "SUPPORT BASIC HYDRATION & COMFORT: Sip water regularly, maintain a comfortable posture, and keep a family member informed of how you are feeling.",
           "KNOW THE LIMIT ON MEDICATIONS: Never self-medicate or take unprescribed drugs—TranslaNurse never recommends medications.",
-          "REACH OUT TO A PROFESSIONAL: Use the Follow-Up Q&A button in the top-right corner if you have more questions, or call an NCR health hotline."
+          "REACH OUT TO A PROFESSIONAL: Use the Follow-Up Q&A button or NCR Hotlines button in the top navigation bar if you need immediate clinical contact."
         ];
 
         analogyText =
@@ -3057,6 +3635,12 @@ Respond ONLY with a valid JSON object matching this exact schema:
         jargonList = [
           { term: "Clinical Triage & Limits", explanation: "Sorting out which symptoms can be supported with rest and clinic follow-up versus red-flag signs that need an Emergency Room right away." },
           { term: "Symptom History (Onset, Provocation, Severity)", explanation: "The key details a doctor asks: when it started, what makes it better or worse, and how strong it feels from 1 to 10." }
+        ];
+
+        refsList = [
+          "World Health Organization (WHO) & DOH Philippines — Primary Care Triage & Health Literacy Standards.",
+          "Mayo Clinic Patient Care & Health Information — Symptom Evaluation & First-Aid Guidelines.",
+          "MedlinePlus (U.S. National Library of Medicine) — Patient Education Encyclopedia."
         ];
       }
 
@@ -3073,20 +3657,10 @@ Respond ONLY with a valid JSON object matching this exact schema:
         outOfRangeSymptoms: feelAndLimitsText,
         seekProfessionalRecommendation: recommendText,
         actionPlan: actionsList,
-        translations: {
-          "Tagalog": `🇵🇭 Paliwanag sa Tagalog (Konsultasyon):\n• Tungkol sa Iyong Tanong / Nararamdaman ("${displayInput}"): Ang iyong nararamdaman ay senyales ng katawan na nangangailangan ng pag-iingat, pahinga, at pagsusuri.\n• Limitasyon: Hindi kayang palitan ng online consult ang pisikal na eksaminasyon o X-ray ng doktor.\n• Ano ang Maaaring Gawin Ngayon: Ipahinga ang masakit na bahagi ng katawan, bantayan kung lumalala ang sintomas, at huwag uminom ng anumang gamot nang walang reseta.`,
-          "Cebuano": `🇵🇭 Patin-aw sa Cebuano / Bisaya:\n• Bahin sa Imong Gipamati ("${displayInput}"): Ang imong gibati timailhan nga ang imong lawas nagkinahanglan og pag-amping ug pagsusi sa doktor.\n• Unsay Mahimo Karon: Ipahulay ang apektadong bahin sa lawas ug ayaw pag-inom og tambal nga walay reseta sa doktor.`,
-          "Ilocano": `🇵🇭 Palawag iti Ilocano:\n• Maipapan iti Marikriknam ("${displayInput}"): Daytoy a mariknam ket pagilasinan a masapul ti panagannad ken panagkita ti doktor. Iinana ti nasakit a paset ti bagi ken saan nga uminum iti agas no awan bilin ti doktor.`,
-          "Japanese": `🇯🇵 日本語での相談ガイド:\n• ご相談内容（「${displayInput}」）について: 痛みや不調は身体を休ませるための大切なサインです。患部を無理に動かさず安静にし、自己判断で薬を服用せず医師の診察を受けてください。`,
-          "Korean": `🇰🇷 한국어 상담 안내:\n• 문의하신 증상("${displayInput}")의 의미: 통증이나 불편감은 신체를 보호하고 휴식을 취하라는 신호입니다. 의사의 처방 없이 약물을 복용하지 마시고 병원을 방문하세요.`,
-          "Mandarin Chinese": `🇨🇳 中文健康咨询说明:\n• 关于您的症状/咨询（“${displayInput}”）: 疼痛或不适是身体发出的保护信号。请保持患处安静休息，不要自行服药，尽快咨询专业医生。`,
-          "Vietnamese": `🇻🇳 Hướng dẫn tư vấn bằng Tiếng Việt:\n• Về triệu chứng của bạn ("${displayInput}"): Đau hoặc khó chịu là tín hiệu cơ thể cần được nghỉ ngơi và kiểm tra y tế. Không tự ý dùng thuốc.`,
-          "Thai": `🇹🇭 คำแนะนำการปรึกษาเบื้องต้น (ภาษาไทย):\n• เกี่ยวกับอาการของคุณ ("${displayInput}"): พักส่วนที่บาดเจ็บหรือปวด ห้ามซื้อยามารับประทานเอง และควรไปพบแพทย์`,
-          "Bahasa Indonesia": `🇮🇩 Panduan Konsultasi Bahasa Indonesia:\n• Tentang Keluhan Anda ("${displayInput}"): Istirahatkan area yang sakit, jangan minum obat tanpa resep, dan segera periksakan diri ke dokter.`,
-          "Hindi": `🇮🇳 हिंदी परामर्श मार्गदर्शन:\n• आपकी समस्या ("${displayInput}") का अर्थ: प्रभावित हिस्से को आराम दें, बिना डॉक्टर की सलाह के कोई दवा न लें, और जांच के लिए डॉक्टर से मिलें।`
-        },
+        translations: build17Translations(displayInput, false),
         kidAnalogy: analogyText,
         jargonBreakdown: jargonList,
+        topicReferences: refsList,
         readingLevelScore: grade.split(' ')[0] + " Verified",
         culturalFitScore: "Aligned to Target",
         safetyScore: "No Meds • Safe"
@@ -3105,6 +3679,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
     let rangeLines = [];
     let symptomParts = [];
     let jargonList = [];
+    let refsList = [];
 
     const bpMatch = rawText.match(/(?:\bbp\b|blood pressure)?\s*(\d{2,3})\s*\/\s*(\d{2,3})/i);
     if (bpMatch && /bp|blood pressure|mmhg|hypertension|\d{2,3}\/\d{2,3}/i.test(rawText)) {
@@ -3127,6 +3702,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
         rangeLines.push(`Blood Pressure: Result ${sys}/${dia} mmHg (Normal Range: 90/60 - 120/80 mmHg) - ${bpState}`);
         symptomParts.push(`Blood Pressure Limits: High blood pressure may cause a throbbing headache at the back of the head, dizziness, blurred vision, or chest tightness. If BP reaches 180/120 mmHg, seek emergency care immediately.`);
         jargonList.push({ term: "Blood Pressure (Systolic / Diastolic)", explanation: "Top number = pressure when the heart beats; Bottom number = pressure when the heart rests." });
+        refsList.push("American Heart Association (AHA) — Understanding Blood Pressure Readings & Hypertensive Crisis Guidelines.");
       }
     }
 
@@ -3145,6 +3721,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
 
         meaningParts.push(`${lab.name}: ${lab.meaning}`);
         jargonList.push({ term: lab.name, explanation: `${lab.meaning} (Normal Range: ${lab.normalText})` });
+        if (lab.ref) refsList.push(lab.ref);
 
         if (extractedVal !== null && !isNaN(extractedVal)) {
           let evalStatus = "Within Normal Range";
@@ -3181,6 +3758,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
         `TSH (Thyroid): Standard Normal Range 0.4 - 4.5 uIU/mL - Reference`
       );
       symptomParts.push(`Out-of-Range Symptoms & Limits: Out-of-range lab values can cause tiredness, dizziness, increased thirst, swelling, or feverishness. Always have a doctor correlate your lab sheet with a physical exam.`);
+      refsList.push("MedlinePlus (U.S. National Library of Medicine) & Testing.com (ADLM) — Standard Clinical Laboratory Reference Intervals.");
     }
 
     let statusLabel = "Safe - Great Job in being healthy";
@@ -3202,25 +3780,15 @@ Respond ONLY with a valid JSON object matching this exact schema:
       outOfRangeSymptoms: symptomParts.join("\n"),
       seekProfessionalRecommendation: "We strongly recommend seeking a licensed doctor or healthcare professional to interpret your lab results alongside a physical exam. TranslaNurse is for patient education and does not replace your doctor.",
       actionPlan: [
-        "Schedule a consultation with a licensed doctor or call one of the NCR health hotlines below to review these lab values.",
+        "Schedule a consultation with a licensed doctor or call one of the NCR health hotlines to review these lab values.",
         "Note any physical symptoms you are feeling (such as fatigue, dizziness, thirst, or swelling) and when they started.",
         "Bring your original lab result printout or PDF to your clinic visit.",
         "Never self-medicate or adjust any treatment on your own—TranslaNurse never suggests medications."
       ],
-      translations: {
-        "Tagalog": `🇵🇭 Paliwanag sa Tagalog (Resulta ng Lab):\n1. Ibig Sabihin ng Test ("${displayInput}"): Sinusukat nito ang kalagayan ng iyong dugo at organo.\n2. Normal Range: Ihambing ang iyong resulta sa normal reference range. Kapag labas sa range, maaaring makaramdam ng pagkapagod, pagkahilo, o pagkauhaw.\n3. Rekomendasyon: Magpakonsulta sa lisensyadong doktor at huwag uminom ng gamot nang walang reseta.`,
-        "Cebuano": `🇵🇭 Patin-aw sa Cebuano (Resulta sa Lab):\n1. Pasabot sa Test ("${displayInput}"): Nagpakita kini sa kahimtang sa imong dugo ug organo.\n2. Normal Range: Kung gawas sa normal range, ang pasyente mahimong mobati og kakapoy o pagkalipong.\n3. Rekomendasyon: Pagpakonsulta sa doktor ug ayaw pag-inom og tambal nga walay reseta.`,
-        "Ilocano": `🇵🇭 Palawag iti Ilocano (Resulta ti Lab):\n1. Kayat a Sawen ti Test ("${displayInput}"): Ipakita daytoy ti kasasaad ti dara ken organom.\n2. Normal Range: No ruwar ti normal range, mabalin a marikna ti panagbannog wenno panagulaw. Agpakonsulta iti doktor.`,
-        "Japanese": `🇯🇵 日本語での検査説明:\n1. 検査の意味（「${displayInput}」）: 血液や臓器の働きを確認する検査です。\n2. 基準値と症状: 基準値から外れると疲労感やめまい等を感じることがあります。必ず医師にご相談ください。`,
-        "Korean": `🇰🇷 한국어 검사 설명:\n1. 검사의 의미 ("${displayInput}"): 혈액 및 장기의 기능을 확인하는 검사입니다.\n2. 정상 범위 및 증상: 정상 범위를 벗어나면 피로감이나 어지러움을 느낄 수 있으므로 반드시 의사와 상담하세요.`,
-        "Mandarin Chinese": `🇨🇳 中文化验说明:\n1. 指标含义（“${displayInput}”）: 反映血液与器官功能。\n2. 正常范围与症状: 若超出正常参考范围，可能感到疲倦或头晕，请务必咨询专业医生。`,
-        "Vietnamese": `🇻🇳 Giải thích xét nghiệm (Tiếng Việt):\n1. Ý nghĩa ("${displayInput}"): Đánh giá chức năng máu và cơ quan.\n2. Mức bình thường & Triệu chứng: Nếu ngoài mức bình thường có thể gây mệt mỏi, chóng mặt. Hãy tham khảo ý kiến bác sĩ.`,
-        "Thai": `🇹🇭 คำอธิบายผลแล็บ (ภาษาไทย):\n1. ความหมาย ("${displayInput}"): ตรวจการทำงานของเลือดและอวัยวะ\n2. ค่าปกติและอาการ: หากอยู่นอกเกณฑ์ปกติอาจรู้สึกอ่อนเพลียหรือเวียนศีรษะ แนะนำให้ปรึกษาแพทย์`,
-        "Bahasa Indonesia": `🇮🇩 Penjelasan Hasil Lab:\n1. Arti Pemeriksaan ("${displayInput}"): Menunjukkan fungsi darah dan organ tubuh.\n2. Rentang Normal: Jika di luar batas normal, pasien bisa merasa lelah atau pusing. Konsultasikan dengan dokter.`,
-        "Hindi": `🇮🇳 लैब रिपोर्ट विवरण (हिंदी):\n1. जांच का अर्थ ("${displayInput}"): यह रक्त और अंगों की कार्यप्रणाली बताती है।\n2. सामान्य सीमा: सीमा से बाहर होने पर थकान या चक्कर आ सकते हैं। कृपया डॉक्टर से परामर्श करें।`
-      },
+      translations: build17Translations(displayInput, true),
       kidAnalogy: "Think of a lab test like a friendly report card for the helpers inside your blood—it shows your doctor which helpers have just the right energy and which ones need a little extra care!",
       jargonBreakdown: jargonList,
+      topicReferences: refsList,
       readingLevelScore: grade.split(' ')[0] + " Verified",
       culturalFitScore: "Aligned to Target",
       safetyScore: "No Meds • Safe"
@@ -3231,9 +3799,6 @@ Respond ONLY with a valid JSON object matching this exact schema:
     saveToHistory(lastRawInput, labResultObj.labSafetyStatus, `${labResultObj.inputMeaning}\n${labResultObj.normalRangeComparison}`);
   }
 
-  /* =========================================
-     SPACIOUS UI RENDERING, LAB FLAG CARDS & FILTERING
-     ========================================= */
   function formatSpaciousBlocks(rawText, extraClass = "") {
     if (!rawText) return `<div class="spacious-item-card ${extraClass}">No details available.</div>`;
     const lines = rawText
@@ -3335,7 +3900,7 @@ Respond ONLY with a valid JSON object matching this exact schema:
     document.getElementById('lab-safety-container').innerHTML = `
       <div class="status-banner ${statusClass}">
         <span>${statusIcon} ${escapeHtml(normalizedStatus)}</span>
-        <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700;">CLICK ANY SQUARE ON LEFT TO EXPLORE</span>
+        <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700;">8 BENTO SQUARES READY TO EXPLORE</span>
       </div>
     `;
     document.getElementById('sq-safety-badge').textContent = shortBadge;
@@ -3344,18 +3909,20 @@ Respond ONLY with a valid JSON object matching this exact schema:
       data.safetyReasoning || "Evaluated based on clinical triage standards.";
 
     const hasLabRange = Boolean(data.isLabResult && data.normalRangeComparison && data.normalRangeComparison.trim() !== "");
-    const sqRanges = document.getElementById('sq-ranges');
+    const integratedLabWrapper = document.getElementById('integrated-lab-ranges-wrapper');
     const meaningTitle = document.getElementById('explain-meaning-title');
     const symptomsTitle = document.getElementById('explain-symptoms-title');
+    const sqMeaningBadge = document.getElementById('sq-meaning-badge');
 
     if (hasLabRange) {
-      sqRanges.style.display = 'flex';
+      integratedLabWrapper.style.display = 'block';
       const flaggedCount = renderSpaciousLabFlagCards(data.normalRangeComparison);
-      document.getElementById('sq-ranges-badge').textContent = flaggedCount > 0 ? `🚩 ${flaggedCount} Flagged` : "✅ All Normal";
-      meaningTitle.textContent = "🩺 What Your Lab Test / Input Means";
+      sqMeaningBadge.textContent = flaggedCount > 0 ? `🚩 ${flaggedCount} Flagged` : "✅ Lab Normal";
+      meaningTitle.textContent = "🩺 What Your Lab Test Means & Reference Ranges";
       symptomsTitle.textContent = "⚡ If Out of Range: What the Patient Might Feel & Limits";
     } else {
-      sqRanges.style.display = 'none';
+      integratedLabWrapper.style.display = 'none';
+      sqMeaningBadge.textContent = "Overview";
       meaningTitle.textContent = "🩺 What Your Symptom / Consultation Means";
       symptomsTitle.textContent = "⚡ What You Might Feel & Safe Clinical Limits (Red Flags)";
     }
@@ -3391,11 +3958,8 @@ Respond ONLY with a valid JSON object matching this exact schema:
       hotlineBox.style.display = 'none';
     }
 
-    const langSelect = document.getElementById('asian-lang-select');
-    langSelect.value = "Tagalog";
-    document.querySelectorAll('.lang-quick-pill').forEach((pill, i) => {
-      pill.classList.toggle('active', i === 0);
-    });
+    // Update Square 05 (Philippine Languages) & Square 06 (Other Asian Countries)
+    switchPhLanguage();
     switchAsianLanguage();
 
     document.getElementById('kid-analogy-output').innerText =
@@ -3415,6 +3979,12 @@ Respond ONLY with a valid JSON object matching this exact schema:
     }
     document.getElementById('jargon-details').innerHTML = jargonHtml;
 
+    // Update Dynamic Topic References
+    const dynRefEl = document.getElementById('dynamic-references-list');
+    if (dynRefEl && Array.isArray(data.topicReferences) && data.topicReferences.length > 0) {
+      dynRefEl.innerHTML = data.topicReferences.map(r => `• <strong>Verified Source:</strong> ${escapeHtml(r)}`).join('<br>');
+    }
+
     document.getElementById('score-literacy').textContent = data.readingLevelScore || "Passed";
     document.getElementById('score-cultural').textContent = data.culturalFitScore || "Aligned";
     document.getElementById('score-safety').textContent = data.safetyScore || "No Meds • Safe";
@@ -3427,28 +3997,40 @@ Respond ONLY with a valid JSON object matching this exact schema:
     }
   }
 
-  function switchAsianLanguage() {
-    const lang = document.getElementById('asian-lang-select').value;
-    const outBox = document.getElementById('asian-translation-output');
+  function switchPhLanguage() {
+    const lang = document.getElementById('ph-lang-select').value;
+    const outBox = document.getElementById('ph-translation-output');
 
     if (!latestAnalysisData) {
-      outBox.innerHTML = `<em>Run an analysis first to view the translation in ${escapeHtml(lang)}. (Initial translation defaults to Tagalog.)</em>`;
+      outBox.innerHTML = `<em>Run an analysis first to view the Philippine regional translation in ${escapeHtml(lang)}.</em>`;
       return;
     }
 
     const translations = latestAnalysisData.translations || {};
     if (translations[lang]) {
       outBox.innerText = translations[lang];
-    } else if (lang === "Tagalog" && latestAnalysisData.tagalogSummary) {
-      outBox.innerText = latestAnalysisData.tagalogSummary;
     } else {
       outBox.innerText = `[${lang}] ` + (translations["Tagalog"] || latestAnalysisData.inputMeaning || "");
     }
   }
 
-  /* =========================================
-     INTELLIGENT FOLLOW-UP Q&A ENGINE
-     ========================================= */
+  function switchAsianLanguage() {
+    const lang = document.getElementById('asian-lang-select').value;
+    const outBox = document.getElementById('asian-translation-output');
+
+    if (!latestAnalysisData) {
+      outBox.innerHTML = `<em>Run an analysis first to view the translation in ${escapeHtml(lang)}.</em>`;
+      return;
+    }
+
+    const translations = latestAnalysisData.translations || {};
+    if (translations[lang]) {
+      outBox.innerText = translations[lang];
+    } else {
+      outBox.innerText = `[${lang}] ` + (latestAnalysisData.inputMeaning || "");
+    }
+  }
+
   function generateSmartOfflineFollowUpAnswer(question, contextText) {
     const q = question.toLowerCase();
 
@@ -3465,12 +4047,9 @@ Respond ONLY with a valid JSON object matching this exact schema:
       return "If you might need an urgent procedure or X-ray/sedation at the Emergency Room (such as for a severe fracture or acute abdominal pain), avoid heavy meals until a doctor evaluates you. For general recovery, fever, or digestive upset, take small, frequent sips of water or clear fluids and stick to plain, gentle foods like lugaw, bananas, or crackers.";
     }
     if (/hospital|er|emergency|doctor|when.*go|kailan|ospital/i.test(q)) {
-      return "You should go to the Emergency Room immediately if you notice any Red Flag limits: severe or worsening pain, visible bone/joint deformity, numbness/tingling or pale/bluish fingers or toes, difficulty breathing, chest pain, dizziness/fainting, persistent vomiting, or high fever. You can dial 911, 143 (Red Cross), or call UP-PGH (02) 8554-8400 / MakatiMed (02) 8888-8999.";
+      return "You should go to the Emergency Room immediately if you notice any Red Flag limits: severe or worsening pain, visible bone/joint deformity, numbness/tingling or pale/bluish fingers or toes, difficulty breathing, chest pain, dizziness/fainting, persistent vomiting, or high fever. Click the '🚨 NCR Hotlines' button at the top to call 911, 1555 (DOH), 143 (Red Cross), UP-PGH, or MakatiMed.";
     }
-    if (/how long|heal|recover|days|weeks|gagaling/i.test(q)) {
-      return "Recovery time depends on the exact diagnosis: minor sprains or viral illnesses often improve over several days to 2 weeks with rest and hydration, while bone fractures typically take 6 to 8+ weeks in a splint or cast to heal fully. A licensed doctor can give you an exact timeline after examining you in person.";
-    }
-    return `For your inquiry ("${question}"): Listen closely to what your body feels and respect its safe limits—rest the affected area, stay hydrated, avoid self-medicating, and watch for any red-flag warning signs (such as severe pain, swelling, numbness, high fever, dizziness, or breathing difficulty). Please share this exact concern with a licensed doctor or call one of the NCR hotlines in your action plan!`;
+    return `For your inquiry ("${question}"): Listen closely to what your body feels and respect its safe limits—rest the affected area, stay hydrated, avoid self-medicating, and watch for any red-flag warning signs (such as severe pain, swelling, numbness, high fever, dizziness, or breathing difficulty). Please share this exact concern with a licensed doctor!`;
   }
 
   async function sendFollowUpQuestion() {
@@ -3514,29 +4093,31 @@ Respond ONLY with a valid JSON object matching this exact schema:
     msgContainer.scrollTop = msgContainer.scrollHeight;
   }
 
-  /* =========================================
-     EXPORT & HISTORY MANAGEMENT
-     ========================================= */
   function exportToText() {
     const status = document.getElementById('lab-safety-container').innerText.trim();
     const meaning = document.getElementById('explain-meaning-output').innerText;
-    const rangeCardVisible = document.getElementById('sq-ranges').style.display !== 'none';
+    const rangeCardVisible = document.getElementById('integrated-lab-ranges-wrapper').style.display !== 'none';
     const range = rangeCardVisible ? `\nNORMAL REFERENCE RANGE VS. YOUR RESULT:\n${document.getElementById('explain-range-output').innerText}\n` : "";
     const symptoms = document.getElementById('explain-symptoms-output').innerText;
     const recommend = document.getElementById('explain-recommend-output').innerText;
-    const lang = document.getElementById('asian-lang-select').value;
-    const translation = document.getElementById('asian-translation-output').innerText;
+    const phLang = document.getElementById('ph-lang-select').value;
+    const phTranslation = document.getElementById('ph-translation-output').innerText;
+    const asianLang = document.getElementById('asian-lang-select').value;
+    const asianTranslation = document.getElementById('asian-translation-output').innerText;
     const actions = document.getElementById('action-plan-output').innerText;
+    const refs = document.getElementById('dynamic-references-list').innerText;
 
-    const content = `TRANSLANURSE PATIENT CONSULTATION & SUMMARY\n` +
-      `=============================================\n` +
+    const content = `TRANSLANURSE PATIENT CONSULTATION & HEALTH LITERACY SUMMARY\n` +
+      `=============================================================\n` +
       `STATUS: ${status}\n\n` +
       `WHAT YOUR INPUT / SITUATION MEANS:\n${meaning}\n` +
       `${range}\n` +
       `WHAT YOU MIGHT FEEL & CLINICAL LIMITS:\n${symptoms}\n\n` +
-      `RECOMMENDATION:\n${recommend}\n\n` +
-      `TRANSLATION (${lang}):\n${translation}\n\n` +
-      `WHAT CAN I DO (NO MEDICATIONS SUGGESTED):\n${actions}\n`;
+      `PROFESSIONAL RECOMMENDATION:\n${recommend}\n\n` +
+      `PHILIPPINE LANGUAGE TRANSLATION (${phLang}):\n${phTranslation}\n\n` +
+      `OTHER ASIAN COUNTRY TRANSLATION (${asianLang}):\n${asianTranslation}\n\n` +
+      `WHAT CAN I DO (NO MEDICATIONS SUGGESTED):\n${actions}\n\n` +
+      `VERIFIED CLINICAL REFERENCES (NO WIKIPEDIA / NO SCRIBD):\n${refs}\n`;
 
     const blob = new Blob([content], { type: 'text/plain' });
     const a = document.createElement('a');
@@ -3611,10 +4192,9 @@ Respond ONLY with a valid JSON object matching this exact schema:
   }
 
   function clearAllHistory() {
-    if (confirm("Are you sure you want to clear your consultation history log?")) {
-      localStorage.removeItem('translanurse_v10_history');
-      renderHistory();
-    }
+    localStorage.removeItem('translanurse_v10_history');
+    renderHistory();
+    showToast("🗑️ Consultation history log cleared.");
   }
 
   function escapeHtml(str) {
